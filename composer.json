@@ -10,8 +10,9 @@
         "php": ">=5.4.4",
         "ext-pgsql": "*",
         "psr/log": "~1.0",
-        "pomm-project/foundation": "dev-master",
-        "pomm-project/model-manager": "dev-master"
+        "pomm-project/foundation":    "dev-master",
+        "pomm-project/model-manager": "dev-master",
+        "symfony/console":            "2.5.*"
     },
     "require-dev": {
         "atoum/atoum" : "dev-master"
