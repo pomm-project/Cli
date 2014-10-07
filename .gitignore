@@ -1,2 +1,3 @@
+.pomm_cli_bootstrap.php
 vendor/*
 sources/tests/config.php
