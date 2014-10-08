@@ -19,6 +19,7 @@ use PommProject\Foundation\Inflector;
 use PommProject\Foundation\ConvertedResultIterator;
 
 use PommProject\Cli\Generator\BaseGenerator;
+use PommProject\Cli\Exception\GeneratorException;
 
 /**
  * StructureGenerator
@@ -69,11 +70,12 @@ class StructureGenerator extends BaseGenerator
         $table_oid          = $this->checkRelationInformation();
         $field_informations = $this->getFieldInformation($table_oid);
         $primary_key        = $this->getPrimaryKey($table_oid);
+        $table_comment      = $this->getTableComment($table_oid);
 
         if (file_exists($this->filename)) {
             $output->writeln(
                 sprintf(
-                    "<fg=orange>Overwriting</fg=orange> file '%s'.",
+                    "<fg=cyan>Overwriting</fg=cyan> file '%s'.",
                     $this->filename
                 )
             );
@@ -90,7 +92,7 @@ class StructureGenerator extends BaseGenerator
             $table = $this->createTableHelper($output);
             $table->addRow(['relation :', $this->relation]);
             $table->addRow(['namespace :', $this->namespace]);
-            $table->render();
+            $table->setStyle('borderless')->render();
         }
 
         if ($output->isVeryVerbose()) {
@@ -103,14 +105,23 @@ class StructureGenerator extends BaseGenerator
             $table->render();
         }
 
-        $output->writeln(
+        $this->saveFile(
+            $this->filename,
             $this->mergeTemplate(
                 [
-                    'namespace' => $this->namespace,
-                    'entity'    => Inflector::studlyCaps($this->relation),
-                    'relation'  => $this->relation,
-                    'primary_key' => join(', ', array_map(function($val) { return sprintf("'%s'", $val); }, $primary_key)),
-                    'add_fields'  => $this->formatAddFields($field_informations),
+                    'namespace'     => $this->namespace,
+                    'entity'        => Inflector::studlyCaps($this->relation),
+                    'relation'      => $this->relation,
+                    'primary_key'   => join(
+                        ', ',
+                        array_map(
+                            function($val) { return sprintf("'%s'", $val); },
+                            $primary_key
+                        )
+                    ),
+                    'add_fields'    => $this->formatAddFields($field_informations),
+                    'table_comment' => $this->createPhpDocBlockFromText($table_comment),
+                    'fields_comment' => $this->formatFieldsComment($field_informations),
                 ]
             )
         );
@@ -120,10 +131,62 @@ class StructureGenerator extends BaseGenerator
     {
         $strings = [];
         foreach ($field_informations as $info) {
-            $strings[] = sprintf("            ->addField('%s', '%s')", $info['name'], $info['type']);
+            $strings[] = sprintf(
+                "            ->addField('%s', '%s')",
+                $info['name'],
+                $info['type']
+            );
         }
 
         return join("\n", $strings);
+    }
+
+    /**
+     * formatFieldsComment
+     *
+     * Format fields comment to be in the class comment. This is because there
+     * can be very long comments or comments with carriage returns. It is
+     * furthermore more convenient to get all the descriptions in the head of
+     * the generated class.
+     *
+     * @access protectd
+     * @param  ConvertedResultIterator $field_informations
+     * @return string
+     */
+    protected function formatFieldsComment(ConvertedResultIterator $field_informations)
+    {
+        $comments = [];
+        foreach ($field_informations as $info) {
+
+            if ($info['comment'] === null) {
+                continue;
+            }
+
+            $comments[] = sprintf(" * %s:", $info['name']);
+            $comments[] = $this->createPhpDocBlockFromText($info['comment']);
+        }
+
+        return join("\n", $comments);
+    }
+
+    /**
+     * createPhpDocBlockFromText
+     *
+     * Format a text into a PHPDoc comment block.
+     *
+     * @access protected
+     * @param  string $text
+     * @return string
+     */
+    protected function createPhpDocBlockFromText($text)
+    {
+        return join(
+            "\n",
+            array_map(
+                function($line) { return ' *   '.$line; },
+                explode("\n", wordwrap($text))
+            )
+        );
     }
 
     /**
@@ -205,6 +268,25 @@ class StructureGenerator extends BaseGenerator
     }
 
     /**
+     * getTableComment
+     *
+     * Grab table comment from database.
+     *
+     * @access protected
+     * @param  int $table_oid
+     * @return string|null
+     */
+    protected function getTableComment($table_oid)
+    {
+        $comment = $this
+            ->getInspector()
+            ->getTableComment($table_oid)
+            ;
+
+        return $comment;
+    }
+
+    /**
      * getCodeTemplate
      *
      * @see BaseGenerator
@@ -215,15 +297,34 @@ class StructureGenerator extends BaseGenerator
 <?php
 /**
  * This file has been automaticaly generated by Pomm Cli package.
- * DO NOT edit this file as your changes will be lost at next generation.
+ * You MIGHT NOT edit this file as your changes will be lost at next
+ * generation.
+ *
+ * Class and fields comments are inspected from table and fields comments.
+ * @see http://www.postgresql.org/docs/9.0/static/sql-comment.html
  */
 
 namespace {:namespace:};
 
 use PommProject\ModelManager\Model\RowStructure;
 
+/**
+ * {:entity:}
+ *
+ * Structure class for relation {:relation:}.
+{:table_comment:}
+ *
+{:fields_comment:}
+ *
+ * @see RowStructure
+ */
 class {:entity:} extends RowStructure
 {
+    /**
+     * initialize
+     *
+     * @see RowStructure
+     */
     protected function initialize()
     {
         $this
@@ -234,10 +335,5 @@ class {:entity:} extends RowStructure
     }
 }
 _;
-    }
-
-    protected function outputFields(OutputInterface $output, ConvertedResultIterator $results)
-    {
-
     }
 }

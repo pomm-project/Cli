@@ -87,15 +87,15 @@ HELP
             $schema = 'public';
         }
 
-        $prefix_dir = getEnv('PWD').$input->getOption('prefix-dir');
+        $prefix_dir = $input->getOption('prefix-dir');
         $prefix_ns  = $input->getOption('prefix-ns');
 
         $filename = sprintf(
             "%s/%s/%s/%s/Structure/%s.php",
-            $prefix_dir,
+            ltrim($prefix_dir, '/'),
             str_replace('\\', '/', trim($prefix_ns, '\\')),
             Inflector::studlyCaps($input->getArgument('config-name')),
-            Inflector::studlyCaps(sprintf("%sSchema", $schema)),
+            Inflector::studlyCaps(sprintf("%s_schema", $schema)),
             Inflector::studlyCaps($relation)
         );
 
