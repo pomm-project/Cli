@@ -22,7 +22,7 @@ use PommProject\Cli\Command\SessionAwareCommand;
 use PommProject\Cli\Exception\CliException;
 
 /**
- * SchemaInspector
+ * InspectSchema
  *
  * Inspector from the command line.
  *
@@ -32,7 +32,7 @@ use PommProject\Cli\Exception\CliException;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see SessionAwareCommand
  */
-class SchemaInspector extends PommAwareCommand
+class InspectSchema extends PommAwareCommand
 {
     /**
      * configure
@@ -94,7 +94,7 @@ class SchemaInspector extends PommAwareCommand
                 $schema
             )
         );
-        $output->writeln(sprintf("%-30s | %-5s | %6s", 'name', 'type', 'oid'));
+        $output->writeln(sprintf("%-30s | %5s | %6s", '  name', ' type', '  oid '));
         $output->writeln(str_repeat('-', 47));
         foreach ($info as $table_info) {
 
@@ -106,11 +106,12 @@ class SchemaInspector extends PommAwareCommand
             $output->writeln(
                 sprintf(
                     "%-30s | %-5s | %6d",
-                    $table_info['name'],
+                    ' '.$table_info['name'],
                     $table_info['type'],
                     $table_info['oid']
                 )
             );
         }
+        $output->writeln('');
     }
 }
