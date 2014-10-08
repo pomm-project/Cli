@@ -14,6 +14,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
+use PommProject\Foundation\Pomm;
 use PommProject\Foundation\Session;
 use PommProject\Foundation\Query\QueryPooler;
 use PommProject\Foundation\Inspector\InspectorPooler;
@@ -22,18 +23,39 @@ use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
 
 use PommProject\Cli\Exception\CliException;
 
-class SessionAwareCommand extends Command
+class PommAwareCommand extends Command
 {
     private $session;
+    private $config_file;
+    private $config_name;
 
     /**
-     * initialize
+     * execute
+     *
+     * Set pomm dependent variables.
+     *
+     * @see Command
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $this->config_file = $input->getOption('bootstrap-file');
+        $this->config_name = $input->getArgument('config-name');
+    }
+
+    /**
+     * configure
      *
      * @see Command
      */
     protected function configure()
     {
-        $this->addOption(
+        $this
+            ->addArgument(
+                'config-name',
+                InputArgument::REQUIRED,
+                'Database configuration name to open a session.'
+            )
+            ->addOption(
             'bootstrap-file',
             '-b',
             InputArgument::OPTIONAL,
@@ -44,39 +66,27 @@ class SessionAwareCommand extends Command
     }
 
     /**
-     * execute
+     * loadSession
      *
-     * see @Command
+     * Load session bootstrap file.
+     *
+     * @access protected
+     * @param  string $config_name
+     * @return Session
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function loadSession()
     {
-        $config_file = $input->getOption('bootstrap-file');
-
-        if (!file_exists($config_file)) {
-            $output->writeln("<error>Could not load configuration file.</error>");
-
-            throw new \RuntimeException(sprintf("I failed to load '%s'.", $config_file));
+        if (!file_exists($this->config_file)) {
+            throw new CliException(sprintf("Could not load configuration '%s'.", $this->config_file));
         }
 
-        $session = require $config_file;
+        $pomm = require $this->config_file;
 
-        if (!$session instanceOf Session) {
-            $output->writeln("<error>Invalid configuration.</error>");
-
-            throw new \LogicException(
-                sprintf(
-                    "Config file does not return a Session instance. ('%s' returned).",
-                    get_class($session)
-                )
-            );
+        if (!$pomm instanceOf Pomm) {
+            throw new CliException(sprintf("Invalid configuration. Bootstrap file must return a Pomm instance."));
         }
 
-        $this->session = $session
-            ->registerClientPooler(new QueryPooler())
-            ->registerClientPooler(new PreparedQueryPooler())
-            ->registerClientPooler(new InspectorPooler())
-            ->registerClientPooler(new ConverterPooler())
-            ;
+        return $pomm->getSession($this->config_name);
     }
 
     /**
@@ -91,7 +101,7 @@ class SessionAwareCommand extends Command
     protected function getSession()
     {
         if ($this->session === null) {
-            throw new CliException(sprintf("Session not set in Command.\nDidn't you forget to call parent::execute() in your class ?"));
+            $this->session = $this->loadSession()->registerClientPooler(new InspectorPooler());
         }
 
         return $this->session;

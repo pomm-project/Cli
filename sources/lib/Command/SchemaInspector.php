@@ -32,7 +32,7 @@ use PommProject\Cli\Exception\CliException;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see SessionAwareCommand
  */
-class SchemaInspector extends SessionAwareCommand
+class SchemaInspector extends PommAwareCommand
 {
     /**
      * configure
@@ -63,7 +63,7 @@ class SchemaInspector extends SessionAwareCommand
     {
         parent::execute($input, $output);
         $schema = $input->getArgument('schema');
-        $schema_oid = $this-> getSession()-> getInspector()-> getSchemaOid($schema);
+        $schema_oid = $this-> getSession($input->getArgument('config-name'))-> getInspector()->getSchemaOid($schema);
 
         if ($schema_oid === null) {
             throw new CliException(sprintf("No such schema '%s'.", $schema));
