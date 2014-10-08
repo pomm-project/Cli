@@ -1,0 +1,176 @@
+<?php
+/*
+ * This file is part of Pomm's Cli package.
+ *
+ * (c) 2014 Grégoire HUBERT <hubert.greg@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+namespace PommProject\Cli\Generator;
+
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Helper\TableStyle;
+use Symfony\Component\Console\Helper\Table;
+
+use PommProject\Foundation\Session;
+
+/**
+ * BaseGenerator
+ *
+ * Base class for Generator
+ *
+ * @package Cli
+ * @copyright 2014 Grégoire HUBERT
+ * @author Grégoire HUBERT
+ * @license X11 {@link http://opensource.org/licenses/mit-license.php}
+ * @abstract
+ */
+abstract class BaseGenerator
+{
+    private $session;
+
+    /**
+     * setSession
+     *
+     * Set the session.
+     *
+     * @access protected
+     * @param  Session $session
+     * @return BaseGenerator    $this
+     */
+    protected function setSession(Session $session)
+    {
+        $this->session = $session;
+
+        return $this;
+    }
+
+    /**
+     * getSession
+     *
+     * Return the session is set. Throw an exception otherwise.
+     *
+     * @access protected
+     * @throw  GeneratorException
+     * @return Session
+     */
+    protected function getSession()
+    {
+        if ($this->session === null) {
+            throw new GeneratorException(sprintf("Session is not set."));
+        }
+
+        return $this->session;
+    }
+
+    /**
+     * getInspector
+     *
+     * Shortcut to session's inspector client.
+     *
+     * @access protected
+     * @return Inspector
+     */
+    protected function getInspector()
+    {
+        return $this->getSession()->getClientUsingPooler('inspector', null);
+    }
+
+    /**
+     * generate
+     *
+     * Called to generate the file.
+     *
+     * @access public
+     * @param  InputInterface $input
+     * @param  OutputInterface $output
+     * @return void
+     */
+    abstract public function generate(InputInterface $input, OutputInterface $output);
+
+    /**
+     * getCodeTemplate
+     *
+     * Return the code template for files to be generated.
+     *
+     * @access protected
+     * @return string
+     */
+    abstract protected function getCodeTemplate();
+
+    /**
+     * mergeTemplate
+     *
+     * Merge templates with given values.
+     *
+     * @access protected
+     * @param  array $variables
+     * @return string
+     */
+    protected function mergeTemplate(array $variables)
+    {
+        $prepared_variables = [];
+        foreach ($variables as $name => $value) {
+            $prepared_variables[sprintf("{:%s:}", $name)] = $value;
+        }
+
+        return strtr(
+            $this->getCodeTemplate(),
+            $prepared_variables
+        );
+    }
+
+    /**
+     * saveFile
+     *
+     * Write the genreated content to a file.
+     *
+     * @access protected
+     * @param  string $filename
+     * @param  string $content
+     * @return BaseGenerator    $this
+     */
+    protected function saveFile($filename, $content)
+    {
+        if (!file_exists(dirname($filename))) {
+            mkdir(dirname($filename), null, true);
+        }
+
+        if (file_put_contents($filename, $content) === false) {
+            throw new GeneratorException(
+                sprintf(
+                    "Could not open '%s' for writing.",
+                    $filename
+                )
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * createTableHelper
+     *
+     * Create table with a unique style for all commands.
+     *
+     * @access protected
+     * @param  OutputInterface $output
+     * @return Table
+     */
+    protected function createTableHelper(OutputInterface $output)
+    {
+        $table = new Table($output);
+        $style = new TableStyle();
+
+        $style
+            ->setHorizontalBorderChar('─')
+            ->setVerticalBorderChar('│')
+            ->setCrossingChar('┼')
+            ;
+        $table->setStyle($style);
+
+        return $table;
+    }
+}
