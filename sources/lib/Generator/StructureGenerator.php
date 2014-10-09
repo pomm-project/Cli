@@ -37,10 +37,7 @@ class StructureGenerator extends BaseGenerator
      *
      * Generate structure file.
      *
-     * @access public
-     * @param  InputInterface $input
-     * @param  OutputInterface $output
-     * @return null
+     * @see BaseGenerator
      */
     public function generate(InputInterface $input, OutputInterface $output)
     {

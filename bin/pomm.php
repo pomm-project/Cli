@@ -14,6 +14,7 @@ use PommProject\Cli\Command\InspectSchema;
 use PommProject\Cli\Command\InspectRelation;
 use PommProject\Cli\Command\GenerateRelationStructure;
 use PommProject\Cli\Command\GenerateRelationModel;
+use PommProject\Cli\Command\GenerateEntity;
 
 define('PROJECT_DIR', getenv('PWD'));
 require PROJECT_DIR.'/vendor/autoload.php';
@@ -23,4 +24,5 @@ $application->add(new InspectSchema());
 $application->add(new InspectRelation());
 $application->add(new GenerateRelationStructure());
 $application->add(new GenerateRelationModel());
+$application->add(new GenerateEntity());
 $application->run();
