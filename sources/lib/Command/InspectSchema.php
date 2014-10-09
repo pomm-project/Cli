@@ -20,7 +20,7 @@ use Symfony\Component\Console\Helper\Table;
 use PommProject\Foundation\Inflector;
 use PommProject\Foundation\ResultIterator;
 
-use PommProject\Cli\Command\SessionAwareCommand;
+use PommProject\Cli\Command\SchemaAwareCommand;
 use PommProject\Cli\Exception\CliException;
 
 /**
@@ -32,30 +32,19 @@ use PommProject\Cli\Exception\CliException;
  * @copyright 2014 Grégoire HUBERT
  * @author Grégoire HUBERT
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
- * @see SessionAwareCommand
+ * @see SchemaAwareCommand
  */
-class InspectSchema extends PommAwareCommand
+class InspectSchema extends SchemaAwareCommand
 {
-    /**
-     * configure
-     *
-     * @see Command
-     */
-    protected function configure()
+    public function configure()
     {
-        parent::configure();
         $this
             ->setName('inspect:schema')
-            ->setDescription('Print the list of tables in a schema.')
-            ->addArgument(
-                'schema',
-                InputArgument::OPTIONAL,
-                'Schema of the relation.',
-                'public'
-            )
+            ->setDescription('Show relations in a given schema.')
             ;
-    }
 
+        parent::configure();
+    }
     /**
      * execute
      *
@@ -64,15 +53,8 @@ class InspectSchema extends PommAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
-        $schema = $input->getArgument('schema');
-        $schema_oid = $this-> getSession($input->getArgument('config-name'))-> getInspector()->getSchemaOid($schema);
-
-        if ($schema_oid === null) {
-            throw new CliException(sprintf("No such schema '%s'.", $schema));
-        }
-
-        $info = $this->getSession()->getInspector()->getSchemaRelations($schema_oid);
-        $this->formatOutput($schema, $schema_oid, $output, $info);
+        $info = $this->getSession()->getInspector()->getSchemaRelations($this->schema_oid);
+        $this->formatOutput($output, $info);
     }
 
     /**
@@ -81,19 +63,17 @@ class InspectSchema extends PommAwareCommand
      * Format result
      *
      * @access protected
-     * @param  string          $schema
-     * @param  int             $schema_oid
      * @param  OutputInterface $output
      * @param  ResultIterator  $info
      * @return void
      */
-    protected function formatOutput($schema, $schema_oid, OutputInterface $output, ResultIterator $info)
+    protected function formatOutput(OutputInterface $output, ResultIterator $info)
     {
         $output->writeln(
             sprintf(
                 "Found <info>%d</info> relations in schema <info>'%s'</info>.",
                 $info->count(),
-                $schema
+                $this->schema_name
             )
         );
         $table = (new Table($output))
