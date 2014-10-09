@@ -17,36 +17,37 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use PommProject\Foundation\Inflector;
 use PommProject\Cli\Command\BaseGenerate;
-use PommProject\Cli\Generator\StructureGenerator;
+use PommProject\Cli\Generator\ModelGenerator;
 
 /**
- * GenerateRelationStructure
+ * GenerateRelationModel
  *
- * Command to scan a relation and (re)build the according structure file.
+ * Model generation command.
  *
  * @package Cli
  * @copyright 2014 Grégoire HUBERT
  * @author Grégoire HUBERT
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
- * @see Command
+ * @see PommAwareCommand
  */
-class GenerateRelationStructure extends BaseGenerate
+class GenerateRelationModel extends BaseGenerate
 {
-    /**
-     * configure
-     *
-     * @see Command
-     */
-    protected function configure()
+
+    public function configure()
     {
         $this
-            ->setName('generate:structure')
-            ->setDescription('Generate a RowStructure file based on table schema.')
-            ->setHelp(<<<HELP
-HELP
-        )
+            ->setName('generate:model')
+            ->setDescription('Generate a new model file.')
             ;
         parent::configure();
+        $this
+            ->addoption(
+                'force',
+                null,
+                InputOption::VALUE_NONE,
+                'Force overwriting an existing file.'
+            )
+        ;
     }
 
     /**
@@ -60,7 +61,7 @@ HELP
 
         $this->filename = trim(
             sprintf(
-                "%s/%s/%s/%s/AutoStructure/%s.php",
+                "%s/%s/%s/%s/%sModel.php",
                 ltrim($this->prefix_dir, '/'),
                 str_replace('\\', '/', trim($this->prefix_ns, '\\')),
                 Inflector::studlyCaps($input->getArgument('config-name')),
@@ -71,13 +72,13 @@ HELP
         );
 
         $this->namespace = sprintf(
-            "%s\\%s\\%s\\AutoStructure",
+            "%s\\%s\\%s",
             $this->prefix_ns,
             Inflector::studlyCaps($input->getArgument('config-name')),
             Inflector::studlyCaps(sprintf("%s_schema", $this->schema))
         );
 
-        (new StructureGenerator(
+        (new ModelGenerator(
             $this->getSession(),
             $this->schema,
             $this->relation,

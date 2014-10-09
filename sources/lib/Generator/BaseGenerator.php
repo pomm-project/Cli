@@ -30,7 +30,63 @@ use PommProject\Cli\Exception\GeneratorException;
  */
 abstract class BaseGenerator
 {
-    private $session;
+    private   $session;
+
+    protected $schema;
+    protected $relation;
+    protected $filename;
+    protected $namespace;
+
+    /*
+     * __construct
+     *
+     * Constructor
+     *
+     * @access public
+     * @param  Session $session
+     * @param  string  $relation
+     * @param  string  $filename
+     * @param  string  $namespace
+     * @return void
+     */
+    public function __construct(Session $session, $schema, $relation, $filename, $namespace)
+    {
+        $this->session   = $session;
+        $this->schema    = $schema;
+        $this->relation  = $relation;
+        $this->filename  = $filename;
+        $this->namespace = $namespace;
+    }
+
+    /**
+     * outputFileCreation
+     *
+     * Output what the generator will do.
+     *
+     * @access protected
+     * @param  OutputInterface $output
+     * @return BaseGenerator   $this
+     */
+    protected function outputFileCreation(OutputInterface $output)
+    {
+        if (file_exists($this->filename)) {
+            $output->writeln(
+                sprintf(
+                    "<fg=cyan>Overwriting</fg=cyan> file '%s'.",
+                    $this->filename
+                )
+            );
+        } else {
+            $output->writeln(
+                sprintf(
+                    "<fg=yellow>Creating</fg=yellow> file '%s'.",
+                    $this->filename
+                )
+            );
+        }
+
+        return $this;
+    }
 
     /**
      * setSession

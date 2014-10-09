@@ -33,33 +33,6 @@ use PommProject\Cli\Exception\GeneratorException;
  */
 class StructureGenerator extends BaseGenerator
 {
-    protected $schema;
-    protected $relation;
-    protected $filename;
-    protected $namespace;
-
-    /*
-     * __construct
-     *
-     * Constructor
-     *
-     * @access public
-     * @param  Session $session
-     * @param  string  $relation
-     * @param  string  $filename
-     * @param  string  $namespace
-     * @return void
-     */
-    public function __construct(Session $session, $schema, $relation, $filename, $namespace)
-    {
-        parent::setSession($session);
-
-        $this->schema    = $schema;
-        $this->relation  = $relation;
-        $this->filename  = $filename;
-        $this->namespace = $namespace;
-    }
-
     /**
      * generate
      *
@@ -85,21 +58,7 @@ Class and fields comments are inspected from table and fields comments. Just add
 TEXT;
         }
 
-        if (file_exists($this->filename)) {
-            $output->writeln(
-                sprintf(
-                    "<fg=cyan>Overwriting</fg=cyan> file '%s'.",
-                    $this->filename
-                )
-            );
-        } else {
-            $output->writeln(
-                sprintf(
-                    "<fg=yellow>Creating</fg=yellow> file '%s'.",
-                    $this->filename
-                )
-            );
-        }
+        $this->outputFileCreation($output);
 
         if ($output->isVerbose()) {
             $table = $this->createTableHelper($output);

@@ -13,6 +13,7 @@ use Symfony\Component\Console\Application;
 use PommProject\Cli\Command\InspectSchema;
 use PommProject\Cli\Command\InspectRelation;
 use PommProject\Cli\Command\GenerateRelationStructure;
+use PommProject\Cli\Command\GenerateRelationModel;
 
 define('PROJECT_DIR', getenv('PWD'));
 require PROJECT_DIR.'/vendor/autoload.php';
@@ -21,4 +22,5 @@ $application = new Application('pomm', 'NextGen 0.1');
 $application->add(new InspectSchema());
 $application->add(new InspectRelation());
 $application->add(new GenerateRelationStructure());
+$application->add(new GenerateRelationModel());
 $application->run();
