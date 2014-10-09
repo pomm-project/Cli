@@ -33,6 +33,11 @@ use PommProject\Cli\Exception\GeneratorException;
  */
 class StructureGenerator extends BaseGenerator
 {
+    protected $schema;
+    protected $relation;
+    protected $filename;
+    protected $namespace;
+
     /*
      * __construct
      *
@@ -127,6 +132,15 @@ class StructureGenerator extends BaseGenerator
         );
     }
 
+    /**
+     * formatAddFields
+     *
+     * Format 'addField' method calls.
+     *
+     * @access protected
+     * @param  ConvertedResultIterator $field_informations
+     * @return string
+     */
     protected function formatAddFields(ConvertedResultIterator $field_informations)
     {
         $strings = [];
