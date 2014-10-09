@@ -56,11 +56,6 @@ TEXT;
 
         $this->outputFileCreation($output);
 
-        if ($output->isVerbose()) {
-            $output->writeln(sprintf("  relation  : %s", $this->relation));
-            $output->writeln(sprintf("  namespace : %s", $this->namespace));
-        }
-
         $this->saveFile(
             $this->filename,
             $this->mergeTemplate(

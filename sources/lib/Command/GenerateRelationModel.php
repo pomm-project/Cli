@@ -32,6 +32,11 @@ use PommProject\Cli\Generator\ModelGenerator;
 class GenerateRelationModel extends BaseGenerate
 {
 
+    /**
+     * configure
+     *
+     * @see Command
+     */
     public function configure()
     {
         $this

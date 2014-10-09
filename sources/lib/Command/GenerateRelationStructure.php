@@ -58,7 +58,7 @@ HELP
     {
         parent::execute($input, $output);
 
-        $this->filename = $this->getFileName($input->getArgument('config-name'), null, 'Structure');
+        $this->filename = $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure');
         $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
 
         (new StructureGenerator(
