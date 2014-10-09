@@ -15,7 +15,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Foundation\Inflector;
 use PommProject\Cli\Command\BaseGenerate;
 use PommProject\Cli\Generator\ModelGenerator;
 
@@ -59,24 +58,8 @@ class GenerateRelationModel extends BaseGenerate
     {
         parent::execute($input, $output);
 
-        $this->filename = trim(
-            sprintf(
-                "%s/%s/%s/%s/%sModel.php",
-                ltrim($this->prefix_dir, '/'),
-                str_replace('\\', '/', trim($this->prefix_ns, '\\')),
-                Inflector::studlyCaps($input->getArgument('config-name')),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
-                Inflector::studlyCaps($this->relation)
-            ),
-            '/'
-        );
-
-        $this->namespace = sprintf(
-            "%s\\%s\\%s",
-            $this->prefix_ns,
-            Inflector::studlyCaps($input->getArgument('config-name')),
-            Inflector::studlyCaps(sprintf("%s_schema", $this->schema))
-        );
+        $this->filename  = $this->getFileName($input->getArgument('config-name'), 'Model');
+        $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         (new ModelGenerator(
             $this->getSession(),

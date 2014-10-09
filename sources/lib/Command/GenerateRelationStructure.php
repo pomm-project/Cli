@@ -58,24 +58,8 @@ HELP
     {
         parent::execute($input, $output);
 
-        $this->filename = trim(
-            sprintf(
-                "%s/%s/%s/%s/AutoStructure/%s.php",
-                ltrim($this->prefix_dir, '/'),
-                str_replace('\\', '/', trim($this->prefix_ns, '\\')),
-                Inflector::studlyCaps($input->getArgument('config-name')),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
-                Inflector::studlyCaps($this->relation)
-            ),
-            '/'
-        );
-
-        $this->namespace = sprintf(
-            "%s\\%s\\%s\\AutoStructure",
-            $this->prefix_ns,
-            Inflector::studlyCaps($input->getArgument('config-name')),
-            Inflector::studlyCaps(sprintf("%s_schema", $this->schema))
-        );
+        $this->filename = $this->getFileName($input->getArgument('config-name'), null, 'Structure');
+        $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
 
         (new StructureGenerator(
             $this->getSession(),

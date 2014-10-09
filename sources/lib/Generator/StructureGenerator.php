@@ -11,7 +11,6 @@ namespace PommProject\Cli\Generator;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\TableSeparator;
 
 use PommProject\Foundation\Session;
 use PommProject\Foundation\Inspector;
@@ -61,10 +60,8 @@ TEXT;
         $this->outputFileCreation($output);
 
         if ($output->isVerbose()) {
-            $table = $this->createTableHelper($output);
-            $table->addRow(['relation :', $this->relation]);
-            $table->addRow(['namespace :', $this->namespace]);
-            $table->setStyle('borderless')->render();
+            $output->writeln(sprintf("  relation  : %s", $this->relation));
+            $output->writeln(sprintf("  namespace : %s", $this->namespace));
         }
 
         $this->saveFile(
