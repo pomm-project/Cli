@@ -83,7 +83,7 @@ class InspectSchema extends SchemaAwareCommand
         foreach ($info as $table_info) {
 
             $table->addRow([
-                $table_info['name'],
+                sprintf("<fg=yellow>%s</fg=yellow>", $table_info['name']),
                 $table_info['type'],
                 $table_info['oid'],
                 wordwrap($table_info['comment'])

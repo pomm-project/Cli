@@ -39,7 +39,6 @@ class GenerateRelationStructure extends PommAwareCommand
      */
     protected function configure()
     {
-        parent::configure();
         $this
             ->setName('generate:structure')
             ->setDescription('Generate a RowStructure file based on table schema.')
@@ -47,12 +46,6 @@ class GenerateRelationStructure extends PommAwareCommand
                 'relation',
                 InputArgument::REQUIRED,
                 'Relation to inspect.'
-            )
-            ->addArgument(
-                'schema',
-                InputArgument::OPTIONAL,
-                'Schema of the relation.',
-                'public'
             )
             ->addOption(
                 'prefix-dir',
@@ -67,7 +60,16 @@ class GenerateRelationStructure extends PommAwareCommand
                 'Indicate a namespace prefix.'
             )->setHelp(<<<HELP
 HELP
-)
+        )
+            ;
+        parent::configure();
+        $this
+            ->addArgument(
+                'schema',
+                InputArgument::OPTIONAL,
+                'Schema of the relation.',
+                'public'
+            )
             ;
     }
 
@@ -90,17 +92,20 @@ HELP
         $prefix_dir = $input->getOption('prefix-dir');
         $prefix_ns  = $input->getOption('prefix-ns');
 
-        $filename = sprintf(
-            "%s/%s/%s/%s/Structure/%s.php",
-            ltrim($prefix_dir, '/'),
-            str_replace('\\', '/', trim($prefix_ns, '\\')),
-            Inflector::studlyCaps($input->getArgument('config-name')),
-            Inflector::studlyCaps(sprintf("%s_schema", $schema)),
-            Inflector::studlyCaps($relation)
+        $filename = trim(
+            sprintf(
+                "%s/%s/%s/%s/AutoStructure/%s.php",
+                ltrim($prefix_dir, '/'),
+                str_replace('\\', '/', trim($prefix_ns, '\\')),
+                Inflector::studlyCaps($input->getArgument('config-name')),
+                Inflector::studlyCaps(sprintf("%s_schema", $schema)),
+                Inflector::studlyCaps($relation)
+            ),
+            '/'
         );
 
         $namespace = sprintf(
-            "%s\\%s\\%s\\Structure",
+            "%s\\%s\\%s\\AutoStructure",
             $prefix_ns,
             Inflector::studlyCaps($input->getArgument('config-name')),
             Inflector::studlyCaps(sprintf("%s_schema", $schema))
