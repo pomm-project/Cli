@@ -14,6 +14,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Helper\TableStyle;
+use Symfony\Component\Console\Helper\Table;
 
 use PommProject\Foundation\Inflector;
 use PommProject\Foundation\ResultIterator;
@@ -89,29 +91,25 @@ class InspectSchema extends PommAwareCommand
     {
         $output->writeln(
             sprintf(
-                "Found <info>%d</info> tables or views in schema <info>'%s'</info>.",
+                "Found <info>%d</info> relations in schema <info>'%s'</info>.",
                 $info->count(),
                 $schema
             )
         );
-        $output->writeln(sprintf("%-30s | %5s | %6s", '  name', ' type', '  oid '));
-        $output->writeln(str_repeat('-', 47));
+        $table = (new Table($output))
+            ->setHeaders(['name', 'type', 'oid ', 'comment'])
+            ;
+
         foreach ($info as $table_info) {
 
-            if (strlen($table_info['name']) > 29) {
-                $table_info['name'] =
-                    sprintf("%s…", substr($table_info['name'], 0 ,28));
-            }
-
-            $output->writeln(
-                sprintf(
-                    "%-30s | %-5s | %6d",
-                    ' '.$table_info['name'],
-                    $table_info['type'],
-                    $table_info['oid']
-                )
-            );
+            $table->addRow([
+                $table_info['name'],
+                $table_info['type'],
+                $table_info['oid'],
+                wordwrap($table_info['comment'])
+            ]);
         }
-        $output->writeln('');
+
+        $table->render();
     }
 }
