@@ -37,7 +37,7 @@ class GenerateForRelation extends RelationAwareCommand
     public function configure()
     {
         $this
-            ->setName('generate:all-relation')
+            ->setName('generate:relation-all')
             ->setDescription('Generate structure, model and entity file for a given relation.')
             ;
         parent::configure();

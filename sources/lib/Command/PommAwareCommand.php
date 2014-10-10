@@ -26,8 +26,9 @@ use PommProject\Cli\Exception\CliException;
 class PommAwareCommand extends Command
 {
     private $session;
-    private $config_file;
-    private $config_name;
+
+    protected $config_file;
+    protected $config_name;
 
     /**
      * execute

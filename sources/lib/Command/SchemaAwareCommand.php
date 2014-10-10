@@ -52,13 +52,15 @@ abstract class SchemaAwareCommand extends PommAwareCommand
                 'prefix-dir',
                 'd',
                 InputOption::VALUE_REQUIRED,
-                'Indicate a directory prefix.'
+                'Indicate a directory prefix.',
+                '.'
             )
             ->addOption(
                 'prefix-ns',
                 'a',
                 InputOption::VALUE_REQUIRED,
-                'Indicate a namespace prefix.'
+                'Indicate a namespace prefix.',
+                ''
             )
             ->addArgument(
                 'schema',
