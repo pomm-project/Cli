@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Command\BaseGenerate;
+use PommProject\Cli\Command\RelationAwareCommand;
 use PommProject\Cli\Generator\EntityGenerator;
 use PommProject\Cli\Generator\ModelGenerator;
 use PommProject\Cli\Generator\StructureGenerator;
@@ -32,7 +32,7 @@ use PommProject\Cli\Generator\StructureGenerator;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see ModelGenerator
  */
-class GenerateForRelation extends BaseGenerate
+class GenerateForRelation extends RelationAwareCommand
 {
     public function configure()
     {
@@ -78,7 +78,7 @@ class GenerateForRelation extends BaseGenerate
                 $this->getNamespace($input->getArgument('config-name'))
             ))->generate($input, $output);
         } elseif ($output->isVerbose()) {
-            $output->writeln(sprintf(" <fg=red>✗</fg=red>  Skipping existing model file <fg=yellow>'%s'</fg=yellow>.", $filename));
+            $this->writelnSkipFile($output, $filename, 'model');
         }
 
         $filename = $this->getFileName($input->getArgument('config-name'));
@@ -91,7 +91,30 @@ class GenerateForRelation extends BaseGenerate
                 $this->getNamespace($input->getArgument('config-name'))
             ))->generate($input, $output);
         } elseif ($output->isVerbose()) {
-            $output->writeln(sprintf(" <fg=red>✗</fg=red>  Skipping existing model file <fg=yellow>'%s'</fg=yellow>.", $filename));
+            $this->writelnSkipFile($output, $filename, 'entity');
         }
+    }
+
+    /**
+     * writelnSkipFile
+     *
+     * Write an informative message
+     *
+     * @access private
+     * @param  string          $filename
+     * @param  OutputInterface $output
+     * @return void
+     */
+    private function writelnSkipFile(OutputInterface $output, $filename, $file_type = null)
+    {
+        $file_type = $file_type === null ? '' : sprintf("%s ", $file_type);
+
+        $output->writeln(
+            sprintf(
+                " <fg=red>✗</fg=red>  <fg=blue>Preserving</fg=blue> existing %sfile <fg=yellow>'%s'</fg=yellow>.",
+                $file_type,
+                $filename
+            )
+        );
     }
 }

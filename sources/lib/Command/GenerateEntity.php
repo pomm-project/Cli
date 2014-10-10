@@ -16,10 +16,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use PommProject\Foundation\Inflector;
-use PommProject\Cli\Command\BaseGenerate;
 use PommProject\Cli\Generator\EntityGenerator;
+use PommProject\Cli\Command\RelationAwareCommand;
 
-class GenerateEntity extends BaseGenerate
+class GenerateEntity extends RelationAwareCommand
 {
     /**
      * configure

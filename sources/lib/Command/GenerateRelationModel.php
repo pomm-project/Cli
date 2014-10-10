@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Command\BaseGenerate;
+use PommProject\Cli\Command\RelationAwareCommand;
 use PommProject\Cli\Generator\ModelGenerator;
 
 /**
@@ -29,7 +29,7 @@ use PommProject\Cli\Generator\ModelGenerator;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see PommAwareCommand
  */
-class GenerateRelationModel extends BaseGenerate
+class GenerateRelationModel extends RelationAwareCommand
 {
 
     /**

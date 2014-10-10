@@ -72,14 +72,14 @@ abstract class BaseGenerator
         if (file_exists($this->filename)) {
             $output->writeln(
                 sprintf(
-                    "<fg=cyan>Overwriting</fg=cyan> file <fg=yellow>'%s'</fg=yellow>.",
+                    " <fg=green>✓</fg=green>  <fg=cyan>Overwriting</fg=cyan> file <fg=yellow>'%s'</fg=yellow>.",
                     $this->filename
                 )
             );
         } else {
             $output->writeln(
                 sprintf(
-                    "<fg=yellow>Creating</fg=yellow> file <fg=yellow>'%s'</fg=yellow>.",
+                    " <fg=green>✓</fg=green>  <fg=green>Creating</fg=green> file <fg=yellow>'%s'</fg=yellow>.",
                     $this->filename
                 )
             );

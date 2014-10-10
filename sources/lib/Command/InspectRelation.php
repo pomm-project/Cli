@@ -21,7 +21,7 @@ use PommProject\Foundation\Inflector;
 use PommProject\Foundation\ResultIterator;
 use PommProject\Foundation\ConvertedResultIterator;
 
-use PommProject\Cli\Command\SchemaAwareCommand;
+use PommProject\Cli\Command\RelationAwareCommand;
 use PommProject\Cli\Exception\CliException;
 
 /**
@@ -35,9 +35,8 @@ use PommProject\Cli\Exception\CliException;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see SchemaAwareCommand
  */
-class InspectRelation extends SchemaAwareCommand
+class InspectRelation extends RelationAwareCommand
 {
-    protected $relation_name;
     protected $relation_oid;
 
     protected function configure()
@@ -50,11 +49,6 @@ class InspectRelation extends SchemaAwareCommand
         $this
             ->setName('inspect:relation')
             ->setDescription('Display a relation information.')
-            ->addArgument(
-                'relation',
-                InputArgument::REQUIRED,
-                'Name of the relation'
-            )
         ;
         parent::configure();
     }
@@ -67,18 +61,18 @@ class InspectRelation extends SchemaAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
-        $this->relation_name = $input->getArgument('relation');
+        $this->relation = $input->getArgument('relation');
         $this->relation_oid = $this->getSession()
             ->getInspector()
-            ->getTableOid($this->schema_name, $this->relation_name)
+            ->getTableOid($this->schema, $this->relation)
             ;
 
         if ($this->relation_oid === null) {
             throw new CliException(
                 sprintf(
                     "Relation <comment>%s.%s</comment> does not exist.",
-                    $this->schema_name,
-                    $this->relation_name
+                    $this->schema,
+                    $this->relation
                 )
             );
         }
@@ -92,7 +86,7 @@ class InspectRelation extends SchemaAwareCommand
 
     protected function formatOutput(OutputInterface $output, ConvertedResultIterator $fields_infos)
     {
-        $output->writeln(sprintf("Relation <fg=cyan>%s.%s</fg=cyan>", $this->schema_name, $this->relation_name));
+        $output->writeln(sprintf("Relation <fg=cyan>%s.%s</fg=cyan>", $this->schema, $this->relation));
         $table = (new Table($output))
             ->setHeaders(['pk', 'name', 'type', 'default', 'notnull', 'comment'])
             ;

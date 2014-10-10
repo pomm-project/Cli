@@ -15,23 +15,25 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use PommProject\Cli\Command\PommAwareCommand;
 use PommProject\Foundation\Inflector;
-use PommProject\Cli\Command\RelationAwareCommand;
-use PommProject\Cli\Generator\StructureGenerator;
 
 /**
- * GenerateRelationStructure
+ * RelationAwareCommand
  *
- * Command to scan a relation and (re)build the according structure file.
+ * Base class for generator commands.
  *
+ * @abstract
  * @package Cli
  * @copyright 2014 Grégoire HUBERT
  * @author Grégoire HUBERT
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
- * @see Command
+ * @see PommAwareCommand
  */
-class GenerateRelationStructure extends RelationAwareCommand
+abstract class RelationAwareCommand extends SchemaAwareCommand
 {
+    protected $relation;
+
     /**
      * configure
      *
@@ -40,33 +42,25 @@ class GenerateRelationStructure extends RelationAwareCommand
     protected function configure()
     {
         $this
-            ->setName('generate:structure')
-            ->setDescription('Generate a RowStructure file based on table schema.')
-            ->setHelp(<<<HELP
-HELP
-        )
+            ->addArgument(
+                'relation',
+                InputArgument::REQUIRED,
+                'Relation to inspect.'
+            )
             ;
+
         parent::configure();
     }
 
     /**
      * execute
      *
-     * @see Command
+     * see @Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
-
-        $this->filename = $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure');
-        $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
-
-        (new StructureGenerator(
-            $this->getSession(),
-            $this->schema,
-            $this->relation,
-            $this->filename,
-            $this->namespace
-        ))->generate($input, $output);
+        $this->relation = $input->getArgument('relation');
     }
 }
+

@@ -53,7 +53,12 @@ class InspectSchema extends SchemaAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
-        $info = $this->getSession()->getInspector()->getSchemaRelations($this->schema_oid);
+
+        $info = $this
+            ->getSession()
+            ->getInspector()
+            ->getSchemaRelations($this->fetchSchemaOid()
+        );
         $this->formatOutput($output, $info);
     }
 
@@ -73,7 +78,7 @@ class InspectSchema extends SchemaAwareCommand
             sprintf(
                 "Found <info>%d</info> relations in schema <info>'%s'</info>.",
                 $info->count(),
-                $this->schema_name
+                $this->schema
             )
         );
         $table = (new Table($output))
