@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "3117f28eb7eddda4b1b3de51d2c2c91aa79b7643"
+                "reference": "266d7aadf18e38d278fe0d4cd4ed801c469d4ff3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/3117f28eb7eddda4b1b3de51d2c2c91aa79b7643",
-                "reference": "3117f28eb7eddda4b1b3de51d2c2c91aa79b7643",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/266d7aadf18e38d278fe0d4cd4ed801c469d4ff3",
+                "reference": "266d7aadf18e38d278fe0d4cd4ed801c469d4ff3",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "framework",
                 "postgresql"
             ],
-            "time": "2014-10-09 13:41:05"
+            "time": "2014-10-15 15:48:23"
         },
         {
             "name": "pomm-project/model-manager",
@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "7ae3689a5e5e76fd17ad5ceae987898f626ac4b9"
+                "reference": "5b6e9381150985e64c640a14b840072ee8585226"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/7ae3689a5e5e76fd17ad5ceae987898f626ac4b9",
-                "reference": "7ae3689a5e5e76fd17ad5ceae987898f626ac4b9",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/5b6e9381150985e64c640a14b840072ee8585226",
+                "reference": "5b6e9381150985e64c640a14b840072ee8585226",
                 "shasum": ""
             },
             "require": {
@@ -76,6 +76,9 @@
             },
             "require-dev": {
                 "atoum/atoum": "dev-master"
+            },
+            "suggest": {
+                "pomm-project/cli": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -101,7 +104,7 @@
                 "orm",
                 "postgresql"
             ],
-            "time": "2014-10-09 00:44:17"
+            "time": "2014-10-15 09:11:22"
         },
         {
             "name": "psr/log",

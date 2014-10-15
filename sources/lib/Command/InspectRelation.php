@@ -10,11 +10,8 @@
 namespace PommProject\Cli\Command;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Helper\Table;
 
 use PommProject\Foundation\Inflector;
@@ -70,12 +67,13 @@ class InspectRelation extends RelationAwareCommand
         if ($this->relation_oid === null) {
             throw new CliException(
                 sprintf(
-                    "Relation <comment>%s.%s</comment> does not exist.",
+                    "Relation <comment>%s.%s</comment> not found.",
                     $this->schema,
                     $this->relation
                 )
             );
         }
+
         $fields_infos = $this->getSession()
             ->getInspector()
             ->getTableFieldInformation($this->relation_oid)
@@ -84,6 +82,16 @@ class InspectRelation extends RelationAwareCommand
         $this->formatOutput($output, $fields_infos);
     }
 
+    /**
+     * formatOutput
+     *
+     * Render output.
+     *
+     * @access protected
+     * @param  OutputInterface         $output
+     * @param  ConvertedResultIterator $fields_infos
+     * @return void
+     */
     protected function formatOutput(OutputInterface $output, ConvertedResultIterator $fields_infos)
     {
         $output->writeln(sprintf("Relation <fg=cyan>%s.%s</fg=cyan>", $this->schema, $this->relation));
