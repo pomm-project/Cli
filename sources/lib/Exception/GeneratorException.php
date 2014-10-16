@@ -9,8 +9,6 @@
  */
 namespace PommProject\Cli\Exception;
 
-use PommProject\Cli\Exception\CliException;
-
 /**
  * GeneratorException
  *

@@ -30,7 +30,7 @@ use PommProject\Cli\Exception\GeneratorException;
  */
 abstract class BaseGenerator
 {
-    private   $session;
+    private $session;
 
     protected $schema;
     protected $relation;
@@ -94,8 +94,8 @@ abstract class BaseGenerator
      * Set the session.
      *
      * @access protected
-     * @param  Session $session
-     * @return BaseGenerator    $this
+     * @param  Session       $session
+     * @return BaseGenerator $this
      */
     protected function setSession(Session $session)
     {
@@ -141,7 +141,7 @@ abstract class BaseGenerator
      * Called to generate the file.
      *
      * @access public
-     * @param  InputInterface $input
+     * @param  InputInterface  $input
      * @param  OutputInterface $output
      * @return void
      */
@@ -163,7 +163,7 @@ abstract class BaseGenerator
      * Merge templates with given values.
      *
      * @access protected
-     * @param  array $variables
+     * @param  array  $variables
      * @return string
      */
     protected function mergeTemplate(array $variables)
@@ -185,9 +185,9 @@ abstract class BaseGenerator
      * Write the genreated content to a file.
      *
      * @access protected
-     * @param  string $filename
-     * @param  string $content
-     * @return BaseGenerator    $this
+     * @param  string        $filename
+     * @param  string        $content
+     * @return BaseGenerator $this
      */
     protected function saveFile($filename, $content)
     {

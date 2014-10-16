@@ -12,12 +12,8 @@ namespace PommProject\Cli\Generator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Foundation\Session;
-use PommProject\Foundation\Inspector;
 use PommProject\Foundation\Inflector;
-use PommProject\Foundation\ConvertedResultIterator;
 
-use PommProject\Cli\Generator\BaseGenerator;
 use PommProject\Cli\Exception\GeneratorException;
 
 /**

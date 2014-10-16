@@ -16,7 +16,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use PommProject\Cli\Exception\CliException;
-use PommProject\Cli\Command\PommAwareCommand;
 use PommProject\Foundation\Inflector;
 
 /**
@@ -112,7 +111,7 @@ abstract class SchemaAwareCommand extends PommAwareCommand
                 sprintf("%s%s.php", Inflector::studlyCaps($this->relation), $file_suffix)
             ];
 
-        return join('/', array_filter($elements, function($val) { return $val != null; }));
+        return join('/', array_filter($elements, function ($val) { return $val != null; }));
     }
 
     /**
@@ -135,7 +134,7 @@ abstract class SchemaAwareCommand extends PommAwareCommand
                 $extra_ns
             ];
 
-        return join('\\', array_filter($elements, function($val) { return $val != null; }));
+        return join('\\', array_filter($elements, function ($val) { return $val != null; }));
     }
 
     /**
@@ -144,7 +143,7 @@ abstract class SchemaAwareCommand extends PommAwareCommand
      * Get the schema Oid from database.
      *
      * @access protected
-     * @return int       $oid
+     * @return int $oid
      */
     protected function fetchSchemaOid()
     {

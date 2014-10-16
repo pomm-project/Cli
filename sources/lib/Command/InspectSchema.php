@@ -10,18 +10,11 @@
 namespace PommProject\Cli\Command;
 
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Helper\Table;
 
-use PommProject\Foundation\Inflector;
 use PommProject\Foundation\ResultIterator;
-
-use PommProject\Cli\Command\SchemaAwareCommand;
-use PommProject\Cli\Exception\CliException;
 
 /**
  * InspectSchema

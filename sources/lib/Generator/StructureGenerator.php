@@ -12,12 +12,9 @@ namespace PommProject\Cli\Generator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Foundation\Session;
-use PommProject\Foundation\Inspector;
 use PommProject\Foundation\Inflector;
 use PommProject\Foundation\ConvertedResultIterator;
 
-use PommProject\Cli\Generator\BaseGenerator;
 use PommProject\Cli\Exception\GeneratorException;
 
 /**
@@ -66,7 +63,7 @@ TEXT;
                     'primary_key'   => join(
                         ', ',
                         array_map(
-                            function($val) { return sprintf("'%s'", $val); },
+                            function ($val) { return sprintf("'%s'", $val); },
                             $primary_key
                         )
                     ),
@@ -143,7 +140,7 @@ TEXT;
         return join(
             "\n",
             array_map(
-                function($line) { return ' * '.$line; },
+                function ($line) { return ' * '.$line; },
                 explode("\n", wordwrap($text))
             )
         );
@@ -157,7 +154,7 @@ TEXT;
      *
      * @access private
      * @throw  GeneratorException
-     * @return int     $oid
+     * @return int $oid
      */
     private function checkRelationInformation()
     {
@@ -186,8 +183,8 @@ TEXT;
      * Fetch a table field information.
      *
      * @access protected
-     * @param  int       $table_oid
-     * @return array     $informations
+     * @param  int   $table_oid
+     * @return array $informations
      */
     protected function getFieldInformation($table_oid)
     {
@@ -233,7 +230,7 @@ TEXT;
      * Grab table comment from database.
      *
      * @access protected
-     * @param  int $table_oid
+     * @param  int         $table_oid
      * @return string|null
      */
     protected function getTableComment($table_oid)

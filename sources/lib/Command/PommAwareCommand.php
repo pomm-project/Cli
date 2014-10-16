@@ -16,10 +16,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 use PommProject\Foundation\Pomm;
 use PommProject\Foundation\Session;
-use PommProject\Foundation\Query\QueryPooler;
 use PommProject\Foundation\Inspector\InspectorPooler;
-use PommProject\Foundation\Converter\ConverterPooler;
-use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
 
 use PommProject\Cli\Exception\CliException;
 
@@ -72,7 +69,7 @@ class PommAwareCommand extends Command
      * Load session bootstrap file.
      *
      * @access protected
-     * @param  string $config_name
+     * @param  string  $config_name
      * @return Session
      */
     protected function loadSession()
@@ -83,7 +80,7 @@ class PommAwareCommand extends Command
 
         $pomm = require $this->config_file;
 
-        if (!$pomm instanceOf Pomm) {
+        if (!$pomm instanceof Pomm) {
             throw new CliException(sprintf("Invalid configuration. Bootstrap file must return a Pomm instance."));
         }
 
@@ -96,7 +93,7 @@ class PommAwareCommand extends Command
      * Return a session.
      *
      * @access protected
-     * @param  sring $name
+     * @param  sring   $name
      * @return Session
      */
     protected function getSession()
@@ -114,7 +111,7 @@ class PommAwareCommand extends Command
      * When testing, it is useful to provide directly the session to be used.
      *
      * @access public
-     * @param  Session $session
+     * @param  Session          $session
      * @return PommAwareCommand
      */
     public function setSession(Session $session)
