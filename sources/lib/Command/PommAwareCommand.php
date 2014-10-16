@@ -41,11 +41,15 @@ class PommAwareCommand extends Command
     }
 
     /**
-     * configure
+     * configureRequiredArguments
      *
-     * @see Command
+     * In order to keep the same argument order for all commands, it is
+     * necessary to be able to declare base required fields before subcommands.
+     *
+     * @access protected
+     * @return PommAwareCommand $this
      */
-    protected function configure()
+    protected function configureRequiredArguments()
     {
         $this
             ->addArgument(
@@ -53,6 +57,23 @@ class PommAwareCommand extends Command
                 InputArgument::REQUIRED,
                 'Database configuration name to open a session.'
             )
+            ;
+
+        return $this;
+    }
+
+    /**
+     * configureOptionals
+     *
+     * In order to keep the same argument order for all commands, it is
+     * necessary to be able to declare base required fields before subcommands.
+     *
+     * @access protected
+     * @return PommAwareCommand $this
+     */
+    protected function configureOptionals()
+    {
+        $this
             ->addOption(
             'bootstrap-file',
             '-b',
@@ -61,6 +82,21 @@ class PommAwareCommand extends Command
             sprintf("%s/.pomm_cli_bootstrap.php", getenv('PWD'))
         )
         ;
+
+        return $this;
+    }
+
+    /**
+     * configure
+     *
+     * @see command
+     */
+    protected function configure()
+    {
+        $this
+            ->configureRequiredArguments()
+            ->configureOptionals()
+            ;
     }
 
     /**

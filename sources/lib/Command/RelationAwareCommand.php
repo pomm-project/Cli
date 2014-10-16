@@ -33,11 +33,11 @@ abstract class RelationAwareCommand extends SchemaAwareCommand
     /**
      * configure
      *
-     * @see Command
+     * @see PommAwareCommand
      */
-    protected function configure()
+    protected function configureRequiredArguments()
     {
-        $this
+        parent::configureRequiredArguments()
             ->addArgument(
                 'relation',
                 InputArgument::REQUIRED,
@@ -45,7 +45,7 @@ abstract class RelationAwareCommand extends SchemaAwareCommand
             )
             ;
 
-        parent::configure();
+        return $this;
     }
 
     /**

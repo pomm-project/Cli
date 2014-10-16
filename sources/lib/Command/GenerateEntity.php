@@ -31,9 +31,18 @@ class GenerateEntity extends RelationAwareCommand
             ->setHelp(<<<HELP
 HELP
         )
-            ;
+        ;
         parent::configure();
-        $this
+    }
+
+    /**
+     * configureOptionals
+     *
+     * @see PommAwareCommand
+     */
+    protected function configureOptionals()
+    {
+        parent::configureOptionals()
             ->addoption(
                 'force',
                 null,
@@ -41,6 +50,8 @@ HELP
                 'Force overwriting an existing file.'
             )
         ;
+
+        return $this;
     }
 
     /**

@@ -41,13 +41,12 @@ abstract class SchemaAwareCommand extends PommAwareCommand
     /**
      * configure
      *
-     * @see Command
+     * @see PommAwareCommand
      */
-    protected function configure()
+    protected function configureRequiredArguments()
     {
-        parent::configure();
 
-        $this
+        parent::configureRequiredArguments()
             ->addOption(
                 'prefix-dir',
                 'd',
@@ -62,15 +61,29 @@ abstract class SchemaAwareCommand extends PommAwareCommand
                 'Indicate a namespace prefix.',
                 ''
             )
+        ;
+
+        return $this;
+    }
+
+    /**
+     * configureOptionals
+     *
+     * @see PommAwareCommand
+     */
+    protected function configureOptionals()
+    {
+        parent::configureOptionals()
             ->addArgument(
                 'schema',
                 InputArgument::OPTIONAL,
                 'Schema of the relation.',
                 'public'
             )
-        ;
-    }
+            ;
 
+        return $this;
+    }
     /**
      * execute
      *
