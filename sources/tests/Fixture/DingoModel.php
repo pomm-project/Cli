@@ -4,7 +4,7 @@ namespace Model\PommTest\PommTestSchema;
 
 use PommProject\ModelManager\Model\Model;
 use PommProject\ModelManager\Model\Projection;
-use PommProject\ModelManager\ModelTrait\ReadTrait;
+use PommProject\ModelManager\Model\ModelTrait\ReadQueries;
 
 use PommProject\Foundation\Where;
 
@@ -20,7 +20,7 @@ use Model\PommTest\PommTestSchema\Dingo;
  */
 class DingoModel extends Model
 {
-    use ReadTrait;
+    use ReadQueries;
 
     /**
      * __construct()
@@ -30,7 +30,7 @@ class DingoModel extends Model
      * @access public
      * @return void
      */
-    protected function __construct()
+    public function __construct()
     {
         $this->structure = new DingoStructure;
         $this->flexible_entity_class = "\Model\PommTest\PommTestSchema\Dingo";

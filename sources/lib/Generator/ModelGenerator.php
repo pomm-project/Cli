@@ -75,7 +75,7 @@ class ModelGenerator extends BaseGenerator
                 [
                     'entity'        => Inflector::studlyCaps($this->relation),
                     'namespace'     => trim($this->namespace, '\\'),
-                    'trait'         => $relations_info->current()['type'] === 'table' ? 'WriteTrait' : 'ReadTrait',
+                    'trait'         => $relations_info->current()['type'] === 'table' ? 'WriteQueries' : 'ReadQueries',
                     'relation_type' => $relations_info->current()['type'],
                     'relation'      => $this->relation
                 ]
@@ -97,7 +97,7 @@ namespace {:namespace:};
 
 use PommProject\ModelManager\Model\Model;
 use PommProject\ModelManager\Model\Projection;
-use PommProject\ModelManager\ModelTrait\{:trait:};
+use PommProject\ModelManager\Model\ModelTrait\{:trait:};
 
 use PommProject\Foundation\Where;
 
@@ -123,7 +123,7 @@ class {:entity:}Model extends Model
      * @access public
      * @return void
      */
-    protected function __construct()
+    public function __construct()
     {
         $this->structure = new {:entity:}Structure;
         $this->flexible_entity_class = "\{:namespace:}\{:entity:}";
