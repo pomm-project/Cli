@@ -2,7 +2,7 @@
 
 This is the Cli component for the Pomm database framework.
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pomm-project/Cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pomm-project/Cli/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pomm-project/Cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pomm-project/Cli/?branch=master) [![Build Status](https://travis-ci.org/pomm-project/Cli.svg)](https://travis-ci.org/pomm-project/Cli)
 
 This library is still under heavy developments, use it for testing and development purposes only. If you are looking for a stable library, look at [Pomm 1.x](http://www.pomm-project.org).
 
