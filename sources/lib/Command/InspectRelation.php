@@ -36,12 +36,12 @@ class InspectRelation extends RelationAwareCommand
 {
     protected $relation_oid;
 
-    protected function configure()
     /**
      * configure
      *
      * @see Command
      */
+    protected function configure()
     {
         $this
             ->setName('inspect:relation')

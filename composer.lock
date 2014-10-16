@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "266d7aadf18e38d278fe0d4cd4ed801c469d4ff3"
+                "reference": "56a288be32661aadb0fe04ae3869600b1fb14291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/266d7aadf18e38d278fe0d4cd4ed801c469d4ff3",
-                "reference": "266d7aadf18e38d278fe0d4cd4ed801c469d4ff3",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/56a288be32661aadb0fe04ae3869600b1fb14291",
+                "reference": "56a288be32661aadb0fe04ae3869600b1fb14291",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "framework",
                 "postgresql"
             ],
-            "time": "2014-10-15 15:48:23"
+            "time": "2014-10-16 09:56:24"
         },
         {
             "name": "pomm-project/model-manager",

@@ -107,4 +107,20 @@ class PommAwareCommand extends Command
 
         return $this->session;
     }
+
+    /**
+     * setSession
+     *
+     * When testing, it is useful to provide directly the session to be used.
+     *
+     * @access public
+     * @param  Session $session
+     * @return PommAwareCommand
+     */
+    public function setSession(Session $session)
+    {
+        $this->session = $session;
+
+        return $this;
+    }
 }
