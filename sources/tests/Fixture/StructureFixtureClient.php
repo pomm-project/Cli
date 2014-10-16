@@ -27,13 +27,17 @@ class StructureFixtureClient extends Client
     public function initialize(Session $session)
     {
         parent::initialize($session);
-        $sql = [];
-        $sql[] = 'create schema pomm_test';
-        $sql[] = 'create table pomm_test.alpha(alpha_one serial primary key, alpha_two varchar not null, alpha_three timestamp not null default now())';
-        $sql[] = 'create table pomm_test.beta(beta_one serial, beta_two int4, beta_three xml not null, primary key(beta_one, beta_two), unique(beta_one))';
-        $sql[] = 'create table pomm_test.charly(charly_one char(2) unique, charly_two point)';
-        $sql[] = 'comment on table pomm_test.beta is $c$This is the beta comment.$c$';
-        $sql[] = 'comment on column pomm_test.beta.beta_one is $c$This is the beta.one comment.$c$';
+        $sql = [
+            'begin',
+            'create schema pomm_test',
+            'create table pomm_test.alpha(alpha_one serial primary key, alpha_two varchar not null, alpha_three timestamp not null default now())',
+            'create table pomm_test.beta(beta_one serial, beta_two int4, beta_three xml not null, primary key(beta_one, beta_two), unique(beta_one))',
+            'create table pomm_test.charly(charly_one char(2) unique, charly_two point)',
+            'create view pomm_test.dingo as select * from pomm_test.charly',
+            'comment on table pomm_test.beta is $c$This is the beta comment.$c$',
+            'comment on column pomm_test.beta.beta_one is $c$This is the beta.one comment.$c$',
+            'commit',
+            ];
         $this->executeSql(join(';', $sql));
     }
 

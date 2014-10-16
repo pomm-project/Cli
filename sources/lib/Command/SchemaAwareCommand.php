@@ -15,6 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use PommProject\Cli\Exception\CliException;
 use PommProject\Cli\Command\PommAwareCommand;
 use PommProject\Foundation\Inflector;
 
@@ -147,10 +148,21 @@ abstract class SchemaAwareCommand extends PommAwareCommand
      */
     protected function fetchSchemaOid()
     {
-        return $this
+        $schema_oid = $this
             ->getSession()
             ->getInspector()
             ->getSchemaOid($this->schema)
             ;
+
+        if ($schema_oid === null) {
+            throw new CliException(
+                sprintf(
+                    "Could not find schema '%s'.",
+                    $this->schema
+                )
+            );
+        }
+
+        return $schema_oid;
     }
 }
