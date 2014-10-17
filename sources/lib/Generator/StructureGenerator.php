@@ -59,7 +59,7 @@ TEXT;
                 [
                     'namespace'     => $this->namespace,
                     'entity'        => Inflector::studlyCaps($this->relation),
-                    'relation'      => $this->relation,
+                    'relation'      => sprintf("%s.%s", $this->schema, $this->relation),
                     'primary_key'   => join(
                         ', ',
                         array_map(
