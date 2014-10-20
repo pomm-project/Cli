@@ -9,11 +9,11 @@
  */
 namespace PommProject\Cli\Test\Unit\Command;
 
-use PommProject\Foundation\Test\Unit\SessionAwareAtoum;
-use PommProject\Foundation\Session;
+use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Query\QueryPooler;
 use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
+use PommProject\Foundation\Tester\FoundationSessionAtoum;
 use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
 
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
@@ -21,15 +21,11 @@ use PommProject\Cli\Test\Fixture\StructureFixtureClient;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
 
-class InspectRelation extends SessionAwareAtoum
+class InspectRelation extends FoundationSessionAtoum
 {
     protected function initializeSession(Session $session)
     {
         $session
-            ->registerClientPooler(new QueryPooler())
-            ->registerClientPooler(new InspectorPooler())
-            ->registerClientPooler(new PreparedQueryPooler())
-            ->registerClientPooler(new ConverterPooler())
             ->registerClient(new StructureFixtureClient())
             ;
     }
@@ -37,7 +33,7 @@ class InspectRelation extends SessionAwareAtoum
     public function testExecute()
     {
         $application = new Application();
-        $application->add($this->newTestedInstance()->setSession($this->getSession()));
+        $application->add($this->newTestedInstance()->setSession($this->buildSession()));
         $command = $application->find('inspect:relation');
         $tester = new CommandTester($command);
         $tester->execute(

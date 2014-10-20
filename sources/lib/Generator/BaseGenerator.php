@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\TableStyle;
 use Symfony\Component\Console\Helper\Table;
 
-use PommProject\Foundation\Session;
+use PommProject\Foundation\Session\Session;
 
 use PommProject\Cli\Exception\GeneratorException;
 /**
