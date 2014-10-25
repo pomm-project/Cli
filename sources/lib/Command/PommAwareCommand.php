@@ -20,6 +20,19 @@ use PommProject\Foundation\Inspector\InspectorPooler;
 
 use PommProject\Cli\Exception\CliException;
 
+/**
+ * PommAwareCommand
+ *
+ * Base command for all Pomm Cli commands.
+ *
+ * @package Pomm
+ * @copyright 2014 Grégoire HUBERT
+ * @author Grégoire HUBERT
+ * @license X11 {@link http://opensource.org/licenses/mit-license.php}
+ *
+ *
+ * @see Command
+ */
 class PommAwareCommand extends Command
 {
     private $session;

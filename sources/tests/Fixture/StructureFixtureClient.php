@@ -34,6 +34,7 @@ class StructureFixtureClient extends Client
             'create table pomm_test.beta(beta_one serial, beta_two int4, beta_three xml not null, primary key(beta_one, beta_two), unique(beta_one))',
             'create table pomm_test.charly(charly_one char(2) unique, charly_two point)',
             'create view pomm_test.dingo as select * from pomm_test.charly',
+            'comment on schema pomm_test is $c$This is a test schema.$c$',
             'comment on table pomm_test.beta is $c$This is the beta comment.$c$',
             'comment on column pomm_test.beta.beta_one is $c$This is the beta.one comment.$c$',
             'commit',

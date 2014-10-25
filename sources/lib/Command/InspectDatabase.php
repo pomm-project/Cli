@@ -18,17 +18,17 @@ use PommProject\Foundation\ResultIterator;
 use PommProject\Cli\Command\PommAwareCommand;
 
 /**
- * InspectSchema
+ * InspectDatabase
  *
- * Inspector from the command line.
+ * Return the list of schemas in the current database.
  *
  * @package Cli
  * @copyright 2014 Grégoire HUBERT
  * @author Grégoire HUBERT
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
- * @see SchemaAwareCommand
+ * @see PommAwareCommand
  */
-class InspectSchema extends SchemaAwareCommand
+class InspectDatabase extends PommAwareCommand
 {
     /**
      * configure
@@ -38,12 +38,13 @@ class InspectSchema extends SchemaAwareCommand
     public function configure()
     {
         $this
-            ->setName('inspect:schema')
-            ->setDescription('Show relations in a given schema.')
+            ->setName('inspect:database')
+            ->setDescription('Show schemas in the current database.')
             ;
 
         parent::configure();
     }
+
     /**
      * execute
      *
@@ -52,45 +53,43 @@ class InspectSchema extends SchemaAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
-
         $info = $this
             ->getSession()
             ->getInspector()
-            ->getSchemaRelations($this->fetchSchemaOid()
-        );
+            ->getSchemas()
+            ;
         $this->formatOutput($output, $info);
     }
 
     /**
      * formatOutput
      *
-     * Format result
+     * Format command output from the inspector's result.
      *
      * @access protected
-     * @param  OutputInterface $output
-     * @param  ResultIterator  $info
-     * @return void
+     * @param  OutputInterface  $output
+     * @param  ResultIterator   $iterator
+     * @return null
      */
-    protected function formatOutput(OutputInterface $output, ResultIterator $info)
+    protected function formatOutput(OutputInterface $output, ResultIterator $iterator)
     {
         $output->writeln(
             sprintf(
-                "Found <info>%d</info> relations in schema <info>'%s'</info>.",
-                $info->count(),
-                $this->schema
+                "Found <info>%d</info> schemas in database.",
+                $iterator->count()
             )
         );
         $table = (new Table($output))
-            ->setHeaders(['name', 'type', 'oid ', 'comment'])
+            ->setHeaders(['name', 'oid ', 'relations', 'comment'])
             ;
 
-        foreach ($info as $table_info) {
+        foreach ($iterator as $schema_info) {
 
             $table->addRow([
-                sprintf("<fg=yellow>%s</fg=yellow>", $table_info['name']),
-                $table_info['type'],
-                $table_info['oid'],
-                wordwrap($table_info['comment'])
+                sprintf("<fg=yellow>%s</fg=yellow>", $schema_info['name']),
+                $schema_info['oid'],
+                $schema_info['relations'],
+                wordwrap($schema_info['comment'])
             ]);
         }
 

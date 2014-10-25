@@ -17,7 +17,7 @@ use PommProject\Cli\Test\Fixture\StructureFixtureClient;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class InspectSchema extends FoundationSessionAtoum
+class InspectDatabase extends FoundationSessionAtoum
 {
     protected function initializeSession(Session $session)
     {
@@ -30,37 +30,21 @@ class InspectSchema extends FoundationSessionAtoum
     {
         $application = new Application();
         $application->add($this->newTestedInstance()->setSession($this->buildSession()));
-        $command = $application->find('inspect:schema');
+        $command = $application->find('inspect:database');
         $tester = new CommandTester($command);
         $tester->execute(
             [
                 'command'          => $command->getName(),
                 'config-name'      => 'pomm_test',
-                'schema'           => 'pomm_test',
             ]
         );
-
         $this
             ->string($tester->getDisplay())
-            ->contains("| alpha  | table")
-            ->contains("| beta   | table")
-            ->contains("This is the beta comment.")
-            ->contains("| dingo  | view  |")
-        ;
-        $this
-            ->exception(function() use ($tester, $command)
-                {
-                    $tester->execute(
-                        [
-                            'command'          => $command->getName(),
-                            'config-name'      => 'pomm_test',
-                            'schema'           => 'whatever',
-                        ]
-                    );
-                }
-            )
-            ->isInstanceOf('\PommProject\Cli\Exception\CliException')
+            ->contains("| pomm_test")
+            ->contains("This is a test schema.")
+            ->contains(" 4 ")
             ;
     }
 }
+
 
