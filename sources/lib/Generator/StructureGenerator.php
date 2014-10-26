@@ -275,11 +275,14 @@ use PommProject\ModelManager\Model\RowStructure;
 class {:entity:} extends RowStructure
 {
     /**
-     * initialize
+     * __construct
      *
-     * @see RowStructure
+     * Structure definition.
+     *
+     * @access public
+     * @return null
      */
-    protected function initialize()
+    public function __construct()
     {
         $this
             ->setRelation('{:relation:}')
