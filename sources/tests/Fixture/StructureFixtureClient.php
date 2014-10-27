@@ -30,8 +30,9 @@ class StructureFixtureClient extends Client
         $sql = [
             'begin',
             'create schema pomm_test',
+            'create type pomm_test.complex_type as (one int4, two varchar)',
             'create table pomm_test.alpha(alpha_one serial primary key, alpha_two varchar not null, alpha_three timestamp not null default now())',
-            'create table pomm_test.beta(beta_one serial, beta_two int4, beta_three xml not null, primary key(beta_one, beta_two), unique(beta_one))',
+            'create table pomm_test.beta(beta_one serial, beta_two int4, beta_three pomm_test.complex_type[] not null, primary key(beta_one, beta_two), unique(beta_one))',
             'create table pomm_test.charly(charly_one char(2) unique, charly_two point)',
             'create view pomm_test.dingo as select * from pomm_test.charly',
             'comment on schema pomm_test is $c$This is a test schema.$c$',

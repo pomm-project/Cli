@@ -37,7 +37,7 @@ class Beta extends RowStructure
             ->setPrimaryKey(['beta_two', 'beta_one'])
             ->addField('beta_one', 'int4')
             ->addField('beta_two', 'int4')
-            ->addField('beta_three', 'xml')
+            ->addField('beta_three', 'pomm_test.complex_type[]')
             ;
     }
 }

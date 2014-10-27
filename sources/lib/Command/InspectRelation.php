@@ -101,7 +101,7 @@ class InspectRelation extends RelationAwareCommand
                 [
                     $info['is_primary'] ? '<fg=cyan>*</fg=cyan>' : '',
                     sprintf("<fg=yellow>%s</fg=yellow>", $info['name']),
-                    $info['type'],
+                    $this->formatType($info['type']),
                     $info['default'],
                     $info['is_notnull'] ? 'yes' : 'no',
                     wordwrap($info['comment']),
@@ -110,5 +110,27 @@ class InspectRelation extends RelationAwareCommand
         }
 
         $table->render();
+    }
+
+    /**
+     * formatType
+     *
+     * Format type.
+     *
+     * @access protected
+     * @param  string $type
+     * @return string
+     */
+    protected function formatType($type)
+    {
+        if (preg_match('/^(?:(.*)\.)?_(.*)$/', $type, $matchs)) {
+            if ($matchs[1] !== '') {
+                return sprintf("%s.%s[]", $matchs[1], $matchs[2]);
+            } else {
+                return $matchs[2].'[]';
+            }
+        } else {
+            return $type;
+        }
     }
 }

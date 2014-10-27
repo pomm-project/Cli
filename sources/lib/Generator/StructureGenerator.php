@@ -57,18 +57,18 @@ TEXT;
             $this->filename,
             $this->mergeTemplate(
                 [
-                    'namespace'     => $this->namespace,
-                    'entity'        => Inflector::studlyCaps($this->relation),
-                    'relation'      => sprintf("%s.%s", $this->schema, $this->relation),
-                    'primary_key'   => join(
+                    'namespace'      => $this->namespace,
+                    'entity'         => Inflector::studlyCaps($this->relation),
+                    'relation'       => sprintf("%s.%s", $this->schema, $this->relation),
+                    'primary_key'    => join(
                         ', ',
                         array_map(
                             function ($val) { return sprintf("'%s'", $val); },
                             $primary_key
                         )
                     ),
-                    'add_fields'    => $this->formatAddFields($field_informations),
-                    'table_comment' => $this->createPhpDocBlockFromText($table_comment),
+                    'add_fields'     => $this->formatAddFields($field_informations),
+                    'table_comment'  => $this->createPhpDocBlockFromText($table_comment),
                     'fields_comment' => $this->formatFieldsComment($field_informations),
                 ]
             )
@@ -87,7 +87,16 @@ TEXT;
     protected function formatAddFields(ConvertedResultIterator $field_informations)
     {
         $strings = [];
+
         foreach ($field_informations as $info) {
+            if (preg_match('/^(?:(.*)\.)?_(.*)$/', $info['type'], $matchs)) {
+                if ($matchs[1] !== '') {
+                    $info['type'] = sprintf("%s.%s[]", $matchs[1], $matchs[2]);
+                } else {
+                    $info['type'] = $matchs[2].'[]';
+                }
+            }
+
             $strings[] = sprintf(
                 "            ->addField('%s', '%s')",
                 $info['name'],
