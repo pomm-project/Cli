@@ -14,8 +14,9 @@ Pomm's Cli is independent from one's development environment, it doe not know wh
 
 The inspect command use the `Foundation.Inspector` to display informations about the database structure.
 
+ * inspect:database - Get schemas in a database.
+ * inspect:schema   - Get relations informations in a schema.
  * inspect:relation - Get information about a relation.
- * insepct:schema   - Get relations informations in a schema.
 
  ```
 $ ./bin/pomm.php inspect:schema my_db_config
@@ -60,8 +61,8 @@ Since you are going to add your own methods in the generated Model and FlexibleE
 
 By default, Pomm's ModelManager expects at least the clases to be saved using the following namespaces: `DatabaseConfigName\SchemaSchema`. It is possible to tell the Cli where this structure starts and how to tune it.
 
- * `--prefix-dir` - indicates where to start the Namespace directory tree.
- * `--prefix-ns`  - indicates an optional namespace prefix.
+ * `--prefix-dir`, `-d' - indicates where to start the Namespace directory tree.
+ * `--prefix-ns`, `-a`  - indicates an optional namespace prefix.
 
 When no options are specified, generating all relations of public schema will act like the following:
 
