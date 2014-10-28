@@ -27,5 +27,6 @@
             "PommProject\\Cli\\Test\\": "sources/tests"
         }
     },
+    "bin": ["bin/pomm.php"],
     "minimum-stability": "dev"
 }
