@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "faba2a5cc4c2af87331394afd4b7b0a7bc710fe6"
+                "reference": "111ad8af3ad6e6bd439f2d93b5072b0014820f6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/faba2a5cc4c2af87331394afd4b7b0a7bc710fe6",
-                "reference": "faba2a5cc4c2af87331394afd4b7b0a7bc710fe6",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/111ad8af3ad6e6bd439f2d93b5072b0014820f6e",
+                "reference": "111ad8af3ad6e6bd439f2d93b5072b0014820f6e",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +57,7 @@
                 "framework",
                 "postgresql"
             ],
-            "time": "2014-11-29 12:59:40"
+            "time": "2014-12-15 07:45:50"
         },
         {
             "name": "pomm-project/model-manager",
@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "034c597e59a54d72a6393e75594ca4745d64a06e"
+                "reference": "becc10175ab119f73c637b64501dd7b0f5f28de2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/034c597e59a54d72a6393e75594ca4745d64a06e",
-                "reference": "034c597e59a54d72a6393e75594ca4745d64a06e",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/becc10175ab119f73c637b64501dd7b0f5f28de2",
+                "reference": "becc10175ab119f73c637b64501dd7b0f5f28de2",
                 "shasum": ""
             },
             "require": {
@@ -114,7 +114,7 @@
                 "orm",
                 "postgresql"
             ],
-            "time": "2014-11-29 13:08:48"
+            "time": "2014-12-15 07:50:15"
         },
         {
             "name": "psr/log",
@@ -166,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "61b13c27c9258e97009249d4ef193c964bf346b7"
+                "reference": "fa55dfef7dc669e037d090296f55fac6a3cc6993"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/61b13c27c9258e97009249d4ef193c964bf346b7",
-                "reference": "61b13c27c9258e97009249d4ef193c964bf346b7",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/fa55dfef7dc669e037d090296f55fac6a3cc6993",
+                "reference": "fa55dfef7dc669e037d090296f55fac6a3cc6993",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-20 13:22:25"
+            "time": "2014-12-11 20:21:50"
         }
     ],
     "packages-dev": [
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "9b87d03f0a8dbb7ee6bd434c06e3b9d8971ad1ba"
+                "reference": "f70d90155768a2d8552f3d0b473f6731652edfde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/9b87d03f0a8dbb7ee6bd434c06e3b9d8971ad1ba",
-                "reference": "9b87d03f0a8dbb7ee6bd434c06e3b9d8971ad1ba",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/f70d90155768a2d8552f3d0b473f6731652edfde",
+                "reference": "f70d90155768a2d8552f3d0b473f6731652edfde",
                 "shasum": ""
             },
             "require": {
@@ -248,6 +248,11 @@
                 "bin/atoum"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "classes/"
@@ -288,7 +293,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2014-11-21 14:50:10"
+            "time": "2014-12-10 09:22:13"
         }
     ],
     "aliases": [],
