@@ -2,7 +2,7 @@
     "name": "pomm-project/cli",
     "type": "library",
     "description":  "Command line for Pomm.",
-    "keywords": ["cli", "postgresql", "database"],
+    "keywords": ["cli", "postgresql", "database", "pomm"],
     "homepage": "http://www.pomm-project.org",
     "license":  "MIT",
     "authors":  [ { "name": "Grégoire HUBERT", "email": "hubert.greg@gmail.com", "homepage": "http://www.pomm-project.org" } ],
