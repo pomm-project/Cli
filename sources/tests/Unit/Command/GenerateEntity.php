@@ -39,7 +39,7 @@ class GenerateEntity extends FoundationSessionAtoum
     {
         $application = new Application();
         $application->add($this->newTestedInstance()->setSession($this->buildSession()));
-        $command = $application->find('generate:entity');
+        $command = $application->find('pomm:generate:entity');
         $command_args =
             [
                 'command'          => $command->getName(),

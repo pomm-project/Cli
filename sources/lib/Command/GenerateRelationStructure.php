@@ -36,7 +36,7 @@ class GenerateRelationStructure extends RelationAwareCommand
     protected function configure()
     {
         $this
-            ->setName('generate:structure')
+            ->setName('pomm:generate:structure')
             ->setDescription('Generate a RowStructure file based on table schema.')
             ->setHelp(<<<HELP
 HELP

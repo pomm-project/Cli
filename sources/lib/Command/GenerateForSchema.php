@@ -37,7 +37,7 @@ class GenerateForSchema extends SchemaAwareCommand
     public function configure()
     {
         $this
-            ->setName('generate:schema-all')
+            ->setName('pomm:generate:schema-all')
             ->setDescription('Generate structure, model and entity file for all relations in a schema.')
             ;
         parent::configure();
@@ -67,9 +67,9 @@ class GenerateForSchema extends SchemaAwareCommand
         );
 
         foreach ($relations as $relation_info) {
-            $command = $this->getApplication()->find('generate:relation-all');
+            $command = $this->getApplication()->find('pomm:generate:relation-all');
             $arguments = [
-                'command'          => 'generate:relation-all',
+                'command'          => 'pomm:generate:relation-all',
                 'config-name'      => $this->config_name,
                 'relation'         => $relation_info['name'],
                 'schema'           => $this->schema,

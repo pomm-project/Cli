@@ -38,7 +38,7 @@ class InspectDatabase extends PommAwareCommand
     public function configure()
     {
         $this
-            ->setName('inspect:database')
+            ->setName('pomm:inspect:database')
             ->setDescription('Show schemas in the current database.')
             ;
 

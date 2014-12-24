@@ -30,7 +30,7 @@ class InspectSchema extends FoundationSessionAtoum
     {
         $application = new Application();
         $application->add($this->newTestedInstance()->setSession($this->buildSession()));
-        $command = $application->find('inspect:schema');
+        $command = $application->find('pomm:inspect:schema');
         $tester = new CommandTester($command);
         $tester->execute(
             [
