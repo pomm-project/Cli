@@ -41,7 +41,7 @@ class InspectRelation extends RelationAwareCommand
     protected function configure()
     {
         $this
-            ->setName('inspect:relation')
+            ->setName('pomm:inspect:relation')
             ->setDescription('Display a relation information.')
         ;
         parent::configure();

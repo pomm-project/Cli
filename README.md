@@ -14,12 +14,12 @@ Pomm's Cli is independent from one's development environment, it doe not know wh
 
 The inspect command use the `Foundation.Inspector` to display informations about the database structure.
 
- * inspect:database - Get schemas in a database.
- * inspect:schema   - Get relations informations in a schema.
- * inspect:relation - Get information about a relation.
+ * pomm:inspect:database - Get schemas in a database.
+ * pomm:inspect:schema   - Get relations informations in a schema.
+ * pomm:inspect:relation - Get information about a relation.
 
  ```
-$ ./bin/pomm.php inspect:schema my_db_config
+$ ./bin/pomm.php pomm:inspect:schema my_db_config
 
 Found 3 relations in schema 'public'.
 +-------------+-------+--------+---------+
@@ -31,7 +31,7 @@ Found 3 relations in schema 'public'.
 +-------------+-------+--------+---------+
  ```
  ```
-$ ./bin/pomm.php inspect:relation archived_document my_db_config pylone
+$ ./bin/pomm.php pomm:inspect:relation archived_document my_db_config pylone
 
 Relation pylone.archived_document
 +----+-------------+-----------+---------+---------+---------+
@@ -49,11 +49,11 @@ Relation pylone.archived_document
 
 The generate commands create PHP class for use of database relations with Pomm's ModelManager package.
 
- * generate:structure    - Generate a RowStructure class accorsing to the relation structure.
- * generate:model        - Generate a new configured Model class.
- * generate:entity       - Generate an empty FlexibleEntity class.
- * generate:relation-all - Generate the 3 files above for the given relation.
- * generate:schema-all   - Generate the 3 files above for all relations in the given schema.
+ * pomm:generate:structure    - Generate a RowStructure class accorsing to the relation structure.
+ * pomm:generate:model        - Generate a new configured Model class.
+ * pomm:generate:entity       - Generate an empty FlexibleEntity class.
+ * pomm:generate:relation-all - Generate the 3 files above for the given relation.
+ * pomm:generate:schema-all   - Generate the 3 files above for all relations in the given schema.
 
 Since you are going to add your own methods in the generated Model and FlexibleEntity classes, they will NOT be overwritten by default by the `generate` commands. It is somehow possible to do so by implicitely specifying the option `--force`. All the code in the overwritten classes will then be lost and replaced by a brand new class. Structure files are always overwritten without prior asking for confirmation. To ovoid mixing these two kinds of classes, Structure classes are saved under a `AutoStructure` subdirectory.
 
@@ -67,7 +67,7 @@ By default, Pomm's ModelManager expects at least the clases to be saved using th
 When no options are specified, generating all relations of public schema will act like the following:
 
 ```
-$ ./bin/pomm.php generate:schema-all -v pomm_test
+$ ./bin/pomm.php pomm:generate:schema-all -v pomm_test
  ✓  Creating file './PommTest/PublicSchema/AutoStructure/Pika.php'.
  ✓  Creating file './PommTest/PublicSchema/PikaModel.php'.
  ✓  Creating file './PommTest/PublicSchema/Pika.php'.
@@ -98,7 +98,7 @@ PommTest/
 It is often not a good idea to have the model's namespace starting at project's root directory. Most of the time, it is put in a `Model` namespace under `sources/lib` directory:
 
 ```
-$ ./bin/pomm.php generate:schema-all --prefix-dir sources/lib --prefix-ns Model pomm_test
+$ ./bin/pomm.php pomm:generate:schema-all --prefix-dir sources/lib --prefix-ns Model pomm_test
  ✓  Creating file 'sources/lib/Model/PommTest/PublicSchema/AutoStructure/Pika.php'.
 …
 ```

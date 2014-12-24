@@ -38,7 +38,7 @@ class GenerateRelationModel extends RelationAwareCommand
     public function configure()
     {
         $this
-            ->setName('generate:model')
+            ->setName('pomm:generate:model')
             ->setDescription('Generate a new model file.')
             ;
         parent::configure();

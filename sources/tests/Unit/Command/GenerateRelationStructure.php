@@ -39,7 +39,7 @@ class GenerateRelationStructure extends FoundationSessionAtoum
     {
         $application = new Application();
         $application->add($this->newTestedInstance()->setSession($this->buildSession()));
-        $command = $application->find('generate:structure');
+        $command = $application->find('pomm:generate:structure');
         $command_args =
             [
                 'command'          => $command->getName(),

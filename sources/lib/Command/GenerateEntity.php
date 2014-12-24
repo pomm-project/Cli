@@ -26,7 +26,7 @@ class GenerateEntity extends RelationAwareCommand
     protected function configure()
     {
         $this
-            ->setName('generate:entity')
+            ->setName('pomm:generate:entity')
             ->setDescription('Generate an Entity class.')
             ->setHelp(<<<HELP
 HELP

@@ -38,7 +38,7 @@ class InspectSchema extends SchemaAwareCommand
     public function configure()
     {
         $this
-            ->setName('inspect:schema')
+            ->setName('pomm:inspect:schema')
             ->setDescription('Show relations in a given schema.')
             ;
 
