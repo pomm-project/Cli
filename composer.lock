@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fafdaab3a8e734aa4160e672729d511c",
+    "hash": "3774d5631609d4d10e61ff6f5804976e",
     "packages": [
         {
             "name": "pomm-project/foundation",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "111ad8af3ad6e6bd439f2d93b5072b0014820f6e"
+                "reference": "f76b2f724f9bc09c3260d9ee7836889452e894bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/111ad8af3ad6e6bd439f2d93b5072b0014820f6e",
-                "reference": "111ad8af3ad6e6bd439f2d93b5072b0014820f6e",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/f76b2f724f9bc09c3260d9ee7836889452e894bd",
+                "reference": "f76b2f724f9bc09c3260d9ee7836889452e894bd",
                 "shasum": ""
             },
             "require": {
@@ -55,9 +55,10 @@
             "keywords": [
                 "database",
                 "framework",
+                "pomm",
                 "postgresql"
             ],
-            "time": "2014-12-15 07:45:50"
+            "time": "2015-01-06 08:33:25"
         },
         {
             "name": "pomm-project/model-manager",
@@ -65,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "becc10175ab119f73c637b64501dd7b0f5f28de2"
+                "reference": "31ee080463722c670d7c538e4aa971a84e51595b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/becc10175ab119f73c637b64501dd7b0f5f28de2",
-                "reference": "becc10175ab119f73c637b64501dd7b0f5f28de2",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/31ee080463722c670d7c538e4aa971a84e51595b",
+                "reference": "31ee080463722c670d7c538e4aa971a84e51595b",
                 "shasum": ""
             },
             "require": {
@@ -112,9 +113,10 @@
             "keywords": [
                 "database",
                 "orm",
+                "pomm",
                 "postgresql"
             ],
-            "time": "2014-12-15 07:50:15"
+            "time": "2014-12-30 17:17:14"
         },
         {
             "name": "psr/log",
@@ -166,12 +168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "fa55dfef7dc669e037d090296f55fac6a3cc6993"
+                "reference": "fb1845202f6be7c24025da39b49b223f03eaf8c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/fa55dfef7dc669e037d090296f55fac6a3cc6993",
-                "reference": "fa55dfef7dc669e037d090296f55fac6a3cc6993",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/fb1845202f6be7c24025da39b49b223f03eaf8c4",
+                "reference": "fb1845202f6be7c24025da39b49b223f03eaf8c4",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +214,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-11 20:21:50"
+            "time": "2015-01-05 17:29:33"
         }
     ],
     "packages-dev": [
@@ -222,12 +224,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "f70d90155768a2d8552f3d0b473f6731652edfde"
+                "reference": "a2360270079f314b545b04f9e8d558734fd1e890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/f70d90155768a2d8552f3d0b473f6731652edfde",
-                "reference": "f70d90155768a2d8552f3d0b473f6731652edfde",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/a2360270079f314b545b04f9e8d558734fd1e890",
+                "reference": "a2360270079f314b545b04f9e8d558734fd1e890",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +295,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2014-12-10 09:22:13"
+            "time": "2015-01-02 22:33:27"
         }
     ],
     "aliases": [],
@@ -304,6 +306,7 @@
         "atoum/atoum": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4.4",
         "ext-pgsql": "*"
