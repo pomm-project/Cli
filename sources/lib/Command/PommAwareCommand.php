@@ -119,7 +119,6 @@ class PommAwareCommand extends Command
      * Load session bootstrap file.
      *
      * @access protected
-     * @param  string  $config_name
      * @return Session
      */
     protected function loadSession()
@@ -145,7 +144,6 @@ class PommAwareCommand extends Command
      * Return a session.
      *
      * @access protected
-     * @param  sring   $name
      * @return Session
      */
     protected function getSession()
