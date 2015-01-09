@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3774d5631609d4d10e61ff6f5804976e",
+    "hash": "c187ba67bee668f03c01d88f59ac51d0",
     "packages": [
         {
             "name": "pomm-project/foundation",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "f76b2f724f9bc09c3260d9ee7836889452e894bd"
+                "reference": "c147f4f50b8278ad461371bd72193e3dba483479"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/f76b2f724f9bc09c3260d9ee7836889452e894bd",
-                "reference": "f76b2f724f9bc09c3260d9ee7836889452e894bd",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/c147f4f50b8278ad461371bd72193e3dba483479",
+                "reference": "c147f4f50b8278ad461371bd72193e3dba483479",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-01-06 08:33:25"
+            "time": "2015-01-09 09:51:19"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "31ee080463722c670d7c538e4aa971a84e51595b"
+                "reference": "8ad963206a1099f1adad8d213b98067b8cfae821"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/31ee080463722c670d7c538e4aa971a84e51595b",
-                "reference": "31ee080463722c670d7c538e4aa971a84e51595b",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/8ad963206a1099f1adad8d213b98067b8cfae821",
+                "reference": "8ad963206a1099f1adad8d213b98067b8cfae821",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2014-12-30 17:17:14"
+            "time": "2015-01-06 08:34:35"
         },
         {
             "name": "psr/log",
@@ -163,17 +163,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "2.5.x-dev",
+            "version": "2.7.x-dev",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "fb1845202f6be7c24025da39b49b223f03eaf8c4"
+                "reference": "273b8fe99910b6864a863ed6a397938f39847cb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/fb1845202f6be7c24025da39b49b223f03eaf8c4",
-                "reference": "fb1845202f6be7c24025da39b49b223f03eaf8c4",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/273b8fe99910b6864a863ed6a397938f39847cb3",
+                "reference": "273b8fe99910b6864a863ed6a397938f39847cb3",
                 "shasum": ""
             },
             "require": {
@@ -181,16 +181,18 @@
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1"
+                "symfony/event-dispatcher": "~2.1|~3.0.0",
+                "symfony/process": "~2.1|~3.0.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
-                "symfony/event-dispatcher": ""
+                "symfony/event-dispatcher": "",
+                "symfony/process": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
@@ -214,7 +216,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-05 17:29:33"
+            "time": "2015-01-06 17:50:09"
         }
     ],
     "packages-dev": [

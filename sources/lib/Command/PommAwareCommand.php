@@ -35,6 +35,7 @@ use PommProject\Cli\Exception\CliException;
  */
 class PommAwareCommand extends Command
 {
+    private $pomm;
     private $session;
 
     protected $config_file;
@@ -123,17 +124,19 @@ class PommAwareCommand extends Command
      */
     protected function loadSession()
     {
-        if (!file_exists($this->config_file)) {
-            throw new CliException(sprintf("Could not load configuration '%s'.", $this->config_file));
+        if ($this->pomm === null) {
+            if (!file_exists($this->config_file)) {
+                throw new CliException(sprintf("Could not load configuration '%s'.", $this->config_file));
+            }
+
+            $this->pomm = require $this->config_file;
+
+            if (!$this->pomm instanceof Pomm) {
+                throw new CliException(sprintf("Invalid configuration. Bootstrap file must return a Pomm instance."));
+            }
         }
 
-        $pomm = require $this->config_file;
-
-        if (!$pomm instanceof Pomm) {
-            throw new CliException(sprintf("Invalid configuration. Bootstrap file must return a Pomm instance."));
-        }
-
-        return $pomm->getSession($this->config_name);
+        return $this->pomm->getSession($this->config_name);
     }
 
     /**
@@ -166,6 +169,23 @@ class PommAwareCommand extends Command
     public function setSession(Session $session)
     {
         $this->session = $session;
+
+        return $this;
+    }
+
+    /**
+     * setPomm
+     *
+     * When used with a framework, it is useful to get the Pomm instance from
+     * the framwork configuration mechanism.
+     *
+     * @access public
+     * @param  Pomm     $pomm
+     * @return PommAwareCommand
+     */
+    public function setPomm(Pomm $pomm)
+    {
+        $this->pomm = $pomm;
 
         return $this;
     }
