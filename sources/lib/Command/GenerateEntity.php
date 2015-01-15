@@ -71,7 +71,8 @@ HELP
             $this->schema,
             $this->relation,
             $this->filename,
-            $this->namespace
+            $this->namespace,
+            $this->flexible_container
         ))->generate($input, $output);
     }
 }

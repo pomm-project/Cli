@@ -77,7 +77,8 @@ class GenerateForSchema extends SchemaAwareCommand
                 '--bootstrap-file' => $input->getOption('bootstrap-file'),
                 '--prefix-dir'     => $input->getOption('prefix-dir'),
                 '--prefix-ns'      => $input->getOption('prefix-ns'),
-                ];
+                '--flexible-container' => $input->getOption('flexible-container')
+            ];
             $command->run(new ArrayInput($arguments), $output);
         }
     }

@@ -51,6 +51,8 @@ class EntityGenerator extends BaseGenerator
                     'entity'    => Inflector::studlyCaps($this->relation),
                     'relation'  => $this->relation,
                     'schema'    => $this->schema,
+                    'flexible_container' => $this->flexibe_container,
+                    'flexible_container_class' => array_reverse(explode('\\', $this->flexibe_container))[0]
                 ]
             )
         );
@@ -68,7 +70,7 @@ class EntityGenerator extends BaseGenerator
 
 namespace {:namespace:};
 
-use PommProject\ModelManager\Model\FlexibleEntity;
+use {:flexible_container:};
 
 /**
  * {:entity:}
@@ -78,7 +80,7 @@ use PommProject\ModelManager\Model\FlexibleEntity;
  *
  * @see FlexibleEntity
  */
-class {:entity:} extends FlexibleEntity
+class {:entity:} extends {:flexible_container_class:}
 {
 }
 

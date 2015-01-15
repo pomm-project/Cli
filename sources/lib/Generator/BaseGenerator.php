@@ -36,6 +36,7 @@ abstract class BaseGenerator
     protected $relation;
     protected $filename;
     protected $namespace;
+    protected $flexibe_container;
 
     /*
      * __construct
@@ -49,13 +50,14 @@ abstract class BaseGenerator
      * @param  string  $namespace
      * @return void
      */
-    public function __construct(Session $session, $schema, $relation, $filename, $namespace)
+    public function __construct(Session $session, $schema, $relation, $filename, $namespace, $flexible_container = null)
     {
         $this->session   = $session;
         $this->schema    = $schema;
         $this->relation  = $relation;
         $this->filename  = $filename;
         $this->namespace = $namespace;
+        $this->flexibe_container = $flexible_container;
     }
 
     /**

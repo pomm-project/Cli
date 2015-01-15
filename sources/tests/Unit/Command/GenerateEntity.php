@@ -47,7 +47,7 @@ class GenerateEntity extends FoundationSessionAtoum
                 'schema'           => 'pomm_test',
                 'relation'         => 'alpha',
                 '--prefix-ns'      => 'Model',
-                '--prefix-dir'     => 'tmp',
+                '--prefix-dir'     => 'tmp'
             ];
         $tester = new CommandTester($command);
         $tester->execute($command_args);
@@ -66,5 +66,13 @@ class GenerateEntity extends FoundationSessionAtoum
             ->string($tester->getDisplay())
             ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.\n")
          ;
+
+        $tester->execute(array_merge($command_args, ['--flexible-container' => 'Model\\PommTest\\PommTestSchema\\CustomFlexibleEntity', '--force' => null ]));
+        $this
+            ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
+            ->isEqualTo(file_get_contents('sources/tests/Fixture/CustomAlphaEntity.php'))
+        ;
+
+
     }
 }

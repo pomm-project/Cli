@@ -37,6 +37,7 @@ abstract class SchemaAwareCommand extends PommAwareCommand
     protected $prefix_ns;
     protected $filename;
     protected $namespace;
+    protected $flexible_container;
 
     /**
      * configure
@@ -80,7 +81,14 @@ abstract class SchemaAwareCommand extends PommAwareCommand
                 'Schema of the relation.',
                 'public'
             )
-            ;
+            ->addOption(
+                'flexible-container',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Use an alternative flexible entity container',
+                'PommProject\ModelManager\Model\FlexibleEntity'
+            )
+        ;
 
         return $this;
     }
@@ -100,6 +108,7 @@ abstract class SchemaAwareCommand extends PommAwareCommand
 
         $this->prefix_dir = $input->getOption('prefix-dir');
         $this->prefix_ns  = $input->getOption('prefix-ns');
+        $this->flexible_container = $input->getOption('flexible-container');
     }
 
     /**
