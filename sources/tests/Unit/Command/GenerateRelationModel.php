@@ -75,7 +75,19 @@ class GenerateRelationModel extends FoundationSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/DingoModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/DingoModel.php'))
             ;
+
+        $inspector = new Inspector();
+        $inspector->Initialize($session);
+        if (
+            version_compare($inspector->getVersion(), '9.3', '>=') === true
+        ) {
+            $tester->execute(array_merge($command_args, ['relation' => 'pluto']));
+            $this
+                ->string($tester->getDisplay())
+                ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/PlutoModel.php'.\n")
+                ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/PlutoModel.php'))
+                ->isEqualTo(file_get_contents('sources/tests/Fixture/PlutoModel.php'))
+                ;
+        }
     }
 }
-
-

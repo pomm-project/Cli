@@ -10,6 +10,7 @@
 namespace PommProject\Cli\Test\Unit\Command;
 
 use PommProject\Foundation\Session\Session;
+use PommProject\Foundation\Inspector\Inspector;
 use PommProject\Foundation\Tester\FoundationSessionAtoum;
 
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
@@ -28,8 +29,9 @@ class InspectSchema extends FoundationSessionAtoum
 
     public function testExecute()
     {
+        $session = $this->buildSession();
         $application = new Application();
-        $application->add($this->newTestedInstance()->setSession($this->buildSession()));
+        $application->add($this->newTestedInstance()->setSession($session));
         $command = $application->find('pomm:inspect:schema');
         $tester = new CommandTester($command);
         $tester->execute(
@@ -39,14 +41,26 @@ class InspectSchema extends FoundationSessionAtoum
                 'schema'           => 'pomm_test',
             ]
         );
+        $display = $tester->getDisplay();
 
         $this
-            ->string($tester->getDisplay())
+            ->string($display)
             ->contains("| alpha  | table")
             ->contains("| beta   | table")
             ->contains("This is the beta comment.")
-            ->contains("| dingo  | view  |")
+            ->contains("| dingo  | view              |")
         ;
+
+        $inspector = new Inspector();
+        $inspector->Initialize($session);
+        if (
+            version_compare($inspector->getVersion(), '9.3', '>=') === true
+        ) {
+            $this
+                ->string($display)
+                ->contains("| pluto  | materialized view |");
+        }
+
         $this
             ->exception(function() use ($tester, $command)
                 {
@@ -63,4 +77,3 @@ class InspectSchema extends FoundationSessionAtoum
             ;
     }
 }
-

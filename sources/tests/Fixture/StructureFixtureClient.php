@@ -11,6 +11,7 @@ namespace PommProject\Cli\Test\Fixture;
 
 use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Client\Client;
+use PommProject\Foundation\Inspector\Inspector;
 
 class StructureFixtureClient extends Client
 {
@@ -41,6 +42,15 @@ class StructureFixtureClient extends Client
             'commit',
             ];
         $this->executeSql(join(';', $sql));
+
+        $inspector = new Inspector();
+        $inspector->Initialize($session);
+        if (
+            version_compare($inspector->getVersion(), '9.3', '>=') === true
+        ) {
+            $sql = 'create materialized view pomm_test.pluto as select * from pomm_test.charly;';
+            $this->executeSql($sql);
+        }
     }
 
     public function shutdown()
