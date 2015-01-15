@@ -86,7 +86,8 @@ class GenerateForRelation extends RelationAwareCommand
                 $this->schema,
                 $this->relation,
                 $filename,
-                $this->getNamespace($input->getArgument('config-name'))
+                $this->getNamespace($input->getArgument('config-name')),
+                $this->flexible_container
             ))->generate($input, $output);
         } elseif ($output->isVerbose()) {
             $this->writelnSkipFile($output, $filename, 'entity');
