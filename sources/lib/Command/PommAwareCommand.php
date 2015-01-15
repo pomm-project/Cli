@@ -25,7 +25,7 @@ use PommProject\Cli\Exception\CliException;
  *
  * Base command for all Pomm Cli commands.
  *
- * @package Pomm
+ * @package Cli
  * @copyright 2014 Grégoire HUBERT
  * @author Grégoire HUBERT
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
@@ -36,10 +36,8 @@ use PommProject\Cli\Exception\CliException;
 class PommAwareCommand extends Command
 {
     private $pomm;
-    private $session;
 
     protected $config_file;
-    protected $config_name;
 
     /**
      * execute
@@ -51,7 +49,6 @@ class PommAwareCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->config_file = $input->getOption('bootstrap-file');
-        $this->config_name = $input->getArgument('config-name');
     }
 
     /**
@@ -65,14 +62,6 @@ class PommAwareCommand extends Command
      */
     protected function configureRequiredArguments()
     {
-        $this
-            ->addArgument(
-                'config-name',
-                InputArgument::REQUIRED,
-                'Database configuration name to open a session.'
-            )
-            ;
-
         return $this;
     }
 
@@ -114,14 +103,14 @@ class PommAwareCommand extends Command
     }
 
     /**
-     * loadSession
+     * getPomm
      *
-     * Load session bootstrap file.
+     * Return the Pomm instance.
      *
      * @access protected
-     * @return Session
+     * @return Pomm
      */
-    protected function loadSession()
+    protected function getPomm()
     {
         if ($this->pomm === null) {
             if (!file_exists($this->config_file)) {
@@ -135,40 +124,7 @@ class PommAwareCommand extends Command
             }
         }
 
-        return $this->pomm->getSession($this->config_name);
-    }
-
-    /**
-     * getSession
-     *
-     * Return a session.
-     *
-     * @access protected
-     * @return Session
-     */
-    protected function getSession()
-    {
-        if ($this->session === null) {
-            $this->session = $this->loadSession()->registerClientPooler(new InspectorPooler());
-        }
-
-        return $this->session;
-    }
-
-    /**
-     * setSession
-     *
-     * When testing, it is useful to provide directly the session to be used.
-     *
-     * @access public
-     * @param  Session          $session
-     * @return PommAwareCommand
-     */
-    public function setSession(Session $session)
-    {
-        $this->session = $session;
-
-        return $this;
+        return $this->pomm;
     }
 
     /**

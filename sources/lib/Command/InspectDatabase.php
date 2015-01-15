@@ -14,8 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 
 use PommProject\Foundation\ResultIterator;
-
-use PommProject\Cli\Command\PommAwareCommand;
+use PommProject\Cli\Command\SessionAwareCommand;
 
 /**
  * InspectDatabase
@@ -28,7 +27,7 @@ use PommProject\Cli\Command\PommAwareCommand;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see PommAwareCommand
  */
-class InspectDatabase extends PommAwareCommand
+class InspectDatabase extends SessionAwareCommand
 {
     /**
      * configure

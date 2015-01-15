@@ -14,6 +14,7 @@ use Symfony\Component\Console\Application;
 use PommProject\Cli\Command\InspectSchema;
 use PommProject\Cli\Command\InspectRelation;
 use PommProject\Cli\Command\InspectDatabase;
+use PommProject\Cli\Command\InspectConfig;
 use PommProject\Cli\Command\GenerateRelationStructure;
 use PommProject\Cli\Command\GenerateRelationModel;
 use PommProject\Cli\Command\GenerateEntity;
@@ -39,6 +40,7 @@ if (
 }
 
 $application = new Application('pomm', 'NextGen early-dev');
+$application->add(new InspectConfig);
 $application->add(new InspectDatabase);
 $application->add(new InspectSchema);
 $application->add(new InspectRelation);

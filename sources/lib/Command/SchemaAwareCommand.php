@@ -15,6 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use PommProject\Cli\Command\SessionAwareCommand;
 use PommProject\Cli\Exception\CliException;
 use PommProject\Foundation\Inflector;
 
@@ -30,7 +31,7 @@ use PommProject\Foundation\Inflector;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see PommAwareCommand
  */
-abstract class SchemaAwareCommand extends PommAwareCommand
+abstract class SchemaAwareCommand extends SessionAwareCommand
 {
     protected $schema;
     protected $prefix_dir;
