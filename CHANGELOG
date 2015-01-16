@@ -1,0 +1,9 @@
+== VERSION 2.0.0-beta.2
+
+ * Added inspect:config command.
+ * Added option to overwrite default FlexibleContainer with a custom container.
+ * Added PommAwareCommand::setPomm().
+ * Add pomm: prefix to command names
+ * More flexible version of symfony/console required
+
+== VERSION 2.0.0-beta.1
