@@ -58,7 +58,7 @@ class GenerateEntity extends FoundationSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/AlphaEntity.php'))
             ->exception(function() use ($tester, $command, $command_args) { $tester->execute($command_args); })
-            ->isInstanceOf('\PommProject\Cli\Exception\CliException')
+            ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;
         $tester->execute(array_merge($command_args, ['--force' => null ]));

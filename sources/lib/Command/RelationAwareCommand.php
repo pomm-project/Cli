@@ -58,4 +58,46 @@ abstract class RelationAwareCommand extends SchemaAwareCommand
         parent::execute($input, $output);
         $this->relation = $input->getArgument('relation');
     }
+
+    /**
+     * updateOutput
+     *
+     * Add ModelManager output lines to the CLI output.
+     *
+     * @access protected
+     * @param  OutputInterface  $output
+     * @param  array            $lines
+     * @return RelationAwareCommand
+     */
+    protected function updateOutput(OutputInterface $output, array $lines = [])
+    {
+        foreach ($lines as $line) {
+            $status = $line["status"] == "ok" ? "<fg=green>✓</fg=green>" : "<fg=red>✗</fg=red>";
+
+            switch ($line['operation']) {
+            case "creating":
+                $operation = sprintf("<fg=green>%s</fg=green>", ucwords($line['operation']));
+                break;
+            case "overwritting":
+                $operation = sprintf("<fg=cyan>%s</fg=cyan>", ucwords($line['operation']));
+                break;
+            case "deleting":
+                $operation = sprintf("<fg=red>%s</fg=red>", ucwords($line['operation']));
+                break;
+            default:
+                $operation = ucwords($line['operation']);
+            }
+
+            $output->writeln(
+                sprintf(
+                    " %s  %s file <fg=yellow>'%s'</fg=yellow>.",
+                    $status,
+                    $operation,
+                    $this->filename
+                )
+            );
+        }
+
+        return $this;
+    }
 }

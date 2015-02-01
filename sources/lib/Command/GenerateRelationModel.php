@@ -14,7 +14,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Generator\ModelGenerator;
+use PommProject\ModelManager\Generator\ModelGenerator;
+use PommProject\Foundation\ParameterHolder;
 
 /**
  * GenerateRelationModel
@@ -64,12 +65,15 @@ class GenerateRelationModel extends RelationAwareCommand
         $this->filename  = $this->getFileName($input->getArgument('config-name'), 'Model');
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
-        (new ModelGenerator(
-            $this->getSession(),
-            $this->schema,
-            $this->relation,
-            $this->filename,
-            $this->namespace
-        ))->generate($input, $output);
+        $this->updateOutput(
+            $output,
+            (new ModelGenerator(
+                $this->getSession(),
+                $this->schema,
+                $this->relation,
+                $this->filename,
+                $this->namespace
+            ))->generate(new ParameterHolder(['force' => $input->getOption('force')]))
+        );
     }
 }

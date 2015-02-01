@@ -14,7 +14,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Generator\EntityGenerator;
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\EntityGenerator;
 
 class GenerateEntity extends RelationAwareCommand
 {
@@ -66,13 +67,16 @@ HELP
         $this->filename = $this->getFileName($input->getArgument('config-name'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
-        (new EntityGenerator(
-            $this->getSession(),
-            $this->schema,
-            $this->relation,
-            $this->filename,
-            $this->namespace,
-            $this->flexible_container
-        ))->generate($input, $output);
+        $this->updateOutput(
+            $output,
+            (new EntityGenerator(
+                $this->getSession(),
+                $this->schema,
+                $this->relation,
+                $this->filename,
+                $this->namespace,
+                $this->flexible_container
+            ))->generate(new ParameterHolder(['force' => $input->getOption('force')]))
+        );
     }
 }

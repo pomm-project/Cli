@@ -11,8 +11,6 @@ namespace PommProject\Cli\Generator;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\TableStyle;
-use Symfony\Component\Console\Helper\Table;
 
 use PommProject\Foundation\Session\Session;
 
@@ -214,29 +212,5 @@ abstract class BaseGenerator
         }
 
         return $this;
-    }
-
-    /**
-     * createTableHelper
-     *
-     * Create table with a unique style for all commands.
-     *
-     * @access protected
-     * @param  OutputInterface $output
-     * @return Table
-     */
-    protected function createTableHelper(OutputInterface $output)
-    {
-        $table = new Table($output);
-        $style = new TableStyle();
-
-        $style
-            ->setHorizontalBorderChar('─')
-            ->setVerticalBorderChar('│')
-            ->setCrossingChar('┼')
-            ;
-        $table->setStyle($style);
-
-        return $table;
     }
 }

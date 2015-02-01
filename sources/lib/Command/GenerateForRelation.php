@@ -14,9 +14,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Generator\EntityGenerator;
-use PommProject\Cli\Generator\ModelGenerator;
-use PommProject\Cli\Generator\StructureGenerator;
+use PommProject\ModelManager\Generator\EntityGenerator;
+use PommProject\ModelManager\Generator\ModelGenerator;
+use PommProject\ModelManager\Generator\StructureGenerator;
+use PommProject\Foundation\ParameterHolder;
 
 /**
  * GenerateForRelation
@@ -58,37 +59,46 @@ class GenerateForRelation extends RelationAwareCommand
     {
         parent::execute($input, $output);
 
-        (new StructureGenerator(
-            $this->getSession(),
-            $this->schema,
-            $this->relation,
-            $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure'),
-            $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
-        ))->generate($input, $output);
-
-        $filename = $this->getFileName($input->getArgument('config-name'), 'Model');
-        if (!file_exists($filename) || $input->getOption('force')) {
-            (new ModelGenerator(
+        $this->updateOutput(
+            $output,
+            (new StructureGenerator(
                 $this->getSession(),
                 $this->schema,
                 $this->relation,
-                $filename,
-                $this->getNamespace($input->getArgument('config-name'))
-            ))->generate($input, $output);
+                $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure'),
+                $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
+            ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
+        );
+
+        $filename = $this->getFileName($input->getArgument('config-name'), 'Model');
+        if (!file_exists($filename) || $input->getOption('force')) {
+            $this->updateOutput(
+                $output,
+                (new ModelGenerator(
+                    $this->getSession(),
+                    $this->schema,
+                    $this->relation,
+                    $filename,
+                    $this->getNamespace($input->getArgument('config-name'))
+                ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
+            );
         } elseif ($output->isVerbose()) {
             $this->writelnSkipFile($output, $filename, 'model');
         }
 
         $filename = $this->getFileName($input->getArgument('config-name'));
         if (!file_exists($filename) || $input->getOption('force')) {
-            (new EntityGenerator(
-                $this->getSession(),
-                $this->schema,
-                $this->relation,
-                $filename,
-                $this->getNamespace($input->getArgument('config-name')),
-                $this->flexible_container
-            ))->generate($input, $output);
+            $this->updateOutput(
+                $output,
+                (new EntityGenerator(
+                    $this->getSession(),
+                    $this->schema,
+                    $this->relation,
+                    $filename,
+                    $this->getNamespace($input->getArgument('config-name')),
+                    $this->flexible_container
+                ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
+            );
         } elseif ($output->isVerbose()) {
             $this->writelnSkipFile($output, $filename, 'entity');
         }

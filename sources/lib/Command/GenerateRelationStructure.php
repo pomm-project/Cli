@@ -13,7 +13,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Generator\StructureGenerator;
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\StructureGenerator;
 
 /**
  * GenerateRelationStructure
@@ -57,12 +58,15 @@ HELP
         $this->filename = $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure');
         $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
 
-        (new StructureGenerator(
-            $this->getSession(),
-            $this->schema,
-            $this->relation,
-            $this->filename,
-            $this->namespace
-        ))->generate($input, $output);
+        $this->updateOutput(
+            $output,
+            (new StructureGenerator(
+                $this->getSession(),
+                $this->schema,
+                $this->relation,
+                $this->filename,
+                $this->namespace
+            ))->generate(new ParameterHolder())
+        );
     }
 }
