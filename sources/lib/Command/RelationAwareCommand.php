@@ -93,7 +93,7 @@ abstract class RelationAwareCommand extends SchemaAwareCommand
                     " %s  %s file <fg=yellow>'%s'</fg=yellow>.",
                     $status,
                     $operation,
-                    $this->filename
+                    $line['file']
                 )
             );
         }
