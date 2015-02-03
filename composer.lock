@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "e607fa4f1a45aea41725bfe82af2872a411f9e75"
+                "reference": "f5e436c4cc245e5262e88fb04de2fd32333fb0b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/e607fa4f1a45aea41725bfe82af2872a411f9e75",
-                "reference": "e607fa4f1a45aea41725bfe82af2872a411f9e75",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/f5e436c4cc245e5262e88fb04de2fd32333fb0b5",
+                "reference": "f5e436c4cc245e5262e88fb04de2fd32333fb0b5",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-01-16 09:13:15"
+            "time": "2015-02-02 21:19:55"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "e8e1d7bc63e5fe15c38d5a8027ba949f45905afa"
+                "reference": "1ceac05adfba9c7fa510bf7bbad617a807971c07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/e8e1d7bc63e5fe15c38d5a8027ba949f45905afa",
-                "reference": "e8e1d7bc63e5fe15c38d5a8027ba949f45905afa",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/1ceac05adfba9c7fa510bf7bbad617a807971c07",
+                "reference": "1ceac05adfba9c7fa510bf7bbad617a807971c07",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-01-16 09:21:22"
+            "time": "2015-02-03 09:19:07"
         },
         {
             "name": "psr/log",
@@ -168,12 +168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "0a5b1f308284c5d1686e03af36ba583d2a5db632"
+                "reference": "9f041fb5735b0d25d117e77ab8597a8376c74fbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/0a5b1f308284c5d1686e03af36ba583d2a5db632",
-                "reference": "0a5b1f308284c5d1686e03af36ba583d2a5db632",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/9f041fb5735b0d25d117e77ab8597a8376c74fbd",
+                "reference": "9f041fb5735b0d25d117e77ab8597a8376c74fbd",
                 "shasum": ""
             },
             "require": {
@@ -216,7 +216,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-13 07:22:42"
+            "time": "2015-01-25 05:59:26"
         }
     ],
     "packages-dev": [
@@ -226,12 +226,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "6fe185c6fe4884ff123eaf6c147912dfe8835218"
+                "reference": "84ca944fd09e401b4a7b153566ec12ef28d7404f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/6fe185c6fe4884ff123eaf6c147912dfe8835218",
-                "reference": "6fe185c6fe4884ff123eaf6c147912dfe8835218",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/84ca944fd09e401b4a7b153566ec12ef28d7404f",
+                "reference": "84ca944fd09e401b4a7b153566ec12ef28d7404f",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-01-12 13:54:27"
+            "time": "2015-02-02 08:29:18"
         }
     ],
     "aliases": [],
