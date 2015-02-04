@@ -63,7 +63,7 @@ class InspectConfig extends PommAwareCommand
             $output->writeln("There are no session builders in current Pomm instance.");
             break;
         case 1:
-            $output->writeln(sprintf("There is <info>1</info> builder in current Pomm instance:"));
+            $output->writeln("There is <info>1</info> builder in current Pomm instance:");
             $this->showResultList($output, $results);
             break;
         default:
