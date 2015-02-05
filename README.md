@@ -49,7 +49,7 @@ Relation pylone.archived_document
 
 The generate commands create PHP class for use of database relations with Pomm's ModelManager package.
 
- * pomm:generate:structure    - Generate a RowStructure class accorsing to the relation structure.
+ * pomm:generate:structure    - Generate a RowStructure class according to the relation structure.
  * pomm:generate:model        - Generate a new configured Model class.
  * pomm:generate:entity       - Generate an empty FlexibleEntity class.
  * pomm:generate:relation-all - Generate the 3 files above for the given relation.
