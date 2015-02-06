@@ -62,7 +62,7 @@ class GenerateRelationModel extends RelationAwareCommand
     {
         parent::execute($input, $output);
 
-        $this->filename  = $this->getFileName($input->getArgument('config-name'), 'Model');
+        $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model');
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(
@@ -71,7 +71,7 @@ class GenerateRelationModel extends RelationAwareCommand
                 $this->getSession(),
                 $this->schema,
                 $this->relation,
-                $this->filename,
+                $this->pathFile,
                 $this->namespace
             ))->generate(new ParameterHolder(['force' => $input->getOption('force')]))
         );

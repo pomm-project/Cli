@@ -65,42 +65,42 @@ class GenerateForRelation extends RelationAwareCommand
                 $this->getSession(),
                 $this->schema,
                 $this->relation,
-                $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure'),
+                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure'),
                 $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
             ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
         );
 
-        $filename = $this->getFileName($input->getArgument('config-name'), 'Model');
-        if (!file_exists($filename) || $input->getOption('force')) {
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model');
+        if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,
                 (new ModelGenerator(
                     $this->getSession(),
                     $this->schema,
                     $this->relation,
-                    $filename,
+                    $pathFile,
                     $this->getNamespace($input->getArgument('config-name'))
                 ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
             );
         } elseif ($output->isVerbose()) {
-            $this->writelnSkipFile($output, $filename, 'model');
+            $this->writelnSkipFile($output, $pathFile, 'model');
         }
 
-        $filename = $this->getFileName($input->getArgument('config-name'));
-        if (!file_exists($filename) || $input->getOption('force')) {
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation);
+        if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,
                 (new EntityGenerator(
                     $this->getSession(),
                     $this->schema,
                     $this->relation,
-                    $filename,
+                    $pathFile,
                     $this->getNamespace($input->getArgument('config-name')),
                     $this->flexible_container
                 ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
             );
         } elseif ($output->isVerbose()) {
-            $this->writelnSkipFile($output, $filename, 'entity');
+            $this->writelnSkipFile($output, $pathFile, 'entity');
         }
     }
 
@@ -110,11 +110,11 @@ class GenerateForRelation extends RelationAwareCommand
      * Write an informative message
      *
      * @access private
-     * @param  string          $filename
+     * @param  string          $pathFile
      * @param  OutputInterface $output
      * @return void
      */
-    private function writelnSkipFile(OutputInterface $output, $filename, $file_type = null)
+    private function writelnSkipFile(OutputInterface $output, $pathFile, $file_type = null)
     {
         $file_type = $file_type === null ? '' : sprintf("%s ", $file_type);
 
@@ -122,7 +122,7 @@ class GenerateForRelation extends RelationAwareCommand
             sprintf(
                 " <fg=red>✗</fg=red>  <fg=blue>Preserving</fg=blue> existing %sfile <fg=yellow>'%s'</fg=yellow>.",
                 $file_type,
-                $filename
+                $pathFile
             )
         );
     }

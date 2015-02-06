@@ -64,7 +64,7 @@ HELP
     {
         parent::execute($input, $output);
 
-        $this->filename = $this->getFileName($input->getArgument('config-name'));
+        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation);
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(
@@ -73,7 +73,7 @@ HELP
                 $this->getSession(),
                 $this->schema,
                 $this->relation,
-                $this->filename,
+                $this->pathFile,
                 $this->namespace,
                 $this->flexible_container
             ))->generate(new ParameterHolder(['force' => $input->getOption('force')]))
