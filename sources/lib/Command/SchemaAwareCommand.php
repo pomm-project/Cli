@@ -36,7 +36,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
     protected $schema;
     protected $prefix_dir;
     protected $prefix_ns;
-    protected $filename;
+    protected $pathFile;
     protected $namespace;
     protected $flexible_container;
 
@@ -113,16 +113,18 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
     }
 
     /**
-     * getFileName
+     * getPathFile
      *
-     * Create filename from parameters and namespace.
+     * Create path file from parameters and namespace.
      *
      * @access protected
      * @param  string $config_name
      * @param  string $file_suffix
+     * @param  string $extra_dir
+     * @param  string $file_name
      * @return string
      */
-    protected function getFileName($config_name, $file_suffix = '', $extra_dir = '')
+    protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '')
     {
         $elements =
             [
@@ -131,7 +133,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
                 Inflector::studlyCaps($config_name),
                 Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
                 $extra_dir,
-                sprintf("%s%s.php", Inflector::studlyCaps($this->relation), $file_suffix)
+                sprintf("%s%s.php", Inflector::studlyCaps($file_name), $file_suffix)
             ];
 
         return join('/', array_filter($elements, function ($val) { return $val != null; }));

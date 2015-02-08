@@ -55,7 +55,7 @@ HELP
     {
         parent::execute($input, $output);
 
-        $this->filename = $this->getFileName($input->getArgument('config-name'), null, 'AutoStructure');
+        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure');
         $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
 
         $this->updateOutput(
@@ -64,7 +64,7 @@ HELP
                 $this->getSession(),
                 $this->schema,
                 $this->relation,
-                $this->filename,
+                $this->pathFile,
                 $this->namespace
             ))->generate(new ParameterHolder())
         );
