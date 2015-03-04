@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "f5e436c4cc245e5262e88fb04de2fd32333fb0b5"
+                "reference": "9eeb542a7119107df9b06c9f872b0ac90a30c33b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/f5e436c4cc245e5262e88fb04de2fd32333fb0b5",
-                "reference": "f5e436c4cc245e5262e88fb04de2fd32333fb0b5",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/9eeb542a7119107df9b06c9f872b0ac90a30c33b",
+                "reference": "9eeb542a7119107df9b06c9f872b0ac90a30c33b",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-02-02 21:19:55"
+            "time": "2015-03-02 14:50:27"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "1ceac05adfba9c7fa510bf7bbad617a807971c07"
+                "reference": "32872bba53c811229e6cd16fe7b33d24a78dd4f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/1ceac05adfba9c7fa510bf7bbad617a807971c07",
-                "reference": "1ceac05adfba9c7fa510bf7bbad617a807971c07",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/32872bba53c811229e6cd16fe7b33d24a78dd4f1",
+                "reference": "32872bba53c811229e6cd16fe7b33d24a78dd4f1",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-02-03 09:19:07"
+            "time": "2015-03-04 20:00:11"
         },
         {
             "name": "psr/log",
@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "a78d6504ff5d4367497785ab2ade91db3a9fbe11"
+                "reference": "1af1529b49a6e065ae6802e70192aba35d79b7d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/a78d6504ff5d4367497785ab2ade91db3a9fbe11",
-                "reference": "a78d6504ff5d4367497785ab2ade91db3a9fbe11",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/1af1529b49a6e065ae6802e70192aba35d79b7d8",
+                "reference": "1af1529b49a6e065ae6802e70192aba35d79b7d8",
                 "shasum": ""
             },
             "type": "library",
@@ -159,7 +159,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2014-01-18 15:33:09"
+            "time": "2015-02-05 09:32:11"
         },
         {
             "name": "symfony/console",
@@ -168,12 +168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "9f041fb5735b0d25d117e77ab8597a8376c74fbd"
+                "reference": "f9ee7f03c1af5e6cf59e2270ac3b8ed7f47e2158"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/9f041fb5735b0d25d117e77ab8597a8376c74fbd",
-                "reference": "9f041fb5735b0d25d117e77ab8597a8376c74fbd",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/f9ee7f03c1af5e6cf59e2270ac3b8ed7f47e2158",
+                "reference": "f9ee7f03c1af5e6cf59e2270ac3b8ed7f47e2158",
                 "shasum": ""
             },
             "require": {
@@ -182,6 +182,7 @@
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/event-dispatcher": "~2.1|~3.0.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0.0",
                 "symfony/process": "~2.1|~3.0.0"
             },
             "suggest": {
@@ -216,7 +217,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-25 05:59:26"
+            "time": "2015-02-24 12:09:34"
         }
     ],
     "packages-dev": [
@@ -226,12 +227,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "84ca944fd09e401b4a7b153566ec12ef28d7404f"
+                "reference": "77778c968871b605f73289c72adb907fa5e601f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/84ca944fd09e401b4a7b153566ec12ef28d7404f",
-                "reference": "84ca944fd09e401b4a7b153566ec12ef28d7404f",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/77778c968871b605f73289c72adb907fa5e601f0",
+                "reference": "77778c968871b605f73289c72adb907fa5e601f0",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +255,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -297,7 +298,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-02-02 08:29:18"
+            "time": "2015-02-27 13:00:25"
         }
     ],
     "aliases": [],
