@@ -11,6 +11,7 @@ namespace PommProject\Cli\Test\Unit\Command;
 
 use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Query\QueryPooler;
+use PommProject\Foundation\Inspector\Inspector;
 use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
 use PommProject\Foundation\Tester\FoundationSessionAtoum;
@@ -37,8 +38,9 @@ class GenerateRelationModel extends FoundationSessionAtoum
 
     public function testExecute()
     {
+        $session = $this->buildSession();
         $application = new Application();
-        $application->add($this->newTestedInstance()->setSession($this->buildSession()));
+        $application->add($this->newTestedInstance()->setSession($session));
         $command = $application->find('pomm:generate:model');
         $command_args =
             [
@@ -77,10 +79,9 @@ class GenerateRelationModel extends FoundationSessionAtoum
             ;
 
         $inspector = new Inspector();
-        $inspector->Initialize($session);
-        if (
-            version_compare($inspector->getVersion(), '9.3', '>=') === true
-        ) {
+        $inspector->initialize($session);
+
+        if ( version_compare($inspector->getVersion(), '9.3', '>=') === true) {
             $tester->execute(array_merge($command_args, ['relation' => 'pluto']));
             $this
                 ->string($tester->getDisplay())
