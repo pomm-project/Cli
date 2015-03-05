@@ -45,9 +45,8 @@ class StructureFixtureClient extends Client
 
         $inspector = new Inspector();
         $inspector->Initialize($session);
-        if (
-            version_compare($inspector->getVersion(), '9.3', '>=') === true
-        ) {
+
+        if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
             $sql = 'create materialized view pomm_test.pluto as select * from pomm_test.charly;';
             $this->executeSql($sql);
         }

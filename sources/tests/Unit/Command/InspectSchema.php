@@ -48,14 +48,13 @@ class InspectSchema extends FoundationSessionAtoum
             ->contains("| alpha  | table")
             ->contains("| beta   | table")
             ->contains("This is the beta comment.")
-            ->contains("| dingo  | view              |")
+            ->contains("| dingo  | view")
         ;
 
         $inspector = new Inspector();
         $inspector->Initialize($session);
-        if (
-            version_compare($inspector->getVersion(), '9.3', '>=') === true
-        ) {
+
+        if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
             $this
                 ->string($display)
                 ->contains("| pluto  | materialized view |");

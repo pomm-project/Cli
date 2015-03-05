@@ -81,7 +81,7 @@ class GenerateRelationModel extends FoundationSessionAtoum
         $inspector = new Inspector();
         $inspector->initialize($session);
 
-        if ( version_compare($inspector->getVersion(), '9.3', '>=') === true) {
+        if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
             $tester->execute(array_merge($command_args, ['relation' => 'pluto']));
             $this
                 ->string($tester->getDisplay())
