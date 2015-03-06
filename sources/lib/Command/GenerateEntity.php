@@ -50,6 +50,12 @@ HELP
                 InputOption::VALUE_NONE,
                 'Force overwriting an existing file.'
             )
+            ->addoption(
+                'psr4',
+                null,
+                InputOption::VALUE_NONE,
+                'Use PSR4 structure.'
+            )
         ;
 
         return $this;
@@ -64,7 +70,7 @@ HELP
     {
         parent::execute($input, $output);
 
-        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation);
+        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(

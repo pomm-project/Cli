@@ -48,6 +48,12 @@ class GenerateForSchema extends SchemaAwareCommand
                 InputOption::VALUE_NONE,
                 'Force overwriting existing files.'
             )
+            ->addoption(
+                'psr4',
+                null,
+                InputOption::VALUE_NONE,
+                'Use PSR4 structure.'
+            )
         ;
     }
 
@@ -77,7 +83,8 @@ class GenerateForSchema extends SchemaAwareCommand
                 '--bootstrap-file' => $input->getOption('bootstrap-file'),
                 '--prefix-dir'     => $input->getOption('prefix-dir'),
                 '--prefix-ns'      => $input->getOption('prefix-ns'),
-                '--flexible-container' => $input->getOption('flexible-container')
+                '--flexible-container' => $input->getOption('flexible-container'),
+                '--psr4'           => $input->getOption('psr4')
             ];
             $command->run(new ArrayInput($arguments), $output);
         }

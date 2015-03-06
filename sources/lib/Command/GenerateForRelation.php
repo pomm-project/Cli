@@ -47,6 +47,12 @@ class GenerateForRelation extends RelationAwareCommand
                 InputOption::VALUE_NONE,
                 'Force overwriting existing files.'
             )
+            ->addoption(
+                'psr4',
+                null,
+                InputOption::VALUE_NONE,
+                'Use PSR4 structure.'
+            )
         ;
     }
 
@@ -65,12 +71,12 @@ class GenerateForRelation extends RelationAwareCommand
                 $this->getSession(),
                 $this->schema,
                 $this->relation,
-                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure'),
+                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4')),
                 $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
             ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
         );
 
-        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model');
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
         if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,
@@ -86,7 +92,7 @@ class GenerateForRelation extends RelationAwareCommand
             $this->writelnSkipFile($output, $pathFile, 'model');
         }
 
-        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation);
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'));
         if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,

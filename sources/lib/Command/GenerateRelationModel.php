@@ -50,6 +50,12 @@ class GenerateRelationModel extends RelationAwareCommand
                 InputOption::VALUE_NONE,
                 'Force overwriting an existing file.'
             )
+            ->addoption(
+                'psr4',
+                null,
+                InputOption::VALUE_NONE,
+                'Use PSR4 structure.'
+            )
         ;
     }
 
@@ -62,7 +68,7 @@ class GenerateRelationModel extends RelationAwareCommand
     {
         parent::execute($input, $output);
 
-        $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model');
+        $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(
