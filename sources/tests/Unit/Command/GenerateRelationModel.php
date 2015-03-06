@@ -90,5 +90,13 @@ class GenerateRelationModel extends FoundationSessionAtoum
                 ->isEqualTo(file_get_contents('sources/tests/Fixture/PlutoModel.php'))
                 ;
         }
+        $command_args['--prefix-dir'] = "tmp/Model";
+        $tester->execute(array_merge($command_args, ['--psr4' => null,'--force' => null ]));
+        $this
+            ->string($tester->getDisplay())
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.\n")
+            ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/BetaModel.php'))
+            ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel.php'))
+        ;
     }
 }

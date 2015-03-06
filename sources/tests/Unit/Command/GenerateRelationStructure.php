@@ -65,6 +65,15 @@ class GenerateRelationStructure extends FoundationSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;
+        $command_args['--prefix-dir'] = "tmp/Model";
+        $tester->execute(array_merge($command_args, ['--psr4' => null ]));
+        $this
+            ->string($tester->getDisplay())
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.\n")
+            ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
+            ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
+            ;
+
     }
 }
 

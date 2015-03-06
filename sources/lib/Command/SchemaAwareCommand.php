@@ -122,14 +122,21 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      * @param  string $file_suffix
      * @param  string $extra_dir
      * @param  string $file_name
+     * @param  bool   $format_psr4
      * @return string
      */
-    protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '')
+    protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '', $format_psr4 = null)
     {
+        $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
+
+        $prefix_ns = "";
+        if(!$format_psr4)
+            $prefix_ns = str_replace('\\', '/', trim($this->prefix_ns, '\\'));
+
         $elements =
             [
                 ltrim($this->prefix_dir, '/'),
-                str_replace('\\', '/', trim($this->prefix_ns, '\\')),
+                $prefix_ns,
                 Inflector::studlyCaps($config_name),
                 Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
                 $extra_dir,
