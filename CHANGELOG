@@ -1,3 +1,11 @@
+== VERSION 2.0.0-rc.1
+
+77f752f add option psr4
+e391453 Inspect materialized views
+99d423f Rename getFileName to getPathFile
+cf7b37b Bug on output for packaged commands.
+56acc22 Working with MM generators.
+
 == VERSION 2.0.0-beta.2
 
  * Added inspect:config command.
