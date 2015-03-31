@@ -57,7 +57,6 @@ class InspectConfig extends PommAwareCommand
         parent::execute($input, $output);
 
         $results = array_keys($this->getPomm()->getSessionBuilders());
-
         switch(count($results)) {
         case 0:
             $output->writeln("There are no session builders in current Pomm instance.");
@@ -85,7 +84,15 @@ class InspectConfig extends PommAwareCommand
     private function showResultList(OutputInterface $output, array $results)
     {
         foreach ($results as $name) {
-            $output->writeln(sprintf(" → '%s'", $name));
+            $output->writeln(
+                sprintf(
+                    " → '%s'%s",
+                    $name,
+                    $this->getPomm()->isDefaultSession($name)
+                        ? '(default)'
+                        : ''
+                )
+            );
         }
 
         return $this;
