@@ -110,7 +110,7 @@ abstract class BaseGenerator
      * Return the session is set. Throw an exception otherwise.
      *
      * @access protected
-     * @throw  GeneratorException
+     * @throws GeneratorException
      * @return Session
      */
     protected function getSession()
@@ -128,7 +128,7 @@ abstract class BaseGenerator
      * Shortcut to session's inspector client.
      *
      * @access protected
-     * @return Inspector
+     * @return \PommProject\Foundation\Inspector\Inspector
      */
     protected function getInspector()
     {
@@ -163,7 +163,7 @@ abstract class BaseGenerator
      * Merge templates with given values.
      *
      * @access protected
-     * @param  array  $variables
+     * @param  array     $variables
      * @return string
      */
     protected function mergeTemplate(array $variables)
@@ -182,12 +182,13 @@ abstract class BaseGenerator
     /**
      * saveFile
      *
-     * Write the genreated content to a file.
+     * Write the generated content to a file.
      *
      * @access protected
-     * @param  string        $filename
-     * @param  string        $content
-     * @return BaseGenerator $this
+     * @param  string             $filename
+     * @param  string             $content
+     * @throws GeneratorException
+     * @return BaseGenerator      $this
      */
     protected function saveFile($filename, $content)
     {

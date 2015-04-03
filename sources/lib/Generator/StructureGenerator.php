@@ -115,7 +115,7 @@ TEXT;
      * furthermore more convenient to get all the descriptions in the head of
      * the generated class.
      *
-     * @access protectd
+     * @access protected
      * @param  ConvertedResultIterator $field_informations
      * @return string
      */
@@ -162,7 +162,7 @@ TEXT;
      * returned, otherwise a GeneratorException is thrown.
      *
      * @access private
-     * @throw  GeneratorException
+     * @throws GeneratorException
      * @return int $oid
      */
     private function checkRelationInformation()
@@ -193,7 +193,8 @@ TEXT;
      *
      * @access protected
      * @param  int   $table_oid
-     * @return array $informations
+     * @throws GeneratorException if field information is null
+     * @return \PommProject\Foundation\ConvertedResultIterator
      */
     protected function getFieldInformation($table_oid)
     {
