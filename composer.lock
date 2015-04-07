@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "e651bc7495af9617dab5a7b1733bcd5cabdf4a6e"
+                "reference": "a4c4dc6c5a5135e94088d9c295a9adb6b868e82f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/e651bc7495af9617dab5a7b1733bcd5cabdf4a6e",
-                "reference": "e651bc7495af9617dab5a7b1733bcd5cabdf4a6e",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/a4c4dc6c5a5135e94088d9c295a9adb6b868e82f",
+                "reference": "a4c4dc6c5a5135e94088d9c295a9adb6b868e82f",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-04-01 14:06:06"
+            "time": "2015-04-07 08:03:46"
         },
         {
             "name": "pomm-project/model-manager",
@@ -158,17 +158,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.5",
+            "version": "v2.6.6",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "53f86497ccd01677e22435cfb7262599450a90d1"
+                "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/53f86497ccd01677e22435cfb7262599450a90d1",
-                "reference": "53f86497ccd01677e22435cfb7262599450a90d1",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
+                "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2015-03-13 17:37:22"
+            "time": "2015-03-30 15:54:10"
         }
     ],
     "packages-dev": [
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "77778c968871b605f73289c72adb907fa5e601f0"
+                "reference": "1471f5c85395f65f3e370b911b2da32c2e26e892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/77778c968871b605f73289c72adb907fa5e601f0",
-                "reference": "77778c968871b605f73289c72adb907fa5e601f0",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/1471f5c85395f65f3e370b911b2da32c2e26e892",
+                "reference": "1471f5c85395f65f3e370b911b2da32c2e26e892",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-02-27 13:00:25"
+            "time": "2015-04-07 09:29:21"
         }
     ],
     "aliases": [],
