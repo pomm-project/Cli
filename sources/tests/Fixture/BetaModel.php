@@ -33,6 +33,6 @@ class BetaModel extends Model
     public function __construct()
     {
         $this->structure = new BetaStructure;
-        $this->flexible_entity_class = "\Model\PommTest\PommTestSchema\Beta";
+        $this->flexible_entity_class = '\Model\PommTest\PommTestSchema\Beta';
     }
 }

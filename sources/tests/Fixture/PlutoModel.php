@@ -33,6 +33,6 @@ class PlutoModel extends Model
     public function __construct()
     {
         $this->structure = new PlutoStructure;
-        $this->flexible_entity_class = "\Model\PommTest\PommTestSchema\Pluto";
+        $this->flexible_entity_class = '\Model\PommTest\PommTestSchema\Pluto';
     }
 }

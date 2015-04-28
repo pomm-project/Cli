@@ -33,6 +33,6 @@ class DingoModel extends Model
     public function __construct()
     {
         $this->structure = new DingoStructure;
-        $this->flexible_entity_class = "\Model\PommTest\PommTestSchema\Dingo";
+        $this->flexible_entity_class = '\Model\PommTest\PommTestSchema\Dingo';
     }
 }

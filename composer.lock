@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "a4c4dc6c5a5135e94088d9c295a9adb6b868e82f"
+                "reference": "9acffd6498ddb67a7a5dd8442b0ad7026e4f3cc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/a4c4dc6c5a5135e94088d9c295a9adb6b868e82f",
-                "reference": "a4c4dc6c5a5135e94088d9c295a9adb6b868e82f",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/9acffd6498ddb67a7a5dd8442b0ad7026e4f3cc0",
+                "reference": "9acffd6498ddb67a7a5dd8442b0ad7026e4f3cc0",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-04-07 08:03:46"
+            "time": "2015-04-28 19:58:30"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "484c86f4975d3b9ba1c4f483a83ad4aaf7be0230"
+                "reference": "8400d282850e6321c68f055ff0c76b288837c445"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/484c86f4975d3b9ba1c4f483a83ad4aaf7be0230",
-                "reference": "484c86f4975d3b9ba1c4f483a83ad4aaf7be0230",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/8400d282850e6321c68f055ff0c76b288837c445",
+                "reference": "8400d282850e6321c68f055ff0c76b288837c445",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-03-20 20:31:13"
+            "time": "2015-04-28 20:16:49"
         },
         {
             "name": "psr/log",
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "fd4dd699a80471289131ac432a73f1f78ee9d67b"
+                "reference": "1495c79032edbe3ab16af99df150b59b2e194e9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/fd4dd699a80471289131ac432a73f1f78ee9d67b",
-                "reference": "fd4dd699a80471289131ac432a73f1f78ee9d67b",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/1495c79032edbe3ab16af99df150b59b2e194e9a",
+                "reference": "1495c79032edbe3ab16af99df150b59b2e194e9a",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-04-09 13:30:52"
+            "time": "2015-04-15 18:21:56"
         }
     ],
     "aliases": [],
