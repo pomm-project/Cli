@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "9acffd6498ddb67a7a5dd8442b0ad7026e4f3cc0"
+                "reference": "0017f842ac5a735fd2104dad8716d80f397f63f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/9acffd6498ddb67a7a5dd8442b0ad7026e4f3cc0",
-                "reference": "9acffd6498ddb67a7a5dd8442b0ad7026e4f3cc0",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/0017f842ac5a735fd2104dad8716d80f397f63f6",
+                "reference": "0017f842ac5a735fd2104dad8716d80f397f63f6",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-04-28 19:58:30"
+            "time": "2015-05-06 11:25:10"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "8400d282850e6321c68f055ff0c76b288837c445"
+                "reference": "f308b8a7e0ddd37191b1a15a766fbe94768c4736"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/8400d282850e6321c68f055ff0c76b288837c445",
-                "reference": "8400d282850e6321c68f055ff0c76b288837c445",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/f308b8a7e0ddd37191b1a15a766fbe94768c4736",
+                "reference": "f308b8a7e0ddd37191b1a15a766fbe94768c4736",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-04-28 20:16:49"
+            "time": "2015-05-06 11:35:17"
         },
         {
             "name": "psr/log",

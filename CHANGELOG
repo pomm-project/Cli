@@ -1,10 +1,18 @@
+== VERSION 2.0.0-rc.2
+
+ *  Adapt tests to new model generator.
+ *  Correct typo and Docs
+ *  Add default session in inspect:config command.
+ *  Updated README.
+ *  Updated VERSION for dev.
+
 == VERSION 2.0.0-rc.1
 
-77f752f add option psr4
-e391453 Inspect materialized views
-99d423f Rename getFileName to getPathFile
-cf7b37b Bug on output for packaged commands.
-56acc22 Working with MM generators.
+ *  Add option psr4
+ *  Inspect materialized views
+ *  Rename getFileName to getPathFile
+ *  Bug on output for packaged commands.
+ *  Working with MM generators.
 
 == VERSION 2.0.0-beta.2
 
