@@ -15,8 +15,6 @@ use Symfony\Component\Console\Helper\Table;
 
 use PommProject\Foundation\ResultIterator;
 
-use PommProject\Cli\Command\PommAwareCommand;
-
 /**
  * InspectSchema
  *

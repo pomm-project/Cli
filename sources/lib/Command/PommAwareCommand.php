@@ -15,8 +15,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
 use PommProject\Foundation\Pomm;
-use PommProject\Foundation\Session\Session;
-use PommProject\Foundation\Inspector\InspectorPooler;
 
 use PommProject\Cli\Exception\CliException;
 
