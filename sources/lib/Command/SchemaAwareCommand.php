@@ -175,6 +175,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      *
      * @access protected
      * @return int $oid
+     * @throws CliException
      */
     protected function fetchSchemaOid()
     {

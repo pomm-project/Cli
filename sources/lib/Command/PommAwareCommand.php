@@ -107,6 +107,7 @@ class PommAwareCommand extends Command
      *
      * @access protected
      * @return Pomm
+     * @throws CliException
      */
     protected function getPomm()
     {
