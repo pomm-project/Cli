@@ -28,7 +28,6 @@ class DingoModel extends Model
      * Model constructor
      *
      * @access public
-     * @return void
      */
     public function __construct()
     {
