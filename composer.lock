@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "e64c3eea95f1f01f5a4d0dbd2d65f7b8",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "0017f842ac5a735fd2104dad8716d80f397f63f6"
+                "reference": "78af785e399d8f1d35dedbda7d88e5810a4eebe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/0017f842ac5a735fd2104dad8716d80f397f63f6",
-                "reference": "0017f842ac5a735fd2104dad8716d80f397f63f6",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/78af785e399d8f1d35dedbda7d88e5810a4eebe8",
+                "reference": "78af785e399d8f1d35dedbda7d88e5810a4eebe8",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-05-06 11:25:10"
+            "time": "2015-05-27 07:33:05"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "f308b8a7e0ddd37191b1a15a766fbe94768c4736"
+                "reference": "883369429a98f6a31aa87f755b5c7f90abc5b256"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/f308b8a7e0ddd37191b1a15a766fbe94768c4736",
-                "reference": "f308b8a7e0ddd37191b1a15a766fbe94768c4736",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/883369429a98f6a31aa87f755b5c7f90abc5b256",
+                "reference": "883369429a98f6a31aa87f755b5c7f90abc5b256",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-05-06 11:35:17"
+            "time": "2015-05-27 13:00:46"
         },
         {
             "name": "psr/log",
@@ -158,17 +158,17 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.6",
+            "version": "v2.6.8",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667"
+                "reference": "2343f6d8026306bd330e0c987e4c102483c213e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
-                "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/2343f6d8026306bd330e0c987e4c102483c213e7",
+                "reference": "2343f6d8026306bd330e0c987e4c102483c213e7",
                 "shasum": ""
             },
             "require": {
@@ -202,17 +202,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-22 14:53:08"
         }
     ],
     "packages-dev": [
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "1495c79032edbe3ab16af99df150b59b2e194e9a"
+                "reference": "9f17fa0a729294f4fcbb1a085f99ae612dc36cb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/1495c79032edbe3ab16af99df150b59b2e194e9a",
-                "reference": "1495c79032edbe3ab16af99df150b59b2e194e9a",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/9f17fa0a729294f4fcbb1a085f99ae612dc36cb5",
+                "reference": "9f17fa0a729294f4fcbb1a085f99ae612dc36cb5",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-04-15 18:21:56"
+            "time": "2015-05-08 21:54:35"
         }
     ],
     "aliases": [],
