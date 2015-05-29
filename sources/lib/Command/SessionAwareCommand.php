@@ -14,12 +14,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
-use PommProject\Foundation\Pomm;
 use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Inspector\InspectorPooler;
-
-use PommProject\Cli\Exception\CliException;
-use PommProject\Cli\Command\PommAwareCommand;
 
 /**
  * SessionAwareCommand

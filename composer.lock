@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "883369429a98f6a31aa87f755b5c7f90abc5b256"
+                "reference": "2c29dca0a8352d9ff25c21371081fefb56dd9e94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/883369429a98f6a31aa87f755b5c7f90abc5b256",
-                "reference": "883369429a98f6a31aa87f755b5c7f90abc5b256",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/2c29dca0a8352d9ff25c21371081fefb56dd9e94",
+                "reference": "2c29dca0a8352d9ff25c21371081fefb56dd9e94",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-05-27 13:00:46"
+            "time": "2015-05-29 08:28:47"
         },
         {
             "name": "psr/log",

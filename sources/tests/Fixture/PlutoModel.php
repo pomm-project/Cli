@@ -28,7 +28,6 @@ class PlutoModel extends Model
      * Model constructor
      *
      * @access public
-     * @return void
      */
     public function __construct()
     {
