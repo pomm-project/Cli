@@ -13,7 +13,7 @@ use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Query\QueryPooler;
 use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
-use PommProject\Foundation\Tester\FoundationSessionAtoum;
+use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
 
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
@@ -21,7 +21,7 @@ use PommProject\Cli\Test\Fixture\StructureFixtureClient;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
 
-class InspectRelation extends FoundationSessionAtoum
+class InspectRelation extends ModelSessionAtoum
 {
     protected function initializeSession(Session $session)
     {

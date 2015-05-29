@@ -14,15 +14,15 @@ use PommProject\Foundation\Query\QueryPooler;
 use PommProject\Foundation\Inspector\Inspector;
 use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
-use PommProject\Foundation\Tester\FoundationSessionAtoum;
 use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
+use PommProject\ModelManager\Tester\ModelSessionAtoum;
 
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
 
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
 
-class GenerateRelationModel extends FoundationSessionAtoum
+class GenerateRelationModel extends ModelSessionAtoum
 {
     public function tearDown()
     {

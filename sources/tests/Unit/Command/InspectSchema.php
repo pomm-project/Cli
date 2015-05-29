@@ -11,14 +11,14 @@ namespace PommProject\Cli\Test\Unit\Command;
 
 use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Inspector\Inspector;
-use PommProject\Foundation\Tester\FoundationSessionAtoum;
+use PommProject\ModelManager\Tester\ModelSessionAtoum;
 
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class InspectSchema extends FoundationSessionAtoum
+class InspectSchema extends ModelSessionAtoum
 {
     protected function initializeSession(Session $session)
     {
