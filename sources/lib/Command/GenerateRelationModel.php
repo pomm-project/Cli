@@ -16,6 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use PommProject\ModelManager\Generator\ModelGenerator;
 use PommProject\Foundation\ParameterHolder;
+use PommProject\Cli\Exception\GeneratorException;
 
 /**
  * GenerateRelationModel
@@ -68,13 +69,18 @@ class GenerateRelationModel extends RelationAwareCommand
     {
         parent::execute($input, $output);
 
+        $session = $this->getSession();
+        if (!$session instanceof \PommProject\ModelManager\Session) {
+            throw new GeneratorException('To generate models, you should use a \PommProject\ModelManager\Session session');
+        }
+
         $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(
             $output,
             (new ModelGenerator(
-                $this->getSession(),
+                $session,
                 $this->schema,
                 $this->relation,
                 $this->pathFile,

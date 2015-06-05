@@ -16,6 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use PommProject\Foundation\ParameterHolder;
 use PommProject\ModelManager\Generator\EntityGenerator;
+use PommProject\Cli\Exception\GeneratorException;
 
 class GenerateEntity extends RelationAwareCommand
 {
@@ -70,13 +71,18 @@ HELP
     {
         parent::execute($input, $output);
 
+        $session = $this->getSession();
+        if (!$session instanceof \PommProject\ModelManager\Session) {
+            throw new GeneratorException('To generate models, you should use a \PommProject\ModelManager\Session session');
+        }
+
         $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(
             $output,
             (new EntityGenerator(
-                $this->getSession(),
+                $session,
                 $this->schema,
                 $this->relation,
                 $this->pathFile,

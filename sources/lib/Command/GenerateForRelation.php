@@ -18,6 +18,7 @@ use PommProject\ModelManager\Generator\EntityGenerator;
 use PommProject\ModelManager\Generator\ModelGenerator;
 use PommProject\ModelManager\Generator\StructureGenerator;
 use PommProject\Foundation\ParameterHolder;
+use PommProject\Cli\Exception\GeneratorException;
 
 /**
  * GenerateForRelation
@@ -65,10 +66,15 @@ class GenerateForRelation extends RelationAwareCommand
     {
         parent::execute($input, $output);
 
+        $session = $this->getSession();
+        if (!$session instanceof \PommProject\ModelManager\Session) {
+            throw new GeneratorException('To generate models, you should use a \PommProject\ModelManager\Session session');
+        }
+
         $this->updateOutput(
             $output,
             (new StructureGenerator(
-                $this->getSession(),
+                $session,
                 $this->schema,
                 $this->relation,
                 $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4')),
@@ -81,7 +87,7 @@ class GenerateForRelation extends RelationAwareCommand
             $this->updateOutput(
                 $output,
                 (new ModelGenerator(
-                    $this->getSession(),
+                    $session,
                     $this->schema,
                     $this->relation,
                     $pathFile,
@@ -97,7 +103,7 @@ class GenerateForRelation extends RelationAwareCommand
             $this->updateOutput(
                 $output,
                 (new EntityGenerator(
-                    $this->getSession(),
+                    $session,
                     $this->schema,
                     $this->relation,
                     $pathFile,
