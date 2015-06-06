@@ -15,8 +15,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Cli\Exception\GeneratorException;
-
 /**
  * GenerateForSchema
  *
@@ -68,10 +66,7 @@ class GenerateForSchema extends SchemaAwareCommand
     {
         parent::execute($input, $output);
 
-        $session = $this->getSession();
-        if (!$session instanceof \PommProject\ModelManager\Session) {
-            throw new GeneratorException('To generate models, you should use a \PommProject\ModelManager\Session session');
-        }
+        $session = $this->mustBeModelManagerSession($this->getSession());
 
         $relations = $session->getInspector()
             ->getSchemaRelations($this->fetchSchemaOid()

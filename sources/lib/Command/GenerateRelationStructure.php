@@ -65,10 +65,7 @@ HELP
     {
         parent::execute($input, $output);
 
-        $session = $this->getSession();
-        if (!$session instanceof \PommProject\ModelManager\Session) {
-            throw new GeneratorException('To generate models, you should use a \PommProject\ModelManager\Session session');
-        }
+        $session = $this->mustBeModelManagerSession($this->getSession());
 
         $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
