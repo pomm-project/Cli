@@ -130,7 +130,7 @@ class PommAwareCommand extends Command
      * setPomm
      *
      * When used with a framework, it is useful to get the Pomm instance from
-     * the framwork configuration mechanism.
+     * the framework configuration mechanism.
      *
      * @access public
      * @param  Pomm     $pomm
