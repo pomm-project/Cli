@@ -21,7 +21,7 @@ use PommProject\Cli\Exception\CliException;
 /**
  * InspectRelation
  *
- * Display informations about a given relation.
+ * Display information about a given relation.
  *
  * @package Cli
  * @copyright 2014 Grégoire HUBERT
@@ -123,11 +123,11 @@ class InspectRelation extends RelationAwareCommand
      */
     protected function formatType($type)
     {
-        if (preg_match('/^(?:(.*)\.)?_(.*)$/', $type, $matchs)) {
-            if ($matchs[1] !== '') {
-                return sprintf("%s.%s[]", $matchs[1], $matchs[2]);
+        if (preg_match('/^(?:(.*)\.)?_(.*)$/', $type, $matches)) {
+            if ($matches[1] !== '') {
+                return sprintf("%s.%s[]", $matches[1], $matches[2]);
             } else {
-                return $matchs[2].'[]';
+                return $matches[2].'[]';
             }
         } else {
             return $type;

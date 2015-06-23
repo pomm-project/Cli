@@ -78,7 +78,7 @@ abstract class RelationAwareCommand extends SchemaAwareCommand
             case "creating":
                 $operation = sprintf("<fg=green>%s</fg=green>", ucwords($line['operation']));
                 break;
-            case "overwritting":
+            case "overwriting":
                 $operation = sprintf("<fg=cyan>%s</fg=cyan>", ucwords($line['operation']));
                 break;
             case "deleting":

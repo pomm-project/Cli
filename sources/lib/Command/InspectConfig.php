@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * InspectConfig
  *
- * Display informations about session builders
+ * Display information about session builders
  *
  * @package Cli
  * @copyright 2014-2015 Grégoire HUBERT
