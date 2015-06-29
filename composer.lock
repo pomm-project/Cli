@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "78af785e399d8f1d35dedbda7d88e5810a4eebe8"
+                "reference": "9ac94f9095e2bb214b7a9fb3db3ee98f52a7f37a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/a6d5e15fc2d21153375c6c983d8b5bfe40916c0a",
-                "reference": "78af785e399d8f1d35dedbda7d88e5810a4eebe8",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/9ac94f9095e2bb214b7a9fb3db3ee98f52a7f37a",
+                "reference": "9ac94f9095e2bb214b7a9fb3db3ee98f52a7f37a",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-05-27 07:33:05"
+            "time": "2015-06-29 08:27:26"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "4c94f016769aa11fa784f54608a89dc7e7fedc7b"
+                "reference": "ff4ea62391fc24e8089ee43153a0f58b461d6dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/4c94f016769aa11fa784f54608a89dc7e7fedc7b",
-                "reference": "4c94f016769aa11fa784f54608a89dc7e7fedc7b",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/ff4ea62391fc24e8089ee43153a0f58b461d6dc2",
+                "reference": "ff4ea62391fc24e8089ee43153a0f58b461d6dc2",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-06-22 10:31:31"
+            "time": "2015-06-29 08:32:13"
         },
         {
             "name": "psr/log",
@@ -158,21 +158,20 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.8",
-            "target-dir": "Symfony/Component/Console",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "2343f6d8026306bd330e0c987e4c102483c213e7"
+                "reference": "564398bc1f33faf92fc2ec86859983d30eb81806"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/2343f6d8026306bd330e0c987e4c102483c213e7",
-                "reference": "2343f6d8026306bd330e0c987e4c102483c213e7",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/564398bc1f33faf92fc2ec86859983d30eb81806",
+                "reference": "564398bc1f33faf92fc2ec86859983d30eb81806",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.9"
             },
             "require-dev": {
                 "psr/log": "~1.0",
@@ -188,11 +187,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Console\\": ""
                 }
             },
@@ -212,7 +211,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-05-22 14:53:08"
+            "time": "2015-06-10 15:30:22"
         }
     ],
     "packages-dev": [

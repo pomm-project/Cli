@@ -1,3 +1,15 @@
+== VERSION 2.0.0-rc.3
+
+ *  Update references
+ *  Fix typos
+ *  Refactor session class checks
+ *  Add readable message for session misconfiguration
+ *  Fix tests with ModelManager sessions.
+ *  Add PHPDoc @throws statements
+ *  Remove useless use statements
+ *  Fix #21 - useless @return void|null in .ctor()
+ *  Fix #22
+
 == VERSION 2.0.0-rc.2
 
  *  Adapt tests to new model generator.
