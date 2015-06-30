@@ -61,7 +61,7 @@ Since you are going to add your own methods in the generated Model and FlexibleE
 
 By default, Pomm's ModelManager expects at least the classes to be saved using the following namespaces: `DatabaseConfigName\SchemaSchema`. It is possible to tell the Cli where this structure starts and how to tune it.
 
- * `--prefix-dir`, `-d' - indicates where to start the Namespace directory tree.
+ * `--prefix-dir`, `-d` - indicates where to start the Namespace directory tree.
  * `--prefix-ns`, `-a`  - indicates an optional namespace prefix.
 
 When no options are specified, generating all relations of public schema will act like the following:
