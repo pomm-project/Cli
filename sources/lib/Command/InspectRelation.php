@@ -49,6 +49,7 @@ class InspectRelation extends RelationAwareCommand
      * execute
      *
      * @see Command
+     * @throws CliException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

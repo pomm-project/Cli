@@ -93,7 +93,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
     /**
      * execute
      *
-     * see @Command
+     * @see Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

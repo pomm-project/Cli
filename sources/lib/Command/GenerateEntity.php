@@ -16,6 +16,17 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * GenerateEntity
+ *
+ * Entity generation command.
+ *
+ * @package Cli
+ * @copyright 2014 Grégoire HUBERT
+ * @author Grégoire HUBERT
+ * @license X11 {@link http://opensource.org/licenses/mit-license.php}
+ * @see PommAwareCommand
+ */
 class GenerateEntity extends RelationAwareCommand
 {
     /**

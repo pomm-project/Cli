@@ -32,6 +32,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class GenerateForRelation extends RelationAwareCommand
 {
+    /**
+     * configure
+     *
+     * @see Command
+     */
     public function configure()
     {
         $this
@@ -117,9 +122,9 @@ class GenerateForRelation extends RelationAwareCommand
      * Write an informative message
      *
      * @access private
-     * @param  string          $pathFile
      * @param  OutputInterface $output
-     * @return void
+     * @param  string          $pathFile
+     * @param  null|string     $file_type
      */
     private function writelnSkipFile(OutputInterface $output, $pathFile, $file_type = null)
     {

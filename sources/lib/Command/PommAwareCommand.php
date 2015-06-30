@@ -88,7 +88,7 @@ class PommAwareCommand extends Command
     /**
      * configure
      *
-     * @see command
+     * @see Command
      */
     protected function configure()
     {

@@ -60,7 +60,7 @@ class GenerateForSchema extends SchemaAwareCommand
     /**
      * execute
      *
-     * see @Command
+     * @see Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
