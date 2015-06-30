@@ -45,7 +45,7 @@ HELP
             ;
         parent::configure();
         $this
-            ->addoption(
+            ->addOption(
                 'psr4',
                 null,
                 InputOption::VALUE_NONE,

@@ -45,13 +45,13 @@ class GenerateForRelation extends RelationAwareCommand
             ;
         parent::configure();
         $this
-            ->addoption(
+            ->addOption(
                 'force',
                 null,
                 InputOption::VALUE_NONE,
                 'Force overwriting existing files.'
             )
-            ->addoption(
+            ->addOption(
                 'psr4',
                 null,
                 InputOption::VALUE_NONE,

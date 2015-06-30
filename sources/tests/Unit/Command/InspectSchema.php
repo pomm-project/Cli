@@ -50,7 +50,7 @@ class InspectSchema extends ModelSessionAtoum
         ;
 
         $inspector = new Inspector();
-        $inspector->Initialize($session);
+        $inspector->initialize($session);
 
         if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
             $this

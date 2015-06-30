@@ -54,13 +54,13 @@ HELP
     protected function configureOptionals()
     {
         parent::configureOptionals()
-            ->addoption(
+            ->addOption(
                 'force',
                 null,
                 InputOption::VALUE_NONE,
                 'Force overwriting an existing file.'
             )
-            ->addoption(
+            ->addOption(
                 'psr4',
                 null,
                 InputOption::VALUE_NONE,
