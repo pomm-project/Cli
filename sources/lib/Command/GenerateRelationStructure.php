@@ -9,13 +9,12 @@
  */
 namespace PommProject\Cli\Command;
 
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\StructureGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use PommProject\Foundation\ParameterHolder;
-use PommProject\ModelManager\Generator\StructureGenerator;
-use PommProject\Cli\Exception\GeneratorException;
 
 /**
  * GenerateRelationStructure

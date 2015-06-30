@@ -9,10 +9,10 @@
  */
 namespace PommProject\Cli\Test\Unit\Command;
 
-use PommProject\Foundation\Session\Session;
-use PommProject\Foundation\Inspector\Inspector;
-use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
+use PommProject\Foundation\Inspector\Inspector;
+use PommProject\Foundation\Session\Session;
+use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 

@@ -9,9 +9,9 @@
  */
 namespace PommProject\Cli\Test\Fixture;
 
-use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Client\Client;
 use PommProject\Foundation\Inspector\Inspector;
+use PommProject\Foundation\Session\Session;
 
 class StructureFixtureClient extends Client
 {

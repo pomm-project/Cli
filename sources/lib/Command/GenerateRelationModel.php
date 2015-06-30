@@ -9,12 +9,12 @@
  */
 namespace PommProject\Cli\Command;
 
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\ModelGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use PommProject\ModelManager\Generator\ModelGenerator;
-use PommProject\Foundation\ParameterHolder;
 
 /**
  * GenerateRelationModel
