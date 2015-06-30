@@ -53,7 +53,7 @@ class InspectConfig extends PommAwareCommand
         parent::execute($input, $output);
 
         $results = array_keys($this->getPomm()->getSessionBuilders());
-        switch(count($results)) {
+        switch (count($results)) {
         case 0:
             $output->writeln("There are no session builders in current Pomm instance.");
             break;

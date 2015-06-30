@@ -14,7 +14,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-
 use PommProject\Cli\Exception\CliException;
 use PommProject\Foundation\Inflector;
 
@@ -46,7 +45,6 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      */
     protected function configureRequiredArguments()
     {
-
         parent::configureRequiredArguments()
             ->addOption(
                 'prefix-dir',
@@ -129,8 +127,9 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
 
         $prefix_ns = "";
-        if(!$format_psr4)
+        if (!$format_psr4) {
             $prefix_ns = str_replace('\\', '/', trim($this->prefix_ns, '\\'));
+        }
 
         $elements =
             [

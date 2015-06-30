@@ -15,9 +15,7 @@ use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
 use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
-
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
-
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
 
@@ -73,7 +71,5 @@ class GenerateRelationStructure extends ModelSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;
-
     }
 }
-

@@ -16,9 +16,7 @@ use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
 use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
-
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
-
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
 
@@ -59,7 +57,7 @@ class GenerateRelationModel extends ModelSessionAtoum
             ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.\n")
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/BetaModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel.php'))
-            ->exception(function() use ($tester, $command, $command_args) { $tester->execute($command_args); })
+            ->exception(function () use ($tester, $command, $command_args) { $tester->execute($command_args); })
             ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;
@@ -91,7 +89,7 @@ class GenerateRelationModel extends ModelSessionAtoum
                 ;
         }
         $command_args['--prefix-dir'] = "tmp/Model";
-        $tester->execute(array_merge($command_args, ['--psr4' => null,'--force' => null ]));
+        $tester->execute(array_merge($command_args, ['--psr4' => null, '--force' => null ]));
         $this
             ->string($tester->getDisplay())
             ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.\n")

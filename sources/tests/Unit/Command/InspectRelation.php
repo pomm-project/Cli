@@ -15,9 +15,7 @@ use PommProject\Foundation\Inspector\InspectorPooler;
 use PommProject\Foundation\Converter\ConverterPooler;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
-
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
-
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Application;
 
@@ -61,8 +59,7 @@ OUTPUT
             )
         ;
         $this
-            ->exception(function() use ($tester, $command)
-                {
+            ->exception(function () use ($tester, $command) {
                     $tester->execute(
                         [
                             'command'          => $command->getName(),

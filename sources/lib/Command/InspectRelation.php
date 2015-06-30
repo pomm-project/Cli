@@ -13,9 +13,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
-
 use PommProject\Foundation\ConvertedResultIterator;
-
 use PommProject\Cli\Exception\CliException;
 
 /**

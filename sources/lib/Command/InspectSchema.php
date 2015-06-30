@@ -12,7 +12,6 @@ namespace PommProject\Cli\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
-
 use PommProject\Foundation\ResultIterator;
 
 /**
@@ -83,7 +82,6 @@ class InspectSchema extends SchemaAwareCommand
             ;
 
         foreach ($info as $table_info) {
-
             $table->addRow([
                 sprintf("<fg=yellow>%s</fg=yellow>", $table_info['name']),
                 $table_info['type'],

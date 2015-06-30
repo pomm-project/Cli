@@ -12,7 +12,6 @@ namespace PommProject\Cli\Test\Unit\Command;
 use PommProject\Foundation\Session\Session;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
-
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -45,5 +44,3 @@ class InspectDatabase extends ModelSessionAtoum
             ;
     }
 }
-
-
