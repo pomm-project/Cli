@@ -34,6 +34,9 @@ class InspectDatabase extends ModelSessionAtoum
             [
                 'command'          => $command->getName(),
                 'config-name'      => 'pomm_test',
+            ],
+            [
+                'decorated'        => false
             ]
         );
         $this

@@ -15,12 +15,14 @@ use PommProject\Foundation\Session\Session;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 
 class GenerateRelationModel extends ModelSessionAtoum
 {
     public function tearDown()
     {
-        system("rm -r tmp");
+        $fs = new Filesystem();
+        $fs->remove('tmp');
     }
 
     protected function initializeSession(Session $session)
@@ -46,28 +48,29 @@ class GenerateRelationModel extends ModelSessionAtoum
                 '--prefix-dir'     => 'tmp',
             ];
         $tester = new CommandTester($command);
-        $tester->execute($command_args);
+        $options = ['decorated' => false];
+        $tester->execute($command_args, $options);
 
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.\n")
+            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/BetaModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel.php'))
             ->exception(function () use ($tester, $command, $command_args) { $tester->execute($command_args); })
             ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;
-        $tester->execute(array_merge($command_args, ['--force' => null ]));
+        $tester->execute(array_merge($command_args, ['--force' => null ]), $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.\n")
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/BetaModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel.php'))
             ;
-        $tester->execute(array_merge($command_args, ['relation' => 'dingo']));
+        $tester->execute(array_merge($command_args, ['relation' => 'dingo']), $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/DingoModel.php'.\n")
+            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/DingoModel.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/DingoModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/DingoModel.php'))
             ;
@@ -76,19 +79,19 @@ class GenerateRelationModel extends ModelSessionAtoum
         $inspector->initialize($session);
 
         if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
-            $tester->execute(array_merge($command_args, ['relation' => 'pluto']));
+            $tester->execute(array_merge($command_args, ['relation' => 'pluto']), $options);
             $this
                 ->string($tester->getDisplay())
-                ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/PlutoModel.php'.\n")
+                ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/PlutoModel.php'.".PHP_EOL)
                 ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/PlutoModel.php'))
                 ->isEqualTo(file_get_contents('sources/tests/Fixture/PlutoModel.php'))
                 ;
         }
         $command_args['--prefix-dir'] = "tmp/Model";
-        $tester->execute(array_merge($command_args, ['--psr4' => null, '--force' => null ]));
+        $tester->execute(array_merge($command_args, ['--psr4' => null, '--force' => null ]), $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.\n")
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/BetaModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel.php'))
         ;

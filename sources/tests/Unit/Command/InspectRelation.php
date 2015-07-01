@@ -36,23 +36,24 @@ class InspectRelation extends ModelSessionAtoum
                 'config-name'      => 'pomm_test',
                 'schema'           => 'pomm_test',
                 'relation'         => 'beta',
+            ],
+            [
+                'decorated' => false
             ]
         );
-
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(<<<OUTPUT
-Relation pomm_test.beta
-+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+
-| pk | name       | type                     | default                                          | notnull | comment                       |
-+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+
-| *  | beta_one   | int4                     | nextval('pomm_test.beta_beta_one_seq'::regclass) | yes     | This is the beta.one comment. |
-| *  | beta_two   | int4                     |                                                  | yes     |                               |
-|    | beta_three | pomm_test.complex_type[] |                                                  | yes     |                               |
-+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+
-
-OUTPUT
-            )
+            ->isEqualTo(join(PHP_EOL, [
+                "Relation pomm_test.beta",
+                "+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+",
+                "| pk | name       | type                     | default                                          | notnull | comment                       |",
+                "+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+",
+                "| *  | beta_one   | int4                     | nextval('pomm_test.beta_beta_one_seq'::regclass) | yes     | This is the beta.one comment. |",
+                "| *  | beta_two   | int4                     |                                                  | yes     |                               |",
+                "|    | beta_three | pomm_test.complex_type[] |                                                  | yes     |                               |",
+                "+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+",
+                "",
+            ]))
         ;
         $this
             ->exception(function () use ($tester, $command) {

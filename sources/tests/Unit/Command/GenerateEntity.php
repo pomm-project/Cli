@@ -14,12 +14,14 @@ use PommProject\Foundation\Session\Session;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 
 class GenerateEntity extends ModelSessionAtoum
 {
     public function tearDown()
     {
-        system("rm -r tmp");
+        $fs = new Filesystem();
+        $fs->remove('tmp');
     }
 
     protected function initializeSession(Session $session)
@@ -44,34 +46,35 @@ class GenerateEntity extends ModelSessionAtoum
                 '--prefix-dir'     => 'tmp'
             ];
         $tester = new CommandTester($command);
-        $tester->execute($command_args);
+        $options = ['decorated' => false];
+        $tester->execute($command_args, $options);
 
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.\n")
+            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/AlphaEntity.php'))
             ->exception(function () use ($tester, $command, $command_args) { $tester->execute($command_args); })
             ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;
-        $tester->execute(array_merge($command_args, ['--force' => null ]));
+        $tester->execute(array_merge($command_args, ['--force' => null ]), $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.\n")
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.".PHP_EOL)
          ;
 
-        $tester->execute(array_merge($command_args, ['--flexible-container' => 'Model\\PommTest\\PommTestSchema\\CustomFlexibleEntity', '--force' => null ]));
+        $tester->execute(array_merge($command_args, ['--flexible-container' => 'Model\\PommTest\\PommTestSchema\\CustomFlexibleEntity', '--force' => null ]), $options);
         $this
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/CustomAlphaEntity.php'))
         ;
 
         $command_args['--prefix-dir'] = "tmp/Model";
-        $tester->execute(array_merge($command_args, ['--psr4' => null, '--force' => null ]));
+        $tester->execute(array_merge($command_args, ['--psr4' => null, '--force' => null ]), $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.\n")
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/AlphaEntity.php'))
         ;
