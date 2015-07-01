@@ -15,15 +15,16 @@
         "symfony/console":            "~2.5"
     },
     "require-dev": {
-        "atoum/atoum" : "dev-master"
+        "atoum/atoum" : "dev-master",
+        "symfony/filesystem": "~2.5"
     },
     "autoload": {
-        "psr-4": { 
+        "psr-4": {
             "PommProject\\Cli\\": "sources/lib"
         }
     },
     "autoload-dev": {
-        "psr-4": { 
+        "psr-4": {
             "PommProject\\Cli\\Test\\": "sources/tests"
         }
     },

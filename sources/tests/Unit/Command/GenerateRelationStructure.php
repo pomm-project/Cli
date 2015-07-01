@@ -14,12 +14,14 @@ use PommProject\Foundation\Session\Session;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 
 class GenerateRelationStructure extends ModelSessionAtoum
 {
     public function tearDown()
     {
-        system("rm -r tmp");
+        $fs = new Filesystem();
+        $fs->remove('tmp');
     }
 
     protected function initializeSession(Session $session)
@@ -44,26 +46,27 @@ class GenerateRelationStructure extends ModelSessionAtoum
                 '--prefix-dir'     => 'tmp',
             ];
         $tester = new CommandTester($command);
-        $tester->execute($command_args);
+        $options = ['decorated' => false];
+        $tester->execute($command_args, $options);
 
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.\n")
+            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;
-        $tester->execute($command_args);
+        $tester->execute($command_args, $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.\n")
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;
         $command_args['--prefix-dir'] = "tmp/Model";
-        $tester->execute(array_merge($command_args, ['--psr4' => null ]));
+        $tester->execute(array_merge($command_args, ['--psr4' => null ]), $options);
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.\n")
+            ->isEqualTo(" ✓  Overwriting file 'tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;

@@ -37,6 +37,9 @@ class InspectSchema extends ModelSessionAtoum
                 'command'          => $command->getName(),
                 'config-name'      => 'pomm_test',
                 'schema'           => 'pomm_test',
+            ],
+            [
+                'decorated' => false
             ]
         );
         $display = $tester->getDisplay();
