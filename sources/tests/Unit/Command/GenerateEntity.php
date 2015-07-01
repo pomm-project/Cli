@@ -9,17 +9,11 @@
  */
 namespace PommProject\Cli\Test\Unit\Command;
 
-use PommProject\Foundation\Session\Session;
-use PommProject\Foundation\Query\QueryPooler;
-use PommProject\Foundation\Inspector\InspectorPooler;
-use PommProject\Foundation\Converter\ConverterPooler;
-use PommProject\Foundation\PreparedQuery\PreparedQueryPooler;
-use PommProject\ModelManager\Tester\ModelSessionAtoum;
-
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
-
-use Symfony\Component\Console\Tester\CommandTester;
+use PommProject\Foundation\Session\Session;
+use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
 
 class GenerateEntity extends ModelSessionAtoum
 {
@@ -57,7 +51,7 @@ class GenerateEntity extends ModelSessionAtoum
             ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.\n")
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/AlphaEntity.php'))
-            ->exception(function() use ($tester, $command, $command_args) { $tester->execute($command_args); })
+            ->exception(function () use ($tester, $command, $command_args) { $tester->execute($command_args); })
             ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;
@@ -81,7 +75,5 @@ class GenerateEntity extends ModelSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/AlphaEntity.php'))
         ;
-
-
     }
 }

@@ -9,14 +9,12 @@
  */
 namespace PommProject\Cli\Command;
 
+use PommProject\Cli\Exception\CliException;
+use PommProject\Foundation\Pomm;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-
-use PommProject\Foundation\Pomm;
-
-use PommProject\Cli\Exception\CliException;
 
 /**
  * PommAwareCommand
@@ -90,7 +88,7 @@ class PommAwareCommand extends Command
     /**
      * configure
      *
-     * @see command
+     * @see Command
      */
     protected function configure()
     {

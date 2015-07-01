@@ -11,7 +11,6 @@ namespace PommProject\Cli\Test\Unit\Command;
 
 use PommProject\Foundation\Session\Session;
 use PommProject\Foundation\Tester\FoundationSessionAtoum;
-
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -19,30 +18,32 @@ class InspectConfig extends FoundationSessionAtoum
 {
     protected function initializeSession(Session $session)
     {
-
     }
 
     private function getPommMock($nb_builder = 0)
     {
         $pomm_mock = new \mock\PommProject\Foundation\Pomm;
 
-        $pomm_mock->getMockController()->getSessionBuilders = function() use($nb_builder) {
+        $pomm_mock->getMockController()->getSessionBuilders = function () use ($nb_builder) {
             $builders = [];
 
-            for($i = 0; $i < $nb_builder; $i++)
+            for ($i = 0; $i < $nb_builder; $i++) {
                 $builders['my_db'.$i] = "fake_builder";
+            }
 
             return $builders;
         };
 
-        $pomm_mock->getMockController()->isDefaultSession = function($name){
-            if($name == "my_db0") return true;
+        $pomm_mock->getMockController()->isDefaultSession = function ($name) {
+            if ($name == "my_db0") {
+                return true;
+            }
         };
 
         return $pomm_mock;
     }
 
-    private function getCommandTester( $nb_builder = 0)
+    private function getCommandTester($nb_builder = 0)
     {
         $application = new Application();
         $application->add((new $this->newTestedInstance())->setPomm($this->getPommMock($nb_builder)));
@@ -82,5 +83,3 @@ class InspectConfig extends FoundationSessionAtoum
         ;
     }
 }
-
-

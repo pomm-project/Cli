@@ -9,15 +9,14 @@
  */
 namespace PommProject\Cli\Command;
 
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\EntityGenerator;
+use PommProject\ModelManager\Generator\ModelGenerator;
+use PommProject\ModelManager\Generator\StructureGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-
-use PommProject\ModelManager\Generator\EntityGenerator;
-use PommProject\ModelManager\Generator\ModelGenerator;
-use PommProject\ModelManager\Generator\StructureGenerator;
-use PommProject\Foundation\ParameterHolder;
 
 /**
  * GenerateForRelation
@@ -33,6 +32,11 @@ use PommProject\Foundation\ParameterHolder;
  */
 class GenerateForRelation extends RelationAwareCommand
 {
+    /**
+     * configure
+     *
+     * @see Command
+     */
     public function configure()
     {
         $this
@@ -41,13 +45,13 @@ class GenerateForRelation extends RelationAwareCommand
             ;
         parent::configure();
         $this
-            ->addoption(
+            ->addOption(
                 'force',
                 null,
                 InputOption::VALUE_NONE,
                 'Force overwriting existing files.'
             )
-            ->addoption(
+            ->addOption(
                 'psr4',
                 null,
                 InputOption::VALUE_NONE,
@@ -118,9 +122,9 @@ class GenerateForRelation extends RelationAwareCommand
      * Write an informative message
      *
      * @access private
-     * @param  string          $pathFile
      * @param  OutputInterface $output
-     * @return void
+     * @param  string          $pathFile
+     * @param  null|string     $file_type
      */
     private function writelnSkipFile(OutputInterface $output, $pathFile, $file_type = null)
     {

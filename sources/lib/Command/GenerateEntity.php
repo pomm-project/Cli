@@ -9,14 +9,24 @@
  */
 namespace PommProject\Cli\Command;
 
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\EntityGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use PommProject\Foundation\ParameterHolder;
-use PommProject\ModelManager\Generator\EntityGenerator;
-
+/**
+ * GenerateEntity
+ *
+ * Entity generation command.
+ *
+ * @package Cli
+ * @copyright 2014 Grégoire HUBERT
+ * @author Grégoire HUBERT
+ * @license X11 {@link http://opensource.org/licenses/mit-license.php}
+ * @see PommAwareCommand
+ */
 class GenerateEntity extends RelationAwareCommand
 {
     /**
@@ -44,13 +54,13 @@ HELP
     protected function configureOptionals()
     {
         parent::configureOptionals()
-            ->addoption(
+            ->addOption(
                 'force',
                 null,
                 InputOption::VALUE_NONE,
                 'Force overwriting an existing file.'
             )
-            ->addoption(
+            ->addOption(
                 'psr4',
                 null,
                 InputOption::VALUE_NONE,

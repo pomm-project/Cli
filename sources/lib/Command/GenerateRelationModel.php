@@ -9,13 +9,12 @@
  */
 namespace PommProject\Cli\Command;
 
+use PommProject\Foundation\ParameterHolder;
+use PommProject\ModelManager\Generator\ModelGenerator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-
-use PommProject\ModelManager\Generator\ModelGenerator;
-use PommProject\Foundation\ParameterHolder;
 
 /**
  * GenerateRelationModel
@@ -30,7 +29,6 @@ use PommProject\Foundation\ParameterHolder;
  */
 class GenerateRelationModel extends RelationAwareCommand
 {
-
     /**
      * configure
      *
@@ -44,13 +42,13 @@ class GenerateRelationModel extends RelationAwareCommand
             ;
         parent::configure();
         $this
-            ->addoption(
+            ->addOption(
                 'force',
                 null,
                 InputOption::VALUE_NONE,
                 'Force overwriting an existing file.'
             )
-            ->addoption(
+            ->addOption(
                 'psr4',
                 null,
                 InputOption::VALUE_NONE,
