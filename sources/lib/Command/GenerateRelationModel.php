@@ -54,6 +54,12 @@ class GenerateRelationModel extends RelationAwareCommand
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'absolute-dir',
+                null,
+                InputOption::VALUE_NONE,
+                'Use absolute path for generate file.'
+            )
         ;
     }
 
@@ -68,7 +74,8 @@ class GenerateRelationModel extends RelationAwareCommand
 
         $session = $this->mustBeModelManagerSession($this->getSession());
 
-        $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
+        $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '',
+            $input->getOption('psr4'), $input->getOption('absolute-dir'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(
