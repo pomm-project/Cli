@@ -51,6 +51,12 @@ HELP
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'absolute-dir',
+                null,
+                InputOption::VALUE_NONE,
+                'Use absolute path for generate file.'
+            )
         ;
     }
 
@@ -65,7 +71,8 @@ HELP
 
         $session = $this->mustBeModelManagerSession($this->getSession());
 
-        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4'));
+        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure',
+            $input->getOption('psr4'), $input->getOption('absolute-dir'));
         $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
 
         $this->updateOutput(

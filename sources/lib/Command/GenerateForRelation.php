@@ -57,6 +57,12 @@ class GenerateForRelation extends RelationAwareCommand
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'absolute-dir',
+                null,
+                InputOption::VALUE_NONE,
+                'Use absolute path for generate file.'
+            )
         ;
     }
 
@@ -77,12 +83,14 @@ class GenerateForRelation extends RelationAwareCommand
                 $session,
                 $this->schema,
                 $this->relation,
-                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4')),
+                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure',
+                    $input->getOption('psr4'), $input->getOption('absolute-dir')),
                 $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
             ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
         );
 
-        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '',
+            $input->getOption('psr4'), $input->getOption('absolute-dir'));
         if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,
@@ -98,7 +106,8 @@ class GenerateForRelation extends RelationAwareCommand
             $this->writelnSkipFile($output, $pathFile, 'model');
         }
 
-        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'));
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '',
+            $input->getOption('psr4'), $input->getOption('absolute-dir'));
         if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,

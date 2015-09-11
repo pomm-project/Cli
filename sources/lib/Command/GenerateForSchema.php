@@ -54,6 +54,12 @@ class GenerateForSchema extends SchemaAwareCommand
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'absolute-dir',
+                null,
+                InputOption::VALUE_NONE,
+                'Use absolute path for generate file.'
+            )
         ;
     }
 
@@ -75,16 +81,17 @@ class GenerateForSchema extends SchemaAwareCommand
         foreach ($relations as $relation_info) {
             $command = $this->getApplication()->find('pomm:generate:relation-all');
             $arguments = [
-                'command'          => 'pomm:generate:relation-all',
-                'config-name'      => $this->config_name,
-                'relation'         => $relation_info['name'],
-                'schema'           => $this->schema,
-                '--force'          => $input->getOption('force'),
-                '--bootstrap-file' => $input->getOption('bootstrap-file'),
-                '--prefix-dir'     => $input->getOption('prefix-dir'),
-                '--prefix-ns'      => $input->getOption('prefix-ns'),
+                'command'              => 'pomm:generate:relation-all',
+                'config-name'          => $this->config_name,
+                'relation'             => $relation_info['name'],
+                'schema'               => $this->schema,
+                '--force'              => $input->getOption('force'),
+                '--bootstrap-file'     => $input->getOption('bootstrap-file'),
+                '--prefix-dir'         => $input->getOption('prefix-dir'),
+                '--prefix-ns'          => $input->getOption('prefix-ns'),
                 '--flexible-container' => $input->getOption('flexible-container'),
-                '--psr4'           => $input->getOption('psr4')
+                '--psr4'               => $input->getOption('psr4'),
+                '--absolute-dir'       => $input->getOption('absolute-dir')
             ];
             $command->run(new ArrayInput($arguments), $output);
         }

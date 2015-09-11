@@ -22,6 +22,7 @@ class GenerateRelationStructure extends ModelSessionAtoum
     {
         $fs = new Filesystem();
         $fs->remove('tmp');
+        $fs->remove('/tmp/Model');
     }
 
     protected function initializeSession(Session $session)
@@ -70,5 +71,13 @@ class GenerateRelationStructure extends ModelSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;
+        $command_args['--prefix-dir'] = "/tmp";
+        $tester->execute(array_merge($command_args, ['--absolute-dir' => null ]), $options);
+        $this
+            ->string($tester->getDisplay())
+            ->isEqualTo(" ✓  Creating file '/tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'.".PHP_EOL)
+            ->string(file_get_contents('/tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
+            ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
+        ;
     }
 }
