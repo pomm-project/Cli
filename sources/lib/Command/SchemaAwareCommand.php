@@ -133,7 +133,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
 
         $elements =
             [
-                ltrim($this->prefix_dir, '/'),
+                rtrim($this->prefix_dir, '/'),
                 $prefix_ns,
                 Inflector::studlyCaps($config_name),
                 Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
