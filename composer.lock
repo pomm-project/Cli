@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "da0568fee95b7fe7c23e6ade51151e2d1cf9a964"
+                "reference": "c43f3fe3458ee7fd70458d9c8668cfa144c2e6ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/da0568fee95b7fe7c23e6ade51151e2d1cf9a964",
-                "reference": "da0568fee95b7fe7c23e6ade51151e2d1cf9a964",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/c43f3fe3458ee7fd70458d9c8668cfa144c2e6ff",
+                "reference": "c43f3fe3458ee7fd70458d9c8668cfa144c2e6ff",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-08-15 09:55:30"
+            "time": "2015-09-09 07:11:31"
         },
         {
             "name": "pomm-project/model-manager",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "e2b2f72310f01fe260171bb3c62e0b525c319030"
+                "reference": "521f3bf765c76e447ccb166ba2686089b718967f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/e2b2f72310f01fe260171bb3c62e0b525c319030",
-                "reference": "e2b2f72310f01fe260171bb3c62e0b525c319030",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/521f3bf765c76e447ccb166ba2686089b718967f",
+                "reference": "521f3bf765c76e447ccb166ba2686089b718967f",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-08-15 09:57:08"
+            "time": "2015-09-08 09:44:56"
         },
         {
             "name": "psr/log",
@@ -158,16 +158,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.3",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e"
+                "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/d6cf02fe73634c96677e428f840704bfbcaec29e",
-                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/9ff9032151186bd66ecee727d728f1319f52d1d8",
+                "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8",
                 "shasum": ""
             },
             "require": {
@@ -211,7 +211,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-28 15:18:12"
+            "time": "2015-09-03 11:40:38"
         }
     ],
     "packages-dev": [
@@ -221,12 +221,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "ab650ec54f65968db592679e3d0e4f01e5684f61"
+                "reference": "9ef0a8e7a790595d53e081640b46f16c2fa62dba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/ab650ec54f65968db592679e3d0e4f01e5684f61",
-                "reference": "ab650ec54f65968db592679e3d0e4f01e5684f61",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/9ef0a8e7a790595d53e081640b46f16c2fa62dba",
+                "reference": "9ef0a8e7a790595d53e081640b46f16c2fa62dba",
                 "shasum": ""
             },
             "require": {
@@ -292,20 +292,20 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-08-03 05:53:32"
+            "time": "2015-09-17 13:05:36"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.7.3",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "2d7b2ddaf3f548f4292df49a99d19c853d43f0b8"
+                "reference": "f079e9933799929584200b9a926f72f29e291654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/2d7b2ddaf3f548f4292df49a99d19c853d43f0b8",
-                "reference": "2d7b2ddaf3f548f4292df49a99d19c853d43f0b8",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/f079e9933799929584200b9a926f72f29e291654",
+                "reference": "f079e9933799929584200b9a926f72f29e291654",
                 "shasum": ""
             },
             "require": {
@@ -341,7 +341,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-09 16:07:40"
+            "time": "2015-08-27 07:03:44"
         }
     ],
     "aliases": [],

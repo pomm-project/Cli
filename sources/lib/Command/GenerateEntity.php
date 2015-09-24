@@ -40,6 +40,12 @@ class GenerateEntity extends RelationAwareCommand
             ->setName('pomm:generate:entity')
             ->setDescription('Generate an Entity class.')
             ->setHelp(<<<HELP
+This command generates an empty FlexibleEntity class in the given directory with the given namespace. By default, it creates a tree structure in the following format: ConfigName/NameSchema.
+
+In order to comply with the project’s autoloading rules, it is possible to prefix this directory structure and / or namespace:
+
+<info>pomm:generate:entity -d sources/lib/Model -a 'Vendor\Project\Model' --psr4 builder_name</info>
+
 HELP
         )
         ;
