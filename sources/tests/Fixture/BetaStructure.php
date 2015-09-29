@@ -12,7 +12,7 @@ use PommProject\ModelManager\Model\RowStructure;
 /**
  * Beta
  *
- * Structure class for relation pomm_test.beta.
+ * Structure class for relation "pomm_test"."beta".
  * This is the beta comment.
  *
  * beta_one:
@@ -32,7 +32,7 @@ class Beta extends RowStructure
     public function __construct()
     {
         $this
-            ->setRelation('pomm_test.beta')
+            ->setRelation('"pomm_test"."beta"')
             ->setPrimaryKey(['beta_two', 'beta_one'])
             ->addField('beta_one', 'int4')
             ->addField('beta_two', 'int4')
