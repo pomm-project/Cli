@@ -5,7 +5,6 @@
         "This file is @generated automatically"
     ],
     "hash": "83629d94e6b2c42291035ec24e95ec70",
-    "content-hash": "3e4f3cb4f9ee98a9cb75a7b3faecb923",
     "packages": [
         {
             "name": "pomm-project/foundation",
@@ -13,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "afcc30c26e546725a1dacb9cef41413cea0e57ef"
+                "reference": "c43f3fe3458ee7fd70458d9c8668cfa144c2e6ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/afcc30c26e546725a1dacb9cef41413cea0e57ef",
-                "reference": "afcc30c26e546725a1dacb9cef41413cea0e57ef",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/c43f3fe3458ee7fd70458d9c8668cfa144c2e6ff",
+                "reference": "c43f3fe3458ee7fd70458d9c8668cfa144c2e6ff",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +58,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-09-27 20:02:30"
+            "time": "2015-09-09 07:11:31"
         },
         {
             "name": "pomm-project/model-manager",
@@ -67,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "c2b531c071b0d60e5cecda9701506e7de791bbc0"
+                "reference": "521f3bf765c76e447ccb166ba2686089b718967f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/c2b531c071b0d60e5cecda9701506e7de791bbc0",
-                "reference": "c2b531c071b0d60e5cecda9701506e7de791bbc0",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/521f3bf765c76e447ccb166ba2686089b718967f",
+                "reference": "521f3bf765c76e447ccb166ba2686089b718967f",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +116,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-09-29 16:10:54"
+            "time": "2015-09-08 09:44:56"
         },
         {
             "name": "psr/log",
@@ -159,16 +158,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.5",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "06cb17c013a82f94a3d840682b49425cd00a2161"
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/06cb17c013a82f94a3d840682b49425cd00a2161",
-                "reference": "06cb17c013a82f94a3d840682b49425cd00a2161",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/9ff9032151186bd66ecee727d728f1319f52d1d8",
+                "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +211,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-25 08:32:23"
+            "time": "2015-09-03 11:40:38"
         }
     ],
     "packages-dev": [
@@ -297,16 +296,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.7.5",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/filesystem.git",
-                "reference": "a17f8a17c20e8614c15b8e116e2f4bcde102cfab"
+                "url": "https://github.com/symfony/Filesystem.git",
+                "reference": "f079e9933799929584200b9a926f72f29e291654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/a17f8a17c20e8614c15b8e116e2f4bcde102cfab",
-                "reference": "a17f8a17c20e8614c15b8e116e2f4bcde102cfab",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/f079e9933799929584200b9a926f72f29e291654",
+                "reference": "f079e9933799929584200b9a926f72f29e291654",
                 "shasum": ""
             },
             "require": {
@@ -342,7 +341,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-09 17:42:36"
+            "time": "2015-08-27 07:03:44"
         }
     ],
     "aliases": [],
