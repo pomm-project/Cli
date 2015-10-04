@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e546ee548ef78713fcb57379502f014c",
-    "content-hash": "f1f7ca3ece654b81f33d623e7df9db0e",
+    "hash": "5b270ea87d50260833997debd4e0ebc4",
+    "content-hash": "2687e35a32dd7bf5a5a6a8543570186f",
     "packages": [
         {
             "name": "pomm-project/foundation",
-            "version": "2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/Foundation.git",
-                "reference": "6f87b60cc036bb8b4ed0731867a088bd582d45cd"
+                "reference": "1d5c2a6725b6c2a2356a68b471b06dbcfd2e3eb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/6f87b60cc036bb8b4ed0731867a088bd582d45cd",
-                "reference": "6f87b60cc036bb8b4ed0731867a088bd582d45cd",
+                "url": "https://api.github.com/repos/pomm-project/Foundation/zipball/1d5c2a6725b6c2a2356a68b471b06dbcfd2e3eb2",
+                "reference": "1d5c2a6725b6c2a2356a68b471b06dbcfd2e3eb2",
                 "shasum": ""
             },
             "require": {
@@ -59,26 +59,26 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-10-04 20:07:27"
+            "time": "2015-10-04 20:07:55"
         },
         {
             "name": "pomm-project/model-manager",
-            "version": "2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pomm-project/ModelManager.git",
-                "reference": "18136f4a73ea7c2106d7c40f06559b5978bb7fd1"
+                "reference": "4b81073bbee395c34c9fa69a1f9b1a84950d811b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/18136f4a73ea7c2106d7c40f06559b5978bb7fd1",
-                "reference": "18136f4a73ea7c2106d7c40f06559b5978bb7fd1",
+                "url": "https://api.github.com/repos/pomm-project/ModelManager/zipball/4b81073bbee395c34c9fa69a1f9b1a84950d811b",
+                "reference": "4b81073bbee395c34c9fa69a1f9b1a84950d811b",
                 "shasum": ""
             },
             "require": {
                 "ext-pgsql": "*",
                 "php": ">=5.4.4",
-                "pomm-project/foundation": "2.0.0",
+                "pomm-project/foundation": "2.0.*@dev",
                 "psr/log": "~1.0"
             },
             "require-dev": {
@@ -117,7 +117,7 @@
                 "pomm",
                 "postgresql"
             ],
-            "time": "2015-10-04 20:13:03"
+            "time": "2015-10-04 20:15:20"
         },
         {
             "name": "psr/log",
@@ -349,6 +349,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "pomm-project/foundation": 20,
+        "pomm-project/model-manager": 20,
         "atoum/atoum": 20
     },
     "prefer-stable": false,
