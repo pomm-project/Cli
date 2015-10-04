@@ -1,3 +1,11 @@
+== VERSION 2.0.0
+
+ *  Add generate:entity online help
+ *  correct typo ltrim to rtrim
+ *  Update copyright information
+ *  Add travis tests for PHP 5.6
+ *  Make tests run on Windows too
+
 == VERSION 2.0.0-rc.3
 
  *  Update references
