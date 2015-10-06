@@ -2,7 +2,7 @@
 
 This is the Cli component for the Pomm database framework.
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pomm-project/Cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pomm-project/Cli/?branch=master) [![Build Status](https://travis-ci.org/pomm-project/Cli.svg)](https://travis-ci.org/pomm-project/Cli) [![Monthly Downloads](https://poser.pugx.org/pomm-project/cli/d/monthly.png)](https://packagist.org/packages/pomm-project/cli) [![License](https://poser.pugx.org/pomm-project/cli/license.svg)](https://packagist.org/packages/pomm-project/cli)
+[![Latest Stable Version](https://poser.pugx.org/pomm-project/cli/v/stable)](https://packagist.org/packages/pomm-project/cli) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pomm-project/Cli/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pomm-project/Cli/?branch=master) [![Build Status](https://travis-ci.org/pomm-project/Cli.svg)](https://travis-ci.org/pomm-project/Cli) [![Monthly Downloads](https://poser.pugx.org/pomm-project/cli/d/monthly.png)](https://packagist.org/packages/pomm-project/cli) [![License](https://poser.pugx.org/pomm-project/cli/license.svg)](https://packagist.org/packages/pomm-project/cli)
 
 Pomm Cli is in Release Candidate (RC) state. This version will go in stable state soon and may be used for test purposes or to start new projects. 
 
