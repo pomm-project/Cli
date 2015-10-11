@@ -72,21 +72,32 @@ class GenerateForSchema extends SchemaAwareCommand
             ->getSchemaRelations($this->fetchSchemaOid()
         );
 
-        foreach ($relations as $relation_info) {
-            $command = $this->getApplication()->find('pomm:generate:relation-all');
-            $arguments = [
-                'command'          => 'pomm:generate:relation-all',
-                'config-name'      => $this->config_name,
-                'relation'         => $relation_info['name'],
-                'schema'           => $this->schema,
-                '--force'          => $input->getOption('force'),
-                '--bootstrap-file' => $input->getOption('bootstrap-file'),
-                '--prefix-dir'     => $input->getOption('prefix-dir'),
-                '--prefix-ns'      => $input->getOption('prefix-ns'),
-                '--flexible-container' => $input->getOption('flexible-container'),
-                '--psr4'           => $input->getOption('psr4')
-            ];
-            $command->run(new ArrayInput($arguments), $output);
+        $output->writeln(
+            sprintf(
+                "Scanning schema '<fg=green>%s</fg=green>'.",
+                $this->schema
+            )
+        );
+
+        if ($relations->isEmpty()) {
+            $output->writeln("<bg=yellow>No relations found.</bg=yellow>");
+        } else {
+            foreach ($relations as $relation_info) {
+                $command = $this->getApplication()->find('pomm:generate:relation-all');
+                $arguments = [
+                    'command'          => 'pomm:generate:relation-all',
+                    'config-name'      => $this->config_name,
+                    'relation'         => $relation_info['name'],
+                    'schema'           => $this->schema,
+                    '--force'          => $input->getOption('force'),
+                    '--bootstrap-file' => $input->getOption('bootstrap-file'),
+                    '--prefix-dir'     => $input->getOption('prefix-dir'),
+                    '--prefix-ns'      => $input->getOption('prefix-ns'),
+                    '--flexible-container' => $input->getOption('flexible-container'),
+                    '--psr4'           => $input->getOption('psr4')
+                ];
+                $command->run(new ArrayInput($arguments), $output);
+            }
         }
     }
 }

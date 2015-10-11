@@ -125,8 +125,8 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
     protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '', $format_psr4 = null)
     {
         $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
-
         $prefix_ns = "";
+
         if (!$format_psr4) {
             $prefix_ns = str_replace('\\', '/', trim($this->prefix_ns, '\\'));
         }
