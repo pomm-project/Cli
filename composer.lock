@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "bc1105cba8446bdd82d861d49096fa303aca49ea"
+                "reference": "8295a17544e0118720debbbff845a84b6f44396e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/bc1105cba8446bdd82d861d49096fa303aca49ea",
-                "reference": "bc1105cba8446bdd82d861d49096fa303aca49ea",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/8295a17544e0118720debbbff845a84b6f44396e",
+                "reference": "8295a17544e0118720debbbff845a84b6f44396e",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-10-01 20:37:42"
+            "time": "2015-10-07 07:58:48"
         },
         {
             "name": "symfony/filesystem",
