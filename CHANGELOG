@@ -1,3 +1,10 @@
+== VERSION 2.0.1
+
+ * Switch to 2.0 stable branch
+ * Test compatibility with PHP 7.0
+ * Allow sf3 components
+ * Add warning message for empty schemas
+
 == VERSION 2.0.0
 
  *  Add generate:entity online help
