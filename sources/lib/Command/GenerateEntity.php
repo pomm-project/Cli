@@ -72,6 +72,13 @@ HELP
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'dir-pattern',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Specify the pattern path for files.',
+                "{Session}/{Schema}Schema"
+            )
         ;
 
         return $this;
@@ -88,8 +95,16 @@ HELP
 
         $session = $this->mustBeModelManagerSession($this->getSession());
 
-        $this->pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'));
-        $this->namespace = $this->getNamespace($input->getArgument('config-name'));
+        $this->pathFile = $this->getPathFile(
+            $input->getArgument('config-name'),
+            $this->relation,
+            '',
+            '',
+            $input->getOption('psr4'),
+            $input->getOption('dir-pattern')
+        );
+
+        $this->namespace = $this->getNamespace($input->getArgument('config-name'), '', $input->getOption('dir-pattern'));
 
         $this->updateOutput(
             $output,
