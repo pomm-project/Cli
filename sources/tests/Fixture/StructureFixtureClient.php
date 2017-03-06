@@ -10,7 +10,7 @@
 namespace PommProject\Cli\Test\Fixture;
 
 use PommProject\Foundation\Client\Client;
-use PommProject\Foundation\Inspector\Inspector;
+use PommProject\Foundation\Inspector\LegacyInspector;
 use PommProject\Foundation\Session\Session;
 
 class StructureFixtureClient extends Client
@@ -43,7 +43,7 @@ class StructureFixtureClient extends Client
             ];
         $this->executeSql(join(';', $sql));
 
-        $inspector = new Inspector();
+        $inspector = new LegacyInspector;
         $inspector->initialize($session);
 
         if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
