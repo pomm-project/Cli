@@ -10,7 +10,7 @@
 namespace PommProject\Cli\Test\Unit\Command;
 
 use PommProject\Cli\Test\Fixture\StructureFixtureClient;
-use PommProject\Foundation\Inspector\Inspector;
+use PommProject\Foundation\Inspector\LegacyInspector;
 use PommProject\Foundation\Session\Session;
 use PommProject\ModelManager\Tester\ModelSessionAtoum;
 use Symfony\Component\Console\Application;
@@ -52,7 +52,7 @@ class InspectSchema extends ModelSessionAtoum
             ->contains("| dingo  | view")
         ;
 
-        $inspector = new Inspector();
+        $inspector = new LegacyInspector;
         $inspector->initialize($session);
 
         if (version_compare($inspector->getVersion(), '9.3', '>=') === true) {
