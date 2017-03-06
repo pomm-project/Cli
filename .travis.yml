@@ -1,13 +1,15 @@
 language: php
 php:
-  - "5.4"
   - "5.5"
   - "5.6"
   - "7.0"
   - "7.1"
+  - "nightly"
+  - "hhvm"
 matrix:
   allow_failures:
-    - php: nightly
+    - php: "nightly"
+    - php: "hhvm"
 services: postgresql
 before_script:
   - psql -c 'CREATE DATABASE pomm_test' -U postgres -h 127.0.0.1 postgres
@@ -16,5 +18,6 @@ before_script:
 install:
   - composer install --dev
   - composer update atoum/atoum --prefer-stable
-script: php vendor/atoum/atoum/bin/atoum -d sources/tests/Unit/
+script:
+  - php vendor/atoum/atoum/bin/atoum --no-code-coverage -d sources/tests/Unit/
 
