@@ -19,5 +19,6 @@ install:
   - composer install --dev
   - composer update atoum/atoum --prefer-stable
 script:
-  - php vendor/atoum/atoum/bin/atoum --no-code-coverage -d sources/tests/Unit/
+  - php vendor/bin/phpcs --standard=psr2 --runtime-set ignore_warnings_on_exit true --report=summary sources
+  - php vendor/bin/atoum --no-code-coverage -d sources/tests/Unit
 

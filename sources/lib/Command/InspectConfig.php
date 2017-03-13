@@ -54,16 +54,16 @@ class InspectConfig extends PommAwareCommand
 
         $results = array_keys($this->getPomm()->getSessionBuilders());
         switch (count($results)) {
-        case 0:
-            $output->writeln("There are no session builders in current Pomm instance.");
-            break;
-        case 1:
-            $output->writeln("There is <info>1</info> builder in current Pomm instance:");
-            $this->showResultList($output, $results);
-            break;
-        default:
-            $output->writeln(sprintf("There are <info>%d</info> builders in current Pomm instance:", count($results)));
-            $this->showResultList($output, $results);
+            case 0:
+                $output->writeln("There are no session builders in current Pomm instance.");
+                break;
+            case 1:
+                $output->writeln("There is <info>1</info> builder in current Pomm instance:");
+                $this->showResultList($output, $results);
+                break;
+            default:
+                $output->writeln(sprintf("There are <info>%d</info> builders in current Pomm instance:", count($results)));
+                $this->showResultList($output, $results);
         }
     }
 

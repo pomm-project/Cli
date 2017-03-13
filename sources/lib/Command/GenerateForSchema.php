@@ -69,8 +69,7 @@ class GenerateForSchema extends SchemaAwareCommand
         $session = $this->mustBeModelManagerSession($this->getSession());
 
         $relations = $session->getInspector()
-            ->getSchemaRelations($this->fetchSchemaOid()
-        );
+            ->getSchemaRelations($this->fetchSchemaOid());
 
         $output->writeln(
             sprintf(

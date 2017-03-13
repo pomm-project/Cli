@@ -54,7 +54,9 @@ class GenerateEntity extends ModelSessionAtoum
             ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/Alpha.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/Alpha.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/AlphaEntity.php'))
-            ->exception(function () use ($tester, $command, $command_args) { $tester->execute($command_args); })
+            ->exception(function () use ($tester, $command, $command_args) {
+                $tester->execute($command_args);
+            })
             ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;

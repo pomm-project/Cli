@@ -141,7 +141,9 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
                 sprintf("%s%s.php", Inflector::studlyCaps($file_name), $file_suffix)
             ];
 
-        return join('/', array_filter($elements, function ($val) { return $val != null; }));
+        return join('/', array_filter($elements, function ($val) {
+            return $val != null;
+        }));
     }
 
     /**
@@ -164,7 +166,9 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
                 $extra_ns
             ];
 
-        return join('\\', array_filter($elements, function ($val) { return $val != null; }));
+        return join('\\', array_filter($elements, function ($val) {
+            return $val != null;
+        }));
     }
 
     /**

@@ -75,17 +75,17 @@ abstract class RelationAwareCommand extends SchemaAwareCommand
             $status = $line["status"] == "ok" ? "<fg=green>✓</fg=green>" : "<fg=red>✗</fg=red>";
 
             switch ($line['operation']) {
-            case "creating":
-                $operation = sprintf("<fg=green>%s</fg=green>", ucwords($line['operation']));
-                break;
-            case "overwriting":
-                $operation = sprintf("<fg=cyan>%s</fg=cyan>", ucwords($line['operation']));
-                break;
-            case "deleting":
-                $operation = sprintf("<fg=red>%s</fg=red>", ucwords($line['operation']));
-                break;
-            default:
-                $operation = ucwords($line['operation']);
+                case "creating":
+                    $operation = sprintf("<fg=green>%s</fg=green>", ucwords($line['operation']));
+                    break;
+                case "overwriting":
+                    $operation = sprintf("<fg=cyan>%s</fg=cyan>", ucwords($line['operation']));
+                    break;
+                case "deleting":
+                    $operation = sprintf("<fg=red>%s</fg=red>", ucwords($line['operation']));
+                    break;
+                default:
+                    $operation = ucwords($line['operation']);
             }
 
             $output->writeln(

@@ -56,7 +56,9 @@ class GenerateRelationModel extends ModelSessionAtoum
             ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTest/PommTestSchema/BetaModel.php'.".PHP_EOL)
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/BetaModel.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel.php'))
-            ->exception(function () use ($tester, $command, $command_args) { $tester->execute($command_args); })
+            ->exception(function () use ($tester, $command, $command_args) {
+                $tester->execute($command_args);
+            })
             ->isInstanceOf('\PommProject\ModelManager\Exception\GeneratorException')
             ->message->contains('--force')
             ;

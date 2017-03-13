@@ -70,8 +70,7 @@ class InspectSchema extends ModelSessionAtoum
                             'schema'           => 'whatever',
                         ]
                     );
-                }
-            )
+            })
             ->isInstanceOf('\PommProject\Cli\Exception\CliException')
             ;
     }

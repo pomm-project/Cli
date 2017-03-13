@@ -72,12 +72,12 @@ class PommAwareCommand extends Command
     {
         $this
             ->addOption(
-            'bootstrap-file',
-            '-b',
-            InputArgument::OPTIONAL,
-            'Complete path of the CLI bootstrap file.',
-            sprintf("%s/.pomm_cli_bootstrap.php", getenv('PWD'))
-        )
+                'bootstrap-file',
+                '-b',
+                InputArgument::OPTIONAL,
+                'Complete path of the CLI bootstrap file.',
+                sprintf("%s/.pomm_cli_bootstrap.php", getenv('PWD'))
+            )
         ;
 
         return $this;
