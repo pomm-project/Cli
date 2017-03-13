@@ -41,9 +41,8 @@ class InspectDatabase extends ModelSessionAtoum
         );
         $this
             ->string($tester->getDisplay())
-            ->contains("| pomm_test")
-            ->contains("This is a test schema.")
-            ->contains(" 4 ")
+            ->matches('#|\s+pomm_test\s+|\s+[0-9]+\s+|\s+4\s+|\s+"*[\w-]+"*\s+|\s+This is a test schema.\s+|#')
+            ->matches('#Found [0-9]+ schemas in database "\w+"#')
             ;
     }
 }

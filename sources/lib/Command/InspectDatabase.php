@@ -50,12 +50,11 @@ class InspectDatabase extends SessionAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
-        $info = $this
-            ->getSession()
-            ->getInspector()
-            ->getSchemas()
-            ;
-        $this->formatOutput($output, $info);
+        $info = $this->getSession()->getInspector('schema')->getUserSchemas();
+        $version = $this->getSession()->getInspector('database')->getVersion();
+        $size = $this->getSession()->getInspector('database')->getSizePretty();
+        $name = $this->getSession()->getInspector('database')->getName();
+        $this->formatOutput($output, $info, $version, $size, $name);
     }
 
     /**
@@ -68,16 +67,24 @@ class InspectDatabase extends SessionAwareCommand
      * @param  ResultIterator   $iterator
      * @return null
      */
-    protected function formatOutput(OutputInterface $output, ResultIterator $iterator)
+    protected function formatOutput(OutputInterface $output, ResultIterator $iterator, $version, $size, $name)
     {
         $output->writeln(
             sprintf(
-                "Found <info>%d</info> schemas in database.",
-                $iterator->count()
+                "PostgreSQL v.%s",
+                $version
+            )
+        );
+        $output->writeln(
+            sprintf(
+                "Found <info>%d</info> schemas in database \"%s\" (%s).",
+                $iterator->count(),
+                $name,
+                $size
             )
         );
         $table = (new Table($output))
-            ->setHeaders(['name', 'oid ', 'relations', 'comment'])
+            ->setHeaders(['name', 'oid ', 'relations', 'owner', 'comment'])
             ;
 
         foreach ($iterator as $schema_info) {
@@ -85,6 +92,7 @@ class InspectDatabase extends SessionAwareCommand
                 sprintf("<fg=yellow>%s</fg=yellow>", $schema_info['name']),
                 $schema_info['oid'],
                 $schema_info['relations'],
+                $schema_info['owner'],
                 wordwrap($schema_info['comment'])
             ]);
         }
