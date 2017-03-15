@@ -11,6 +11,7 @@ namespace PommProject\Cli\Command;
 
 use PommProject\Cli\Exception\CliException;
 use PommProject\Foundation\ConvertedResultIterator;
+use PommProject\Foundation\Exception\SqlException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -29,8 +30,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class InspectRelation extends RelationAwareCommand
 {
-    protected $relation_oid;
-
     /**
      * configure
      *
@@ -55,27 +54,26 @@ class InspectRelation extends RelationAwareCommand
     {
         parent::execute($input, $output);
         $this->relation = $input->getArgument('relation');
-        $this->relation_oid = $this->getSession()
-            ->getInspector()
-            ->getTableOid($this->schema, $this->relation)
+        $inspector = $this->getSession()
+            ->getInspector('relation')
             ;
-
-        if ($this->relation_oid === null) {
+        try {
+            $relation_size = $inspector
+                ->getTableTotalSizeOnDisk($this->schema, $this->relation);
+        } catch (SqlException $e) {
             throw new CliException(
                 sprintf(
-                    "Relation <comment>%s.%s</comment> not found.",
+                    "Relation '%s.%s' not found.\nRelations in this schema are {%s}.",
                     $this->schema,
-                    $this->relation
+                    $this->relation,
+                    join(', ', $inspector->getRelationsInSchema($this->schema)->slice('name'))
                 )
             );
         }
 
-        $fields_infos = $this->getSession()
-            ->getInspector()
-            ->getTableFieldInformation($this->relation_oid)
-            ;
+        $fields_infos = $inspector->getTableFieldInformationName($this->schema, $this->relation);
 
-        $this->formatOutput($output, $fields_infos);
+        $this->formatOutput($output, $fields_infos, $relation_size);
     }
 
     /**
@@ -86,11 +84,19 @@ class InspectRelation extends RelationAwareCommand
      * @access protected
      * @param  OutputInterface         $output
      * @param  ConvertedResultIterator $fields_infos
+     * @param  int                     $size
      * @return void
      */
-    protected function formatOutput(OutputInterface $output, ConvertedResultIterator $fields_infos)
+    protected function formatOutput(OutputInterface $output, ConvertedResultIterator $fields_infos, $size)
     {
-        $output->writeln(sprintf("Relation <fg=cyan>%s.%s</fg=cyan>", $this->schema, $this->relation));
+        $output->writeln(
+            sprintf(
+                "Relation <fg=cyan>%s.%s</fg=cyan> (size with indexes: %d bytes)",
+                $this->schema,
+                $this->relation,
+                $size
+            )
+        );
         $table = (new Table($output))
             ->setHeaders(['pk', 'name', 'type', 'default', 'notnull', 'comment'])
             ;

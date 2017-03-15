@@ -69,7 +69,7 @@ class InspectSchema extends SchemaAwareCommand
             ->getSession()
             ->getInspector('relation')
             ->getRelationsInSchema($this->schema);
-        $this->formatOutput($output, $info, $schema_info);
+        $this->formatOutput($output, $info);
     }
 
     /**

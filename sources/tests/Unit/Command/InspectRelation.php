@@ -43,8 +43,7 @@ class InspectRelation extends ModelSessionAtoum
         );
         $this
             ->string($tester->getDisplay())
-            ->isEqualTo(join(PHP_EOL, [
-                "Relation pomm_test.beta",
+            ->contains(join(PHP_EOL, [
                 "+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+",
                 "| pk | name       | type                     | default                                          | notnull | comment                       |",
                 "+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+",
@@ -54,6 +53,7 @@ class InspectRelation extends ModelSessionAtoum
                 "+----+------------+--------------------------+--------------------------------------------------+---------+-------------------------------+",
                 "",
             ]))
+            ->matches('#Relation pomm_test.beta \\(size with indexes\\: [0-9]+ bytes\\)#')
         ;
         $this
             ->exception(function () use ($tester, $command) {
