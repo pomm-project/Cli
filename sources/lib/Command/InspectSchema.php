@@ -10,9 +10,11 @@
 namespace PommProject\Cli\Command;
 
 use PommProject\Foundation\ResultIterator;
+use PommProject\Foundation\Where;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use PommProject\Cli\Exception\CliException;
 
 /**
  * InspectSchema
@@ -49,12 +51,25 @@ class InspectSchema extends SchemaAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
+        $inspector = $this->getSession()->getInspector('schema');
+        $schema_info = $inspector
+            ->getUserSchemas(new Where("n.nspname = $*", [$this->schema]))
+            ->current();
 
+        if ($schema_info === null) {
+            throw new CliException(
+                sprintf(
+                    "Could not find schema '%s'.\nAvailable schemas are {%s}",
+                    $this->schema,
+                    join(', ', $inspector->getUserSchemas()->slice('name'))
+                )
+            );
+        }
         $info = $this
             ->getSession()
-            ->getInspector()
-            ->getSchemaRelations($this->fetchSchemaOid());
-        $this->formatOutput($output, $info);
+            ->getInspector('relation')
+            ->getRelationsInSchema($this->schema);
+        $this->formatOutput($output, $info, $schema_info);
     }
 
     /**
@@ -77,7 +92,7 @@ class InspectSchema extends SchemaAwareCommand
             )
         );
         $table = (new Table($output))
-            ->setHeaders(['name', 'type', 'oid ', 'comment'])
+            ->setHeaders(['name', 'type', 'oid ', 'owner', 'size', 'comment'])
             ;
 
         foreach ($info as $table_info) {
@@ -85,6 +100,8 @@ class InspectSchema extends SchemaAwareCommand
                 sprintf("<fg=yellow>%s</fg=yellow>", $table_info['name']),
                 $table_info['type'],
                 $table_info['oid'],
+                $table_info['owner'],
+                $table_info['size'],
                 wordwrap($table_info['comment'])
             ]);
         }

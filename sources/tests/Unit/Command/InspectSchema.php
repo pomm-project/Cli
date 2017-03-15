@@ -50,6 +50,7 @@ class InspectSchema extends ModelSessionAtoum
             ->contains("| beta   | table")
             ->contains("This is the beta comment.")
             ->contains("| dingo  | view")
+            ->matches('#|\s+\w+\s+|\s+table\s+|\s+[0-9]+\s+|\s+\w+\s+|\s+[0-9]+ bytes\s+|#')
         ;
 
         $inspector = new LegacyInspector;
