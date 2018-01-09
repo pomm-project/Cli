@@ -12,11 +12,11 @@
         "psr/log": "~1.0",
         "pomm-project/foundation":    "~2.0",
         "pomm-project/model-manager": "~2.0",
-        "symfony/console":            "~2.5|~3.0"
+        "symfony/console":            "~2.5|~3.0|~4.0"
     },
     "require-dev": {
         "atoum/atoum" : "dev-master",
-        "symfony/filesystem": "~2.5|~3.0"
+        "symfony/filesystem": "~2.5|~3.0|~4.0"
     },
     "autoload": {
         "psr-4": {
