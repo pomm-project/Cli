@@ -1,3 +1,7 @@
+== VERSION 2.0.2
+
+ * Add sf4 dependency support
+
 == VERSION 2.0.1
 
  * Switch to 2.0 stable branch
