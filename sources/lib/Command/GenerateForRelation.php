@@ -57,6 +57,13 @@ class GenerateForRelation extends RelationAwareCommand
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'dir-pattern',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Specify the pattern path for files.',
+                "{Session}/{Schema}Schema"
+            )
         ;
     }
 
@@ -77,12 +84,12 @@ class GenerateForRelation extends RelationAwareCommand
                 $session,
                 $this->schema,
                 $this->relation,
-                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4')),
-                $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
+                $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4'), $input->getOption('dir-pattern')),
+                $this->getNamespace($input->getArgument('config-name'), 'AutoStructure', $input->getOption('dir-pattern'))
             ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
         );
 
-        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'), $input->getOption('dir-pattern'));
         if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,
@@ -91,14 +98,14 @@ class GenerateForRelation extends RelationAwareCommand
                     $this->schema,
                     $this->relation,
                     $pathFile,
-                    $this->getNamespace($input->getArgument('config-name'))
+                    $this->getNamespace($input->getArgument('config-name'), '', $input->getOption('dir-pattern'))
                 ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
             );
         } elseif ($output->isVerbose()) {
             $this->writelnSkipFile($output, $pathFile, 'model');
         }
 
-        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'));
+        $pathFile = $this->getPathFile($input->getArgument('config-name'), $this->relation, '', '', $input->getOption('psr4'), $input->getOption('dir-pattern'));
         if (!file_exists($pathFile) || $input->getOption('force')) {
             $this->updateOutput(
                 $output,
@@ -107,7 +114,7 @@ class GenerateForRelation extends RelationAwareCommand
                     $this->schema,
                     $this->relation,
                     $pathFile,
-                    $this->getNamespace($input->getArgument('config-name')),
+                    $this->getNamespace($input->getArgument('config-name'), '', $input->getOption('dir-pattern')),
                     $this->flexible_container
                 ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
             );

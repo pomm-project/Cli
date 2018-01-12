@@ -120,9 +120,11 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      * @param  string $extra_dir
      * @param  string $file_name
      * @param  bool   $format_psr4
+     * @param  string $dir_pattern
      * @return string
      */
-    protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '', $format_psr4 = null)
+    protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '', $format_psr4 = null,
+        $dir_pattern = '')
     {
         $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
         $prefix_ns = "";
@@ -135,8 +137,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
             [
                 rtrim($this->prefix_dir, '/'),
                 $prefix_ns,
-                Inflector::studlyCaps($config_name),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
+                $this->generatePathForPattern($dir_pattern, $config_name),
                 $extra_dir,
                 sprintf("%s%s.php", Inflector::studlyCaps($file_name), $file_suffix)
             ];
@@ -152,15 +153,17 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      * @access protected
      * @param  string $config_name
      * @param  string $extra_ns
+     * @param  string $dir_pattern
      * @return string
      */
-    protected function getNamespace($config_name, $extra_ns = '')
+    protected function getNamespace($config_name, $extra_ns = '', $dir_pattern = "{Session}/{Schema}Schema")
     {
+        $path_pattern = $this->generatePathForPattern($dir_pattern, $config_name);
+
         $elements =
             [
                 $this->prefix_ns,
-                Inflector::studlyCaps($config_name),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
+                str_replace('/', '\\',$path_pattern),
                 $extra_ns
             ];
 
@@ -194,5 +197,20 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         }
 
         return $schema_oid;
+    }
+
+    /**
+     * @param $dir_pattern
+     * @param $config_name
+     * @return string
+     */
+    protected function generatePathForPattern($dir_pattern, $config_name)
+    {
+        return strtr($dir_pattern,
+            [
+                '{Session}' => Inflector::studlyCaps($config_name),
+                '{Schema}'  => Inflector::studlyCaps($this->schema),
+            ]
+        );
     }
 }
