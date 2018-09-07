@@ -129,8 +129,8 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         $extra_dir = '',
         $format_psr4 = null,
         $path_pattern = '{session}/{schema}Schema'
-    )
-    {
+    ) {
+    
         $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
         $prefix_ns = "";
 
@@ -168,8 +168,10 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
                 [
                     '{session}' => Inflector::studlyCaps($this->config_name),
                     '{schema}'  => Inflector::studlyCaps($this->schema),
-                ]),
-        '/');
+                ]
+            ),
+            '/'
+        );
     }
 
     /**
