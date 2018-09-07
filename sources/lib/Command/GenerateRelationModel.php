@@ -54,6 +54,13 @@ class GenerateRelationModel extends RelationAwareCommand
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'path-pattern',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Use a different directory pattern when generating classes.',
+                '{session}/{schema}Schema'
+            )
         ;
     }
 
@@ -68,7 +75,14 @@ class GenerateRelationModel extends RelationAwareCommand
 
         $session = $this->mustBeModelManagerSession($this->getSession());
 
-        $this->pathFile  = $this->getPathFile($input->getArgument('config-name'), $this->relation, 'Model', '', $input->getOption('psr4'));
+        $this->pathFile  = $this->getPathFile(
+            $input->getArgument('config-name'),
+            $this->relation,
+            'Model',
+            '',
+            $input->getOption('psr4'),
+            $input->getOption('path-pattern')
+        );
         $this->namespace = $this->getNamespace($input->getArgument('config-name'));
 
         $this->updateOutput(

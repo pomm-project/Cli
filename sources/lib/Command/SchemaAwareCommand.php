@@ -122,7 +122,14 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      * @param  bool   $format_psr4
      * @return string
      */
-    protected function getPathFile($config_name, $file_name, $file_suffix = '', $extra_dir = '', $format_psr4 = null)
+    protected function getPathFile(
+        $config_name,
+        $file_name,
+        $file_suffix = '',
+        $extra_dir = '',
+        $format_psr4 = null,
+        $path_pattern = '{session}/{schema}Schema'
+    )
     {
         $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
         $prefix_ns = "";
@@ -135,8 +142,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
             [
                 rtrim($this->prefix_dir, '/'),
                 $prefix_ns,
-                Inflector::studlyCaps($config_name),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
+                $this->expandPath($path_pattern),
                 $extra_dir,
                 sprintf("%s%s.php", Inflector::studlyCaps($file_name), $file_suffix)
             ];
@@ -144,6 +150,26 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         return join('/', array_filter($elements, function ($val) {
             return $val != null;
         }));
+    }
+
+    /**
+     * expandPath
+     *
+     * Expand path pattern with the context values
+     *
+     * @param   string $pattern
+     * @return  string
+     */
+    protected function expandPath($pattern)
+    {
+        return trim(
+            strtr(
+                $pattern,
+                [
+                    '{session}' => Inflector::studlyCaps($this->config_name),
+                    '{schema}'  => Inflector::studlyCaps($this->schema),
+                ]),
+        '/');
     }
 
     /**
