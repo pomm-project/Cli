@@ -70,5 +70,10 @@ class GenerateRelationStructure extends ModelSessionAtoum
             ->string(file_get_contents('tmp/Model/PommTest/PommTestSchema/AutoStructure/Beta.php'))
             ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure.php'))
             ;
+        $tester->execute(array_merge($command_args, ['--psr4' => null, '--path-pattern' => '{session}Session/Schema{schema}']), $options);
+        $this
+            ->string($tester->getDisplay())
+            ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTestSession/SchemaPommTest/AutoStructure/Beta.php'.".PHP_EOL)
+            ;
     }
 }

@@ -54,6 +54,13 @@ class GenerateForSchema extends SchemaAwareCommand
                 InputOption::VALUE_NONE,
                 'Use PSR4 structure.'
             )
+            ->addOption(
+                'path-pattern',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Use a different directory pattern when generating classes.',
+                '{session}/{schema}Schema'
+            )
         ;
     }
 
@@ -92,6 +99,7 @@ class GenerateForSchema extends SchemaAwareCommand
                     '--bootstrap-file' => $input->getOption('bootstrap-file'),
                     '--prefix-dir'     => $input->getOption('prefix-dir'),
                     '--prefix-ns'      => $input->getOption('prefix-ns'),
+                    '--path-pattern'   => $input->getOption('path-pattern'),
                     '--flexible-container' => $input->getOption('flexible-container'),
                     '--psr4'           => $input->getOption('psr4')
                 ];
