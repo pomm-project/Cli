@@ -80,7 +80,7 @@ HELP
             $input->getOption('psr4'),
             $input->getOption('path-pattern')
         );
-        $this->namespace = $this->getNamespace($input->getArgument('config-name'), 'AutoStructure');
+        $this->namespace = $this->getNamespace($input->getArgument('config-name'),  'AutoStructure', $input->getOption('path-pattern'));
 
         $this->updateOutput(
             $output,
