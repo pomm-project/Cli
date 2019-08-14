@@ -130,7 +130,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         $format_psr4 = null,
         $path_pattern = '{session}/{schema}Schema'
     ) {
-    
+
         $format_psr4 = $format_psr4 === null ? false : (bool) $format_psr4;
         $prefix_ns = "";
 
@@ -184,13 +184,12 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
      * @param  string $extra_ns
      * @return string
      */
-    protected function getNamespace($config_name, $extra_ns = '')
+    protected function getNamespace($config_name, $extra_ns = '', $path_pattern = '{session}/{schema}Schema')
     {
         $elements =
             [
                 $this->prefix_ns,
-                Inflector::studlyCaps($config_name),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
+                str_replace('/', '\\', $this->expandPath($path_pattern)),
                 $extra_ns
             ];
 
