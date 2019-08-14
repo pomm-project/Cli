@@ -83,7 +83,7 @@ class GenerateRelationModel extends RelationAwareCommand
             $input->getOption('psr4'),
             $input->getOption('path-pattern')
         );
-        $this->namespace = $this->getNamespace($input->getArgument('config-name'));
+        $this->namespace = $this->getNamespace($input->getArgument('config-name'), null, $input->getOption('path-pattern'));
 
         $this->updateOutput(
             $output,
