@@ -101,6 +101,8 @@ class GenerateRelationModel extends ModelSessionAtoum
         $this
             ->string($tester->getDisplay())
             ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTestSession/SchemaPommTest/BetaModel.php'.".PHP_EOL)
+            ->string(file_get_contents('tmp/Model/PommTestSession/SchemaPommTest/BetaModel.php'))
+            ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaModel2.php'))
             ;
     }
 }

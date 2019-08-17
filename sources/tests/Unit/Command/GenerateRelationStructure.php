@@ -2,7 +2,7 @@
 /*
  * This file is part of Pomm's Cli package.
  *
- * (c) 2014 - 2015 Grégoire HUBERT <hubert.greg@gmail.com>
+ * (c) 2014 - 2019 Grégoire HUBERT <hubert.greg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -74,6 +74,8 @@ class GenerateRelationStructure extends ModelSessionAtoum
         $this
             ->string($tester->getDisplay())
             ->isEqualTo(" ✓  Creating file 'tmp/Model/PommTestSession/SchemaPommTest/AutoStructure/Beta.php'.".PHP_EOL)
+            ->string(file_get_contents('tmp/Model/PommTestSession/SchemaPommTest/AutoStructure/Beta.php'))
+            ->isEqualTo(file_get_contents('sources/tests/Fixture/BetaStructure2.php'))
             ;
     }
 }

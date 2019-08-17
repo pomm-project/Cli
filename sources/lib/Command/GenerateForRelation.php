@@ -85,7 +85,7 @@ class GenerateForRelation extends RelationAwareCommand
                 $this->schema,
                 $this->relation,
                 $this->getPathFile($input->getArgument('config-name'), $this->relation, null, 'AutoStructure', $input->getOption('psr4'), $input->getOption('path-pattern')),
-                $this->getNamespace($input->getArgument('config-name'), 'AutoStructure')
+                $this->getNamespace($input->getArgument('config-name'), 'AutoStructure', $input->getOption('path-pattern'))
             ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
         );
 
@@ -98,7 +98,7 @@ class GenerateForRelation extends RelationAwareCommand
                     $this->schema,
                     $this->relation,
                     $pathFile,
-                    $this->getNamespace($input->getArgument('config-name'))
+                    $this->getNamespace($input->getArgument('config-name'), null, $input->getOption('path-pattern'))
                 ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
             );
         } elseif ($output->isVerbose()) {
@@ -114,7 +114,7 @@ class GenerateForRelation extends RelationAwareCommand
                     $this->schema,
                     $this->relation,
                     $pathFile,
-                    $this->getNamespace($input->getArgument('config-name')),
+                    $this->getNamespace($input->getArgument('config-name'), null, $input->getOption('path-pattern')),
                     $this->flexible_container
                 ))->generate(new ParameterHolder(array_merge($input->getArguments(), $input->getOptions())))
             );
