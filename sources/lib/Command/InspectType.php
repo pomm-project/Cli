@@ -64,5 +64,7 @@ class InspectType extends SessionAwareCommand
         foreach ($types as $type) {
                 $output->writeln($type);
         }
+
+        return 0;
     }
 }

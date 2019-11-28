@@ -74,6 +74,8 @@ class InspectRelation extends RelationAwareCommand
         $fields_infos = $inspector->getTableFieldInformationName($this->schema, $this->relation);
 
         $this->formatOutput($output, $fields_infos, $relation_size);
+
+        return 0;
     }
 
     /**

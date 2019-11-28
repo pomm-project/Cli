@@ -92,5 +92,7 @@ HELP
                 $this->namespace
             ))->generate(new ParameterHolder())
         );
+
+        return 0;
     }
 }

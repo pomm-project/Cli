@@ -106,5 +106,7 @@ class GenerateForSchema extends SchemaAwareCommand
                 $command->run(new ArrayInput($arguments), $output);
             }
         }
+
+        return 0;
     }
 }

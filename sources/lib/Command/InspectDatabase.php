@@ -55,6 +55,8 @@ class InspectDatabase extends SessionAwareCommand
         $size = $this->getSession()->getInspector('database')->getSizePretty();
         $name = $this->getSession()->getInspector('database')->getName();
         $this->formatOutput($output, $info, $version, $size, $name);
+
+        return 0;
     }
 
     /**

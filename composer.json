@@ -12,7 +12,7 @@
         "psr/log": "~1.0",
         "pomm-project/foundation":    "2.1.*@dev",
         "pomm-project/model-manager": "2.1.*@dev",
-        "symfony/console":            "~2.5|~3.0|~4.0"
+        "symfony/console":            "~2.5|~3.0|~4.0|~5.0"
     },
     "require-dev": {
         "atoum/atoum" : "^2.8 || ^3.0",
