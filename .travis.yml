@@ -15,7 +15,6 @@ before_script:
   - psql -c 'CREATE EXTENSION hstore' -U postgres -h 127.0.0.1 pomm_test
   - psql -c 'CREATE EXTENSION ltree' -U postgres -h 127.0.0.1 pomm_test
 install:
-  - rm composer.lock
   - composer update --dev
   - composer update atoum/atoum --prefer-stable
 script:
