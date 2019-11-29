@@ -116,5 +116,7 @@ HELP
                 $this->flexible_container
             ))->generate(new ParameterHolder(['force' => $input->getOption('force')]))
         );
+
+        return 0;
     }
 }

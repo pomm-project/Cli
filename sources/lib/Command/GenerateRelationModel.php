@@ -95,5 +95,7 @@ class GenerateRelationModel extends RelationAwareCommand
                 $this->namespace
             ))->generate(new ParameterHolder(['force' => $input->getOption('force')]))
         );
+
+        return 0;
     }
 }
