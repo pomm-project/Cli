@@ -56,6 +56,8 @@ class InspectDatabase extends SessionAwareCommand
             ->getSchemas()
             ;
         $this->formatOutput($output, $info);
+
+        return 0;
     }
 
     /**

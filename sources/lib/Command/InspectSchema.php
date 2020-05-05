@@ -56,6 +56,8 @@ class InspectSchema extends SchemaAwareCommand
             ->getSchemaRelations($this->fetchSchemaOid()
         );
         $this->formatOutput($output, $info);
+
+        return 0;
     }
 
     /**
