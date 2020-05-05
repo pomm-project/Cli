@@ -65,6 +65,8 @@ class InspectConfig extends PommAwareCommand
             $output->writeln(sprintf("There are <info>%d</info> builders in current Pomm instance:", count($results)));
             $this->showResultList($output, $results);
         }
+
+        return 0;
     }
 
     /**

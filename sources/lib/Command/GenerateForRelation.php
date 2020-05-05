@@ -114,6 +114,8 @@ class GenerateForRelation extends RelationAwareCommand
         } elseif ($output->isVerbose()) {
             $this->writelnSkipFile($output, $pathFile, 'entity');
         }
+
+        return 0;
     }
 
     /**

@@ -76,6 +76,8 @@ class InspectRelation extends RelationAwareCommand
             ;
 
         $this->formatOutput($output, $fields_infos);
+
+        return 0;
     }
 
     /**
