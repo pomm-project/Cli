@@ -100,3 +100,15 @@ $ ./bin/pomm.php pomm:generate:schema-all --prefix-dir sources/lib --prefix-ns M
  ✓  Creating file 'sources/lib/Model/PommTest/PublicSchema/AutoStructure/Pika.php'.
 …
 ```
+
+Also, Cli automatically adds config and schema names to the namespace of generated classes.
+In the example above it's `PommTest\PublicSchema`.
+Since Pomm does not require that part of the namespace it can be removed by using `--no-default-namespace` option.
+This can be helpful if you store all data in one schema and you don't want to have schema name in namespace.
+Please be careful, in this case it's possible to have overlaps if relations in different schemas have same name.
+
+```
+$ ./bin/pomm.php pomm:generate:schema-all --prefix-dir sources/lib --prefix-ns Model --no-default-namespace pomm_test
+ ✓  Creating file 'sources/lib/Model/AutoStructure/Pika.php'.
+…
+```
