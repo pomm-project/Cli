@@ -94,6 +94,7 @@ class GenerateForSchema extends SchemaAwareCommand
                     '--prefix-dir'     => $input->getOption('prefix-dir'),
                     '--prefix-ns'      => $input->getOption('prefix-ns'),
                     '--flexible-container' => $input->getOption('flexible-container'),
+                    '--no-default-namespace' => $input->getOption('no-default-namespace'),
                     '--psr4'           => $input->getOption('psr4')
                 ];
                 $command->run(new ArrayInput($arguments), $output);

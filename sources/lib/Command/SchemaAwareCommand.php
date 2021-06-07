@@ -37,6 +37,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
     protected $pathFile;
     protected $namespace;
     protected $flexible_container;
+    protected $default_namespace;
 
     /**
      * configure
@@ -86,6 +87,12 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
                 'Use an alternative flexible entity container',
                 'PommProject\ModelManager\Model\FlexibleEntity'
             )
+            ->addOption(
+                'no-default-namespace',
+                null,
+                InputOption::VALUE_NONE,
+                'Do not include config and schema name to the generated namespace.'
+            )
         ;
 
         return $this;
@@ -107,6 +114,7 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         $this->prefix_dir = $input->getOption('prefix-dir');
         $this->prefix_ns  = $input->getOption('prefix-ns');
         $this->flexible_container = $input->getOption('flexible-container');
+        $this->default_namespace = !$input->getOption('no-default-namespace');
     }
 
     /**
@@ -135,8 +143,8 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
             [
                 rtrim($this->prefix_dir, '/'),
                 $prefix_ns,
-                Inflector::studlyCaps($config_name),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
+                $this->default_namespace ? Inflector::studlyCaps($config_name) : null,
+                $this->default_namespace ? Inflector::studlyCaps(sprintf("%s_schema", $this->schema)) : null,
                 $extra_dir,
                 sprintf("%s%s.php", Inflector::studlyCaps($file_name), $file_suffix)
             ];
@@ -159,8 +167,8 @@ abstract class SchemaAwareCommand extends SessionAwareCommand
         $elements =
             [
                 $this->prefix_ns,
-                Inflector::studlyCaps($config_name),
-                Inflector::studlyCaps(sprintf("%s_schema", $this->schema)),
+                $this->default_namespace ? Inflector::studlyCaps($config_name) : null,
+                $this->default_namespace ? Inflector::studlyCaps(sprintf("%s_schema", $this->schema)) : null,
                 $extra_ns
             ];
 
