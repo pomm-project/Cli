@@ -95,7 +95,7 @@ class InspectDatabase extends SessionAwareCommand
                 $schema_info['oid'],
                 $schema_info['relations'],
                 $schema_info['owner'],
-                wordwrap($schema_info['comment'])
+                wordwrap((string) $schema_info['comment'])
             ]);
         }
 

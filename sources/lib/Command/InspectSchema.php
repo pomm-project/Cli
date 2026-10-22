@@ -104,7 +104,7 @@ class InspectSchema extends SchemaAwareCommand
                 $table_info['oid'],
                 $table_info['owner'],
                 $table_info['size'],
-                wordwrap($table_info['comment'])
+                wordwrap((string) $table_info['comment'])
             ]);
         }
 
